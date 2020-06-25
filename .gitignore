@@ -1,7 +1,8 @@
 .DS_Store
 node_modules
-webapp/node_modules
-hostile-water-mngpack
+app/node_modules
+hostile-waters-mngpack
+test/hostile-waters
 
 # local env files
 .env.local

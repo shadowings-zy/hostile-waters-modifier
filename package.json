@@ -1,7 +1,7 @@
 {
-  "name": "electron-quick-start",
+  "name": "hostile-waters-electron-project",
   "version": "1.0.0",
-  "description": "A minimal Electron application",
+  "description": "Hostile Waters Modifiers",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
