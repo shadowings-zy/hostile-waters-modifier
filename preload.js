@@ -9,6 +9,7 @@ const { valuesModify } = require('./tools/valuesModify')
 global.electron = electron
 window.ipcRenderer = electron.ipcRenderer
 window.remote = electron.remote
+window.shell = electron.shell
 
 window.objectBinModify = objectBinModify
 window.levelModify = levelModify

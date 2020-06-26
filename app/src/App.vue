@@ -47,10 +47,10 @@
         <el-tooltip slot="label" content="开发者信息及贡献指南" placement="top">
           <div>
             <i class="el-icon-user"></i>
-            <span>&nbsp;关于作者</span>
+            <span>&nbsp;关于我们</span>
           </div>
         </el-tooltip>
-        <Author />
+        <About />
       </el-tab-pane>
     </el-tabs>
   </div>
@@ -61,14 +61,14 @@ import Values from "./components/Values";
 import Model from "./components/Model";
 import UnitSlot from "./components/UnitSlot";
 import Level from "./components/Level";
-import Author from "./components/Author";
+import About from "./components/About";
 
 export default {
   name: "App",
-  components: { Values, Model, UnitSlot, Level, Author },
+  components: { Values, Model, UnitSlot, Level, About },
   data() {
     return {
-      tabName: ["values", "model", "unitSlot", "level", "author"],
+      tabName: ["values", "model", "unitSlot", "level", "about"],
       activeTab: "values",
       gameRootPath: ""
     };
@@ -100,7 +100,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #303133;
+  color: #606266;
   margin: 20px;
 }
 #modifier-title {
@@ -111,6 +111,6 @@ export default {
 }
 .el-input.is-disabled .el-input__inner {
   background-color: #fff !important;
-  color: #303133 !important;
+  color: #606266 !important;
 }
 </style>
