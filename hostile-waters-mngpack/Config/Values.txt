@@ -1,0 +1,734 @@
+.; Values file for Hostile Waters
+
+
+;
+;
+;
+; Stuff for our vehicles
+;
+;
+;
+
+;Global Numbers
+
+;The proportion of damage taken by an AI controlled vehicle
+AIControlDamage = 0.75
+;The proportion of the previous one each add on is worth
+ArmourDiminishingMarginalReturn = 0.85
+ShieldDiminishingMarginalReturn = 0.45
+CoolerDiminishingMarginalReturn = 0.30
+
+;The speed at which chunks take damage. this value gets subtracted from 10.0 every 60th of a second. Once it hits zero
+;the chunks dies. so if you want a chunk to live 60 secs then:- 10 / (20 * 60) = 0.0027777r
+ChunkDeteriorationSpeed = 0.00277777
+
+; Vehicle Input Lags. When in human control this makes the controls seem more 'floaty'. The higher the number
+; the more pronounced the lag.
+
+SuperHoverControlLag = 0.45
+SeeCloakedDistance = 1024
+
+; Vehicle Speeds
+SuperTankSpeed = 40
+SuperTankTurnSpeed = 5
+HeavyTankSpeed = 35
+HeavyTankTurnSpeed = 5
+ScavSpeed = 20        
+ScavTurnSpeed = 4
+HoverSpeed = 35
+HoverSlide = 15
+SuperHoverSpeed = 40
+SuperHoverSlide = 17.5
+
+
+
+; HarPoon
+RopeRange = 1500
+
+
+; Cost for vehicles
+
+LifterCost = 75
+ChopperCost = 150
+SuperChopperCost = 550
+ScavengerCost = 100
+HeavyTankCost = 650
+SuperTankCost = 900
+ReconBuggyCost = 150
+HoverTankCost = 400
+SuperHoverTankCost = 950
+StaticPlatformCost = 400
+BomberCost = 350
+
+; Cost of weapons
+
+MinigunCost = 250
+MissileCost = 250
+LaserCost = 2000
+LobberCost = 1250
+FlamerCost = 500
+EMPCost = 250
+
+;Cost of Addons
+
+ShieldCost = 1000
+ArmourCost = 350
+ScavengingUnitCost = 250
+SoulUnitCost = 100
+CoolerCost = 1500
+EMPShieldCost = 1000
+CloakCost = 1000
+RepairCost = 3000
+
+;Addon Stuff
+
+ScavengeSpeedMultiplier = 0.5
+ScavengeDist = 3500
+ScavengeFrenzy = 5500
+RepairSpeed = 0.009
+RepairDist = 3500
+RepairFrenzy = 5500
+
+CoolerAmount = 0.40
+
+; Amount of Hits for base vehicles
+
+;Carrier
+CarrierRustyArmour = 135 ;Change This to Summat Sensible
+CarrierArmour = 300 ;Change This to Summat Sensible
+CarrierShield = 50 ;Change This to Summat Sensible
+CarrierShieldRecharge = 0.005 ;Change This to Summat Sensible
+CarrierSinkSpeed = 3 ;How fast the death anim runs, 1 is fast 10 is V. slow.
+CarrierShotExplodeRange = 1650.0
+CarrierShotDamage = 625.0
+
+ChopperHullAmount = 10.0
+LifterHullAmount = 10.0
+DedicatedLifterHullAmount = 10.0
+JetHullAmount = 10.0
+SuperChopperHullAmount = 30.0
+BuggyHullAmount = 20.0
+HoverHullAmount = 37.5
+SuperHoverHullAmount = 42.5
+HeavyHullAmount = 45.0
+SuperTankHullAmount = 50.0
+ScavengerHullAmount = 45.0
+StaticHullAmount = 25.0
+
+; How far our stuff can see
+
+CarrierSight = 25000
+BomberSight = 25000
+ChopperSight = 25000
+LifterSight = 25000
+DedicatedLifterSight = 25000
+SuperChopperSight = 25000
+SuperHoverTankSight = 25000
+HoverTankSight = 25000
+StaticPlatformSight = 25000
+HarvesterSight = 25000
+HeavyTankSight = 25000
+SuperTankSight = 25000
+ReconBuggySight = 25000
+
+; How far our stuff to kill can be away before it gets shot (WITH THE GUN)
+;All these were originally 15000
+
+BomberFrenzy = 12000
+ChopperFrenzy = 12000
+SuperChopperFrenzy = 12000
+SuperHoverTankFrenzy = 12000
+HoverTankFrenzy = 12000
+StaticPlatformFrenzy = 15000
+HeavyTankFrenzy = 12000
+SuperTankFrenzy = 12000
+ReconBuggyFrenzy = 12000
+
+; Amount of Hits for addons
+
+ArmourHits = 10.0
+ShieldHits = 20.0
+ShieldRecharge = 0.005
+
+; Mortar / Bombs info
+
+LobberSpeed = 0.01
+LobberRange = 24000.0
+
+ChopperLobberDamage = 50.0
+ChopperLobberRange = 1500.0
+
+JetLobberDamage = 500.0
+JetLobberRange = 2000.0
+
+SuperChopperLobberDamage = 90.0
+SuperChopperLobberRange = 1500.0
+
+BuggyLobberDamage = 10.0
+BuggyLobberRange = 500.0
+
+HoverLobberDamage = 20.0
+HoverLobberRange = 1500.0
+
+SuperHoverLobberDamage = 22.5
+SuperHoverLobberRange = 2000.0
+
+HeavyLobberDamage = 25.0
+HeavyLobberRange = 2000.0
+
+SuperTankLobberDamage = 30.0
+SuperTankLobberRange = 2000.0
+
+StaticLobberDamage = 25.5
+StaticLobberRange = 2000.0
+
+; EMP Weapon Info
+
+EMPSpeed = 0.0030
+EMPFireVel = 100.0
+EMPRange = 20000.0
+EMPSphereRange = 1000.0
+EMPDamage = 750.0
+
+; Flamer thrower Info
+
+FlamerRange = 3000.0
+FlamerChargeSpeed = 0.0015 ;was .20
+FlamerDischargeSpeed = 0.005
+FlamerDebounceAmount = 0.05
+
+ChopperFlamerDamage = 0.5
+JetFlamerDamage = 0.1
+SuperChopperFlamerDamage = 0.75
+BuggyFlamerDamage = 0.5
+SuperHoverFlamerDamage = 1.0
+HoverFlamerDamage = 1.0
+HeavyFlamerDamage = 1.2
+SuperTankFlamerDamage = 0.75
+StaticFlamerDamage = 2.0
+
+; Minigun info
+
+MinigunSweetspotAngle = 0.997
+MinigunAutoaimAmount = 0.5
+
+ChopperMinigunDamage = 0.8
+JetMinigunDamage = 0.8
+SuperChopperMinigunDamage = 0.8
+BuggyMinigunDamage = 0.8
+HoverMinigunDamage = 1.2
+SuperHoverMinigunDamage = 0.9
+HeavyMinigunDamage = 1.2
+SuperTankMinigunDamage = 0.7
+StaticMinigunDamage = 1.2
+
+MinigunBulletRange = 14.2
+
+;Missile info
+
+MissileSweetspotAngle = 0.99
+MissileAccuracy = 1.3
+
+ChopperMissileDamage = 3.0
+JetMissileDamage = 5.0
+SuperChopperMissileDamage = 5.0
+BuggyMissileDamage = 4.0
+HoverMissileDamage = 7.5
+SuperHoverMissileDamage = 4.0
+HeavyMissileDamage = 8.0
+SuperTankMissileDamage = 5.0
+StaticMissileDamage = 5.0
+
+MissileLoadTime = 40.0
+
+; Laser Info
+
+LaserSweetspotAngle = 0.999
+LaserAutoaimAmount = 1.5
+LaserMissAmount = 0.005
+
+ChopperLaserDamage = 8.0
+JetLaserDamage = 5.0
+SuperChopperLaserDamage = 9.0
+BuggyLaserDamage = 7.0
+HoverTankLaserDamage = 9.0
+SuperHoverLaserDamage = 10.0
+HeavyTankLaserDamage = 11.0
+SuperTankLaserDamage = 12.0
+StaticLaserDamage = 10.0
+
+LaserSpeed = 0.0080
+LaserRange = 24000
+
+; Misc
+
+ScavSafeTime = 300.0
+;
+;
+; Stuff for them...
+;
+;
+;
+
+; Chinook
+ChinookArmour = 50.0f
+
+;BubbleCopter
+
+BubbleCopterSight = 20000
+BubbleCopterArmour = 22.5
+BubbleCopterDamage = 0.020
+BubbleCopterShotTime = 13.0
+
+;HybridChopper
+
+HybridChopperSight = 21000
+HybridChopperArmour = 35.0
+HybridChopperDamage = 0.065
+HybridChopperShotTime = 13.0
+
+;AlienSmallFlyer
+
+AlienSmallFlyerSight = 20000
+SmallFlyerDamage = 0.5
+SmallFlyerArmour = 5.0
+SmallFlyerShotSpeed = 250.0
+SmallFlyerFireFrequency = 30.0
+
+;Apache
+
+ApacheSight = 20000
+ApacheArmour = 45.0
+ApacheDamage = 1.5
+ApacheRange = 15500
+ApacheReloadTime = 175
+
+;HybridApache
+
+HybridApacheSight = 21000
+HybridApacheArmour = 70.0
+HybridApacheDamage = 1.5
+HybridApacheRange = 16000.0
+HybridApacheReloadTime = 150
+
+;MediumFlyer
+
+MediumFlyerSight = 20000
+MediumFlyerDamage = 0.5
+MediumFlyerArmour = 10.0
+MediumFlyerShotSpeed = 250.0
+MediumFlyerFireFrequency = 30.0
+
+;LittleExploder
+
+TinyWalkerSight = 20000
+TinyWalkerArmour = 1.0
+TinyWalkerRange	= 2000.0
+TinyWalkerDamage = 5.0
+TinyWalkerExplodeRange = 500.0
+
+;Abrams
+
+M1AbramsSight = 20000
+AbramsArmour = 80.0
+AbramsRange = 16.5
+AbramsReloadSpeed = 0.0075
+AbramsDamage = 1.3
+AbramsShotSpread = 0.015
+
+;HybridAbrams
+
+HybridAbramsSight = 21000
+HybridAbramsArmour = 100.0
+HybridAbramsRange = 16.5
+HybridAbramsReloadSpeed = 0.01
+HybridAbramsDamage = 2.2
+HybridAbramsShotSpread = 0.015
+
+;AlienAbrams
+
+LightWalkerSight = 20000
+LightWalkerArmour = 60.0
+LightWalkerRange = 16500.0
+LightWalkerDamage = 2.0
+LightWalkerReloadSpeed = 0.01
+LightWalkerShotSpread = 0.015
+
+;Mammoth
+
+MammothTankSight = 20000
+MammothArmour = 50.0
+MammothGunReloadSpeed = 0.0075
+MammothMissileReloadTime = 150.0
+MammothRange = 15500.0
+MammothGunDamage = 1.3
+MammothMissileDamage = 4.5
+MammothShotSpread = 0.015
+
+;HybridMammoth
+
+HybridMammothSight = 21000
+HybridMammothArmour = 60.0
+HybridMammothGunReloadSpeed = 0.01
+HybridMammothMissileReloadTime = 150.0
+HybridMammothRange = 16000.0
+HybridMammothGunDamage = 2.2
+HybridMammothMissileDamage = 4.5
+HybridMammothShotSpread = 0.015
+
+;AlienMammoth
+
+HeavyWalkerSight = 20000
+HeavyWalkerArmour = 100.0
+HeavyWalkerRange = 15500.0
+HeavyWalkerGroundDamage = 3.0
+HeavyWalkerAirDamage = 2.5
+HeavyWalkerGroundReloadSpeed = 0.01
+HeavyWalkerAirReloadSpeed = 0.02
+HeavyWalkerShotSpread = 0.015
+
+;MobileHowitzer
+
+MobileHowitzerSight = 20000
+MobileHowArmour = 60.0
+MobileHowRechargeSpeed = 0.005
+MobileHowDamage = 2.5
+MobileHowExplodeRadius = 1000.0
+
+;HybridMobileHowitzer
+
+HybridMobileHowitzerSight = 20000
+HybridMobileHowArmour = 75.0
+HybridMobileHowRechargeSpeed = 0.005
+HybridMobileHowDamage = 2.5
+HybridMobileHowExplodeRadius = 1050.0
+
+;SiegeSlug
+SiegeSlugSight = 22000
+SlugArmour = 200.0
+SlugDamage = 5.0
+SlugChargeSpeed = 0.01
+SlugDamageRadius = 1000.0
+
+;Bomber
+
+CabalBomberSight = 20000
+CabalBomberArmour = 50.0
+CabalBomberRechargeSpeed = 0.01
+CabalBomberDamage = 15.0
+CabalBomberExplodeRadius = 1000.0
+
+;HybridBomber
+
+HybridBomberSight = 21000
+HybridBomberArmour = 35.0
+HybridBomberRechargeSpeed = 0.01
+HybridBomberDamage = 15.0
+HybridBomberExplodeRadius = 1000.0
+
+;HoverLaser
+
+HoverLaserSight = 20000
+HoverLaserDamage = 15.0
+HoverLaserArmour = 50.0
+HoverLaserChargeSpeed = 0.01
+HoverLaserSpeed = 45.0
+
+;TowerTheStuffSitsOn
+
+WallTowerSight = 15000
+WallTowerHits = 100.00
+
+;CannonTurret
+
+CannonBunkerSight = 20000
+BunkerArmour = 50.0
+BunkerRange = 21.0
+BunkerRechargeSpeed = 0.02
+BunkerDamage = 5.0
+BunkerShotSpread = 0.015
+
+;HybridCannonTurret
+
+HybridCannonBunkerSight = 21000
+HybridBunkerArmour = 125.0
+HybridBunkerRange = 21.0
+HybridBunkerRechargeSpeed = 0.02
+HybridBunkerDamage = 16.0
+HybridBunkerShotSpread = 0.0075
+
+;Tower for Lightning gun
+
+LightningSight = 20000.0
+LightningArmour = 100.0
+LightningRechargeSpeed = 0.01
+LightningDamage = 10.0
+
+;MachineGun
+
+MachineGunSight = 20500
+MachineGunArmour = 30.0
+MachineGunRange = 20.5
+MachineGunDamage = 0.05
+
+;HybridMachineGun
+
+HybridMachineGunSight = 22000
+HybridMachineGunArmour = 75.0
+HybridMachineGunRange = 22.0
+HybridMachineGunDamage = 0.15
+
+;Tower for Laser gun
+
+LaserTowerSight = 20000.0
+LaserTowerArmour = 100.0
+LaserTowerRechargeSpeed = 0.01
+LaserTowerDamage = 3.0
+LaserTowerRange = 85.0
+
+;AckAckGun
+
+RustyGunSight = 20000
+AckAckGunArmour = 50.0
+AckAckRechargeSpeed = 0.02
+AckAckDamage = 1.75
+AckAckExplodeRadius = 330.0
+AckAckShotSpeed = 400.0
+AckAckFireRange = 16000.0
+AckAckFrenzyRange = 20000.0
+AckAckAimError = 415.0
+
+;HybridAckAckGun
+
+HybridAckAckGunSight = 20000
+HybridAckAckGunArmour = 80.0
+HybridAckAckRechargeSpeed = 0.02
+HybridAckAckDamage = 10.0
+HybridAckAckExplodeRadius = 400.0
+HybridAckAckShotSpeed = 400.0
+HybridAckAckFireRange = 17000.0
+HybridAckAckFrenzyRange = 20000.0
+HybridAckAckAimError = 10.0
+
+;AlienAckAckGun
+ 
+AlienAckAckGunSight = 24000
+AlienAckAckGunArmour = 175.0
+AlienAckAckRechargeSpeed = 0.02
+AlienAckAckDamage = 15.0
+AlienAckAckExplodeRadius = 330.0
+AlienAckAckShotSpeed = 400.0
+AlienAckAckFireRange = 24000.0
+AlienAckAckFrenzyRange = 20000.0
+AlienAckAckAimError = 10.0
+
+;Howitzer
+
+HowitzerSight = 20000
+HowitzerArmour = 40.0
+HowitzerRechargeSpeed = 0.005
+HowitzerDamage = 5.5
+HowitzerExplodeRadius = 1000.0
+
+;HybridHowitzer
+
+HybridHowitzerSight = 20000
+HybridHowitzerArmour = 30.0
+HybridHowitzerRechargeSpeed = 0.005
+HybridHowitzerDamage = 7.0
+HybridHowitzerExplodeRadius = 1000.0
+
+;BlastTower
+
+BlastTowerSight = 20000
+BlastTowerArmour = 90.0
+BlastTowerRechargeSpeed = 0.0075
+BlastTowerDamage = 4.0
+BlastTowerExplodeRadius = 1000.0
+
+;FlyingProduction
+
+HumanFlyingProductionSight = 20000
+FlyingProdArmour = 750.0
+FlyingProdConsumption = 1.5
+BubbleCopterCost = 350.0
+ApacheCost = 650.0
+
+;HybridFlyingProduction
+
+HybridFlyingProductionSight = 20000
+HybridFlyingProdArmour = 1500.0
+HybridFlyingProdConsumption = 2.5
+HybridChopperCost = 500.0
+HybridApacheCost = 750.0
+
+;AlienFlyingProduction
+
+AlienProductionTowerSight = 20000
+AlienFlyingProdArmour = 2000.0
+AlienFlyingProdConsumption = 2.5
+SmallFlyerCost = 500.0
+MediumFlyerCost = 750.0
+
+;HumanGroundProduction
+
+HumanGroundProductionSight = 20000
+HumanGroundProdArmour = 750.0
+HumanGroundProdConsumption = 1.0
+HumanAbramsCost = 500.0
+HumanMammothCost = 1000.0
+
+;HybridGroundProduction
+
+HybridGroundProductionSight = 20000
+HybridGroundProdArmour = 1500.0
+HybridGroundProdConsumption = 1.5
+HybridAbramsCost = 1000.0
+HybridMammothCost = 1200.0
+
+;AlienGroundProduction
+
+AlienGroundProductionSight = 20000
+AlienGroundProdArmour = 2000.0
+AlienGroundProdConsumption = 1.5
+AlienLightWalkerCost = 1000.0
+AlienHeavyWalkerCost = 1200.0
+
+;Maggot
+
+TinyProductionSight = 20000
+TinyProdArmour = 1250.0
+TinyProdConsumption = 1.5
+TinyWalkerCost = 500.0
+
+;LargeProduction
+
+HumanLargeProductionSight = 20000
+LargeProdArmour = 2000.0
+LargeProdConsumption = 2.5
+MobileHowCost = 1500.0
+CabalBomberCost = 2000.0
+
+;HybridLargeProduction
+
+HybridLargeProductionSight = 20000
+HybridLargeProdArmour = 2500.0
+HybridLargeProdConsumption = 2.5
+HybridMobileHowCost = 1500.0
+HybridBomberCost = 2000.0
+
+;AlienLargeProduction
+
+AlienLargeProductionSight = 20000
+AlienLargeProdArmour = 3500.0
+AlienLargeProdConsumption = 2.5
+SiegeSlugCost = 1500.0
+HoverLaserCost = 2000.0
+
+;EnergyProduction
+
+EnergyProductionSight = 20000
+EnergyProductionArmour = 50.0
+EnergyProductionSpeed = 0.10
+
+;HybridEnergyProduction
+
+HybridEnergyProductionSight = 20000
+HybridEnergyProductionArmour = 75.0
+HybridEnergyProductionSpeed = 0.175
+
+;AlienEnergyProduction
+
+AlienEnergyProductionSight = 20000
+AlienEnergyProductionArmour = 150.0
+AlienEnergyProductionSpeed = 0.4
+
+;EnergyStorage
+
+HumanEnergyStorageSight = 20000
+EnergyStorageArmour = 50.0
+MaxStorage = 1000.0
+
+;HybridEnergyStorage
+
+HybridEnergyStorageSight = 20000
+HybridEnergyStorageArmour = 75.0
+HybridMaxStorage = 1200.0
+
+;AlienEnergyStorage
+
+AlienEnergyStorageSight = 20000
+AlienEnergyStorageArmour = 150.0
+AlienMaxStorage = 1200.0
+
+;ControlCentre
+
+HumanControlCentreSight = 20000
+ControlCentreArmour = 4000.0
+
+;HybridControlCentre
+
+HybridControlCentreSight = 20000
+HybridControlCentreArmour = 5000.0
+
+;AlienControlCentre
+
+AlienControlCentreSight = 20000
+AlienControlCentreArmour = 6000.0
+
+;RadarTower
+
+HumanRadarTowerSight = 20500
+RadarTowerArmour = 40.0
+
+;HybridRadarTower
+
+HybridRadarTowerSight = 22000
+HybridRadarTowerArmour = 50.0
+
+;AlienRadarTower
+
+AlienRadarTowerSight = 22000
+AlienRadarTowerArmour = 100.0
+
+
+;Level 15 Boss
+
+Level15BossShield = 600.0
+Level15BossRecharge = 0.05
+Level15BossHits = 100.0
+
+Level15BossLightningChargeSpeed = 0.004
+Level15BossLightningDischargeSpeed = 0.021
+
+Level15BossLightningRange = 4000.0
+Level15BossLightningDamage = 4.0
+
+Level15BossMissileDamage = 4.0
+Level15BossMissileChargeSpeed = 0.003
+Level15BossMissileDischargeSpeed = 0.01
+
+Level15BossAckAckDamage = 2.0
+Level15BossAckAckDamageSphere = 500.0
+
+Level15BossAckAckChargeSpeed = 0.002
+Level15BossAckAckDischargeSpeed = 0.01
+
+Level15BossAckAckFireChargeSpeed = 0.05
+
+Level15BossAckAckFireSpeed = 300.0
+Level15BossAckAckRange = 20000.0
+
+Level15BossAckAckNum1 = 6
+Level15BossAckAckNum2 = 8
+Level15BossAckAckNum3 = 6
+Level15BossAckAckNum4 = 8
+Level15BossAckAckNum5 = 8
+
+Level15BossMovePauseTime = 120.0
+
+;
+; AI stuff
+;
+
+MaxIdleTime = 300.0

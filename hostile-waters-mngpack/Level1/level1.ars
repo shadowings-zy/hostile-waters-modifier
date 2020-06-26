@@ -1,0 +1,602 @@
+AIRS
+Trigger: "win condition" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  2
+  AIS_LESSEQUAL
+  0
+Action: AIScript_Victory
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_TriggerCameraChange
+  1
+Action: AIScript_ChangeMissionObjectives
+  1
+  1
+Action: AIScript_ChangeMissionObjectives
+  2
+  1
+Action: AIScript_SetCountdownTimer
+  1
+  10
+Action: AIScript_PlaySound
+  "0105"
+}
+
+Trigger: "Grey Out Command Buttons" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_ChangeInterfaceButton
+  "IB_ActionOnPreset_Attack"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_ActionOnPreset_CarrierGuns"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_ActionOnPreset_Drop"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_ActionOnPreset_Move"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_ActionOnPreset_PickUp"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_ActionOnPreset_Recycle"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_SelectGroupView"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_SelectWayPoints"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_RemoteCommand_HoldPosition"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_RemoteCommand_Stop"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_SelectSingleGroup"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_RemoteCommand_AssignLifter"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_ChangeVehicleToMe"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_ChangeRoom_Construction"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_ChooseAirLand_GroundVehicles"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_ChangeVehicle_Next"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_ChangeVehicle_Prev"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_ChooseAirLand_AirVehicles"
+  0
+}
+
+Trigger: "Objectives" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  0
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetMissionObjectives
+  1
+  "resources"
+Action: AIScript_SetMissionObjectives
+  2
+  "protect"
+}
+
+Trigger: "Lose" :  AIS_SPECIFICPLAYER : 0: BOOL_OR
+{
+Condition: AIScript_Deaths
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : SCAVharvester
+  AIS_GREATEREQUAL
+Condition: AIScript_Deaths
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : Lifter
+  AIS_GREATEREQUAL
+Condition: AIScript_Scavenges
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : Lifter
+  AIS_EQUALTO
+Action: AIScript_Defeat
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_ChangeMissionObjectives
+  1
+  0
+Action: AIScript_ChangeMissionObjectives
+  2
+  3
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_PlaySound
+  "0108"
+Action: AIScript_SetCountdownTimer
+  1
+  8
+}
+
+Trigger: "End" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  2
+Action: AIScript_EndLevel
+}
+
+Trigger: "Spending too long" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  260
+Action: AIScript_PlaySound
+  "0101"
+}
+
+Trigger: "Place Marker On Map" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  2
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 0
+  AIS_LOCATION_SPECIFIC : InitialBeachLoc
+  AIS_UNITTYPE_SPECIFIC : areamarker
+}
+
+Trigger: "Walker Church Chat 2" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  206
+Action: AIScript_PlaySound
+  "0103"
+Action: AIScript_PlaySound
+  "0104"
+}
+
+Trigger: "Lost Scavenger" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Deaths
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : SCAVharvester
+  AIS_GREATEREQUAL
+Action: AIScript_PlaySound
+  "0106"
+}
+
+Trigger: "Lost Lifter" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Deaths
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : Lifter
+  AIS_GREATEREQUAL
+Action: AIScript_PlaySound
+  "0107"
+}
+
+Trigger: "Display Pegasus Help" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  1
+Condition: AIScript_SwitchIsClear
+  0
+Condition: AIScript_SwitchIsClear
+  10
+Condition: AIScript_CurrentControlled
+  364
+Condition: AIScript_SwitchIsClear
+  15
+Condition: AIScript_CommandInterfaceClosed
+Action: AIScript_CallHelpKeypress
+  "Pegasus"
+  "0"
+Action: AIScript_SetSwitch
+  9
+  1
+Action: AIScript_SetSwitch
+  15
+  0
+Action: AIScript_PreserveTrigger
+}
+
+Trigger: "Display Looking Around Trigger" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  15
+Condition: AIScript_SwitchIsClear
+  0
+Condition: AIScript_CurrentControlled
+  364
+Condition: AIScript_SwitchIsClear
+  11
+Condition: AIScript_SwitchIsSet
+  9
+Condition: AIScript_SwitchIsClear
+  10
+Condition: AIScript_CommandInterfaceClosed
+Action: AIScript_CallHelpKeypress
+  "Looking around"
+  "0"
+Action: AIScript_SetSwitch
+  15
+  0
+Action: AIScript_SetSwitch
+  10
+  1
+Action: AIScript_PreserveTrigger
+}
+
+Trigger: "Display Moving Help" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsClear
+  0
+Condition: AIScript_SwitchIsSet
+  10
+Condition: AIScript_CommandInterfaceClosed
+Condition: AIScript_SwitchIsSet
+  15
+Action: AIScript_CallHelpPermanent
+  "Moving"
+  "0"
+Action: AIScript_SetSwitch
+  15
+  0
+Action: AIScript_SetSwitch
+  11
+  1
+Action: AIScript_PreserveTrigger
+}
+
+Trigger: "Display Targeting RMB Help When Pegasus Leave Area" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_LeavesLocation
+  364
+  AIS_LOCATION_SPECIFIC : LifterLLoc
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  5
+Condition: AIScript_SwitchIsClear
+  1
+Condition: AIScript_CurrentControlled
+  364
+Condition: AIScript_CommandInterfaceClosed
+Action: AIScript_CallHelpPermanent
+  "Targeting RMB"
+  "0"
+Action: AIScript_SetSwitch
+  0
+  1
+Action: AIScript_PreserveTrigger
+}
+
+Trigger: "Display Help When Scavenger Targeted" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CurrentTarget
+  363
+Condition: AIScript_SwitchIsSet
+  0
+Condition: AIScript_SwitchIsClear
+  2
+Condition: AIScript_CommandInterfaceClosed
+Action: AIScript_CallHelpPermanent
+  "Scavenger Targeted"
+  "0"
+Action: AIScript_SetSwitch
+  1
+  1
+Action: AIScript_PreserveTrigger
+}
+
+Trigger: "Display Moving to Land Help When Scarab Is Below Peagasus" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_BeingCarried
+  363
+Condition: AIScript_SwitchIsSet
+  1
+Condition: AIScript_CurrentControlled
+  364
+Condition: AIScript_SwitchIsClear
+  4
+Condition: AIScript_SwitchIsClear
+  15
+Condition: AIScript_SwitchIsClear
+  3
+Condition: AIScript_CommandInterfaceClosed
+Action: AIScript_CallHelpKeypress
+  "Carrying it to land"
+  "0"
+Action: AIScript_SetSwitch
+  2
+  1
+Action: AIScript_PreserveTrigger
+}
+
+Trigger: "Display help When Scarab Is Over Location" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : SCAVharvester
+  AIS_LOCATION_SPECIFIC : InitialBeachLoc
+Condition: AIScript_SwitchIsSet
+  2
+Condition: AIScript_SwitchIsClear
+  4
+Condition: AIScript_CurrentControlled
+  364
+Action: AIScript_CallHelp
+  "Dropping off"
+  "0"
+Action: AIScript_SetSwitch
+  3
+  1
+Action: AIScript_SetSwitch
+  15
+  0
+Action: AIScript_PreserveTrigger
+}
+
+Trigger: "Display Help When Scarab on Land" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_BringOnGround
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : SCAVharvester
+  AIS_LOCATION_SPECIFIC : InitialBeachLoc
+Condition: AIScript_SwitchIsSet
+  3
+Condition: AIScript_IsNotBeingCarried
+  363
+Action: AIScript_CallHelpPermanent
+  "Switching With Number Keys"
+  "0"
+Action: AIScript_SetSwitch
+  4
+  1
+}
+
+Trigger: "Display Help When 1 Is Pressed" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_VehicleInfoOpen
+Condition: AIScript_SwitchIsSet
+  4
+Condition: AIScript_CurrentControlled
+  364
+Action: AIScript_CallHelpPermanent
+  "Vehicle Info Box"
+  "0"
+}
+
+Trigger: "Display Help When '1' Pressed A Second Time" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CurrentControlled
+  363
+Condition: AIScript_SwitchIsSet
+  4
+Action: AIScript_CallHelpKeypress
+  "You are now in Scarab"
+  "0"
+}
+
+Trigger: "Display Moving Scarab Help When ESC is pressed" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  15
+Condition: AIScript_SwitchIsSet
+  4
+Condition: AIScript_SwitchIsClear
+  7
+Condition: AIScript_CurrentControlled
+  363
+Action: AIScript_CallHelpKeypress
+  "Moving Scarab"
+  "0"
+Action: AIScript_SetSwitch
+  15
+  0
+Action: AIScript_SetSwitch
+  5
+  1
+}
+
+Trigger: "Display Scanners Help When ESC Is Pressed" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  15
+Condition: AIScript_SwitchIsSet
+  5
+Condition: AIScript_SwitchIsClear
+  7
+Condition: AIScript_CurrentControlled
+  363
+Action: AIScript_SetSwitch
+  15
+  0
+Action: AIScript_SetSwitch
+  6
+  1
+Action: AIScript_CallHelpPermanent
+  "Scanners"
+  "0"
+}
+
+Trigger: "Display Help When ID141 Is Targeted" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CurrentTarget
+  141
+Condition: AIScript_CurrentControlled
+  363
+Condition: AIScript_SwitchIsSet
+  4
+Action: AIScript_CallHelpPermanent
+  "ID144 Is Now Targeted"
+  "0"
+}
+
+Trigger: "Display Help When ID141 No Longer Exists" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SpecificUnitDeath
+  141
+Condition: AIScript_SwitchIsSet
+  4
+Action: AIScript_CallHelpKeypress
+  "Continue Scavenging"
+  "0"
+}
+
+Trigger: "Display Help When Scarab Arrives at TopLoc" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_BringOnGround
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : SCAVharvester
+  AIS_LOCATION_SPECIFIC : TopLoc
+Condition: AIScript_SwitchIsSet
+  4
+Action: AIScript_CallHelpKeypress
+  "Reaches toploc"
+  "0"
+Action: AIScript_SetSwitch
+  15
+  0
+Action: AIScript_SetSwitch
+  7
+  1
+}
+
+Trigger: "Display Advanced Targeting" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  15
+Condition: AIScript_SwitchIsSet
+  7
+Condition: AIScript_SwitchIsSet
+  4
+Action: AIScript_SetSwitch
+  15
+  0
+Action: AIScript_CallHelpKeypress
+  "Advanced Scavenging"
+  "0"
+}
+
+Trigger: "Pop Up Night Sight Help After 5 Minutes" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  350
+Action: AIScript_CallHelpKeypress
+  "NightVision"
+  "0"
+}
+
+Trigger: "Pick Up Scarab Being Dropped In the Wrong Place" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsClear
+  4
+Condition: AIScript_BringSingleUnitOnGround
+  AIS_SPECIFICPLAYER : 0
+  363
+  AIS_LOCATION_SPECIFIC : Theisland
+Condition: AIScript_SwitchIsSet
+  2
+Condition: AIScript_IsNotBeingCarried
+  363
+Action: AIScript_CallHelpKeypress
+  "WrongPointOfLand01:igh"
+  "0"
+}
+
+Trigger: "Detect If Player Has Switched to Scarab too early" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsClear
+  4
+Condition: AIScript_CurrentControlled
+  363
+Condition: AIScript_CommandInterfaceClosed
+Action: AIScript_SetSwitch
+  8
+  1
+Action: AIScript_PreserveTrigger
+Action: AIScript_CallHelpKeypress
+  "DoNotSwitchYet02:igh"
+  "0"
+Action: AIScript_SetSwitch
+  9
+  0
+Action: AIScript_SetSwitch
+  10
+  0
+Action: AIScript_SetSwitch
+  11
+  0
+Action: AIScript_SetSwitch
+  15
+  0
+}
+
+Trigger: "Set Sound Bank" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_SetLevelSoundBank
+  "01"
+}
+
+Trigger: "Play church Sound When Scarab is Being Carried" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_BeingCarried
+  363
+Action: AIScript_PlaySound
+  "0102"
+}
+
+Trigger: "Display Help When Command Interface Is Active" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CommandInterfaceOpen
+Condition: AIScript_SwitchIsClear
+  4
+Action: AIScript_CallHelp
+  "CommandInterfaceActive03:igh"
+  "0"
+Action: AIScript_PreserveTrigger
+Action: AIScript_SetSwitch
+  10
+  0
+Action: AIScript_SetSwitch
+  9
+  0
+Action: AIScript_SetSwitch
+  11
+  0
+Action: AIScript_SetSwitch
+  15
+  0
+}
+
+Trigger: "Set Win CountdownTimer 2 When 3500ej Are Scavenged" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Accumulate
+  AIS_SPECIFICPLAYER : 0
+  3500
+Action: AIScript_SetCountdownTimer
+  2
+  4
+}
+

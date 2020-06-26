@@ -1,0 +1,752 @@
+AIRS
+Trigger: "Init Build" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Harvester
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Lifter
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : chopper
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Missile
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Minigun
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Laser
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : ReconBuggy
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : StaticPlatform
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Ransom
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Borden
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Korolev
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Madsen
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Patton
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Kroker
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : soulunit
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : scavunit
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : armour
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : repair
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : carrierguns
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Hovertank
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Cloak
+}
+
+Trigger: "allies" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_SetAlliance
+  "1"
+  "2"
+  1
+Action: AIScript_SetAlliance
+  "1"
+  "3"
+  1
+Action: AIScript_SetAlliance
+  "1"
+  "4"
+  1
+Action: AIScript_SetAlliance
+  "1"
+  "5"
+  1
+Action: AIScript_SetAlliance
+  "2"
+  "3"
+  1
+Action: AIScript_SetAlliance
+  "2"
+  "4"
+  1
+Action: AIScript_SetAlliance
+  "2"
+  "5"
+  1
+Action: AIScript_SetAlliance
+  "3"
+  "4"
+  1
+Action: AIScript_SetAlliance
+  "3"
+  "5"
+  1
+Action: AIScript_SetAlliance
+  "4"
+  "5"
+  1
+Action: AIScript_SetAlliance
+  "1"
+  "6"
+  1
+Action: AIScript_SetAlliance
+  "2"
+  "6"
+  1
+Action: AIScript_SetAlliance
+  "3"
+  "6"
+  1
+Action: AIScript_SetAlliance
+  "4"
+  "6"
+  1
+Action: AIScript_SetAlliance
+  "5"
+  "6"
+  1
+Action: AIScript_SetAlliance
+  "1"
+  "7"
+  1
+Action: AIScript_SetAlliance
+  "2"
+  "7"
+  1
+Action: AIScript_SetAlliance
+  "3"
+  "7"
+  1
+Action: AIScript_SetAlliance
+  "4"
+  "7"
+  1
+Action: AIScript_SetAlliance
+  "5"
+  "7"
+  1
+Action: AIScript_SetAlliance
+  "6"
+  "7"
+  1
+}
+
+Trigger: "carrier attack" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Detects
+  AIS_ENEMIES 
+  3
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_GREATEREQUAL
+Condition: AIScript_SwitchIsSet
+  2
+Action: AIScript_RunAIScript
+  AIS_CREATE_WAVES
+}
+
+Trigger: "chopperpatrol1" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  600
+Action: AIScript_AssignRoute
+  "chopperpatrol1"
+  164
+Action: AIScript_AssignRoute
+  "chopperpatrol1"
+  165
+}
+
+Trigger: "ai" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_REPLACE_VEHICLES
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+}
+
+Trigger: "ai" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_REPLACE_VEHICLES
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_THREATS
+}
+
+Trigger: "ai" :  AIS_SPECIFICPLAYER : 3: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_REPLACE_VEHICLES
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_THREATS
+}
+
+Trigger: "ai" :  AIS_SPECIFICPLAYER : 4: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_REPLACE_VEHICLES
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+}
+
+Trigger: "open north door" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_NEUTRALS 
+  1
+  AIS_UNITTYPE_SPECIFIC : submarine
+  AIS_LOCATION_SPECIFIC : North_door
+Action: AIScript_ActivateObject
+  445
+Action: AIScript_PreserveTrigger
+}
+
+Trigger: "open south door" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_NEUTRALS 
+  1
+  AIS_UNITTYPE_SPECIFIC : submarine
+  AIS_LOCATION_SPECIFIC : South_door
+Action: AIScript_ActivateObject
+  1
+Action: AIScript_PreserveTrigger
+}
+
+Trigger: "dive north 1" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_BringSingleUnit
+  AIS_ENEMIES 
+  52
+  AIS_LOCATION_SPECIFIC : North_activate
+Action: AIScript_ActivateObject
+  52
+}
+
+Trigger: "dive south 1" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_BringSingleUnit
+  AIS_ENEMIES 
+  53
+  AIS_LOCATION_SPECIFIC : south_activate
+Action: AIScript_ActivateObject
+  53
+}
+
+Trigger: "dive north 2" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_BringSingleUnit
+  AIS_ENEMIES 
+  50
+  AIS_LOCATION_SPECIFIC : North_activate
+Action: AIScript_ActivateObject
+  50
+}
+
+Trigger: "dive south 2" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_BringSingleUnit
+  AIS_ENEMIES 
+  54
+  AIS_LOCATION_SPECIFIC : south_activate
+Action: AIScript_ActivateObject
+  54
+}
+
+Trigger: "dive north 3" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_BringSingleUnit
+  AIS_ENEMIES 
+  51
+  AIS_LOCATION_SPECIFIC : North_activate
+Action: AIScript_ActivateObject
+  51
+}
+
+Trigger: "lose" :  AIS_SPECIFICPLAYER : 0: BOOL_OR
+{
+Condition: AIScript_BringSingleUnit
+  AIS_ENEMIES 
+  50
+  AIS_LOCATION_SPECIFIC : south_activate
+Condition: AIScript_BringSingleUnit
+  AIS_ENEMIES 
+  51
+  AIS_LOCATION_SPECIFIC : south_activate
+Condition: AIScript_BringSingleUnit
+  AIS_ENEMIES 
+  52
+  AIS_LOCATION_SPECIFIC : North_activate
+Condition: AIScript_BringSingleUnit
+  AIS_ENEMIES 
+  53
+  AIS_LOCATION_SPECIFIC : North_activate
+Condition: AIScript_BringSingleUnit
+  AIS_ENEMIES 
+  54
+  AIS_LOCATION_SPECIFIC : south_activate
+Action: AIScript_Defeat
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_SetCountdownTimer
+  3
+  10
+Action: AIScript_ChangeMissionObjectives
+  1
+  3
+}
+
+Trigger: "Initial Objectives" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  0
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetMissionObjectives
+  2
+  "Destroy Unit Production In North"
+Action: AIScript_SetMissionObjectives
+  3
+  "Destroy Unit Production In Middle"
+Action: AIScript_SetMissionObjectives
+  4
+  "Destroy Unit Production In South"
+Action: AIScript_SetMissionObjectives
+  5
+  "Destroy Command Centre"
+}
+
+Trigger: "Carrier death" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SpecificUnitDeath
+  2
+Action: AIScript_Defeat
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_TriggerCameraChange
+  3
+Action: AIScript_SetCountdownTimer
+  3
+  28
+}
+
+Trigger: "Carrier salvos" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_SetCarrierShells
+  2
+}
+
+Trigger: "launch sub 1" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  2
+  AIS_LESSEQUAL
+  950
+Condition: AIScript_SwitchIsClear
+  5
+Action: AIScript_AssignRoute
+  "northsubroute"
+  51
+Action: AIScript_TriggerCameraChange
+  2
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_PlaySound
+  "1201"
+}
+
+Trigger: "launch sub 2" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  2
+  AIS_LESSEQUAL
+  900
+Condition: AIScript_SwitchIsClear
+  6
+Action: AIScript_AssignRoute
+  "northsubroute"
+  52
+Action: AIScript_PlaySound
+  "1202"
+}
+
+Trigger: "launch sub 3" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  2
+  AIS_LESSEQUAL
+  700
+Condition: AIScript_SwitchIsClear
+  7
+Action: AIScript_AssignRoute
+  "northsubroute"
+  50
+Action: AIScript_PlaySound
+  "1202"
+}
+
+Trigger: "launch sub 4" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  2
+  AIS_LESSEQUAL
+  500
+Condition: AIScript_SwitchIsClear
+  8
+Action: AIScript_AssignRoute
+  "southsubroute"
+  53
+Action: AIScript_PlaySound
+  "1202"
+}
+
+Trigger: "launch sub 5" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  2
+  AIS_LESSEQUAL
+  300
+Condition: AIScript_SwitchIsClear
+  9
+Action: AIScript_AssignRoute
+  "southsubroute"
+  54
+Action: AIScript_PlaySound
+  "1202"
+}
+
+Trigger: "Set Sound Bank" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_SetLevelSoundBank
+  "12"
+}
+
+Trigger: "Team 3 Production Down" :  AIS_SPECIFICPLAYER : 3: BOOL_AND
+{
+Condition: AIScript_OutOfProduction
+  AIS_SPECIFICPLAYER : 3
+Condition: AIScript_SpecificUnitDeath
+  684
+Condition: AIScript_SpecificUnitDeath
+  677
+Condition: AIScript_SpecificUnitDeath
+  693
+Action: AIScript_ChangeMissionObjectives
+  2
+  1
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_PlaySound
+  "1208"
+Action: AIScript_SetSwitch
+  2
+  1
+}
+
+Trigger: "Play Sample CHChannel10 When Player in North or South Loc" :  AIS_SPECIFICPLAYER : 0: BOOL_OR
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : Northdoorsloc
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : southdoorsloc
+Action: AIScript_PlaySound
+  "1210"
+}
+
+Trigger: "Play Samples When Player Discovers SubPens" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : subpen
+Action: AIScript_PlaySound
+  "1211"
+Action: AIScript_PlaySound
+  "1212"
+Action: AIScript_PlaySound
+  "1213"
+Action: AIScript_PlaySound
+  "1214"
+Action: AIScript_SetCountdownTimer
+  1
+  20
+Action: AIScript_SetCountdownTimer
+  2
+  1150
+Action: AIScript_PlaySound
+  "1220"
+}
+
+Trigger: "Play Sample CHEnergy19 When Player Resources Are Low" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Accumulate2
+  AIS_SPECIFICPLAYER : 0
+  AIS_LESSEQUAL
+  500
+Action: AIScript_PlaySound
+  "1219"
+}
+
+Trigger: "Play Sample and Call EMP Help" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  1
+Action: AIScript_SetMissionObjectives
+  1
+  "Stop subs from leaving"
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : EMP
+Action: AIScript_CallHelpKeypress
+  "EMP Weapon"
+  "0"
+}
+
+Trigger: "Team 1 Production Down" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_OutOfProduction
+  AIS_SPECIFICPLAYER : 1
+Condition: AIScript_SpecificUnitDeath
+  65
+Condition: AIScript_SpecificUnitDeath
+  79
+Action: AIScript_PlaySound
+  "1209"
+Action: AIScript_ChangeMissionObjectives
+  3
+  1
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetSwitch
+  1
+  1
+}
+
+Trigger: "Team 4 Production Down" :  AIS_SPECIFICPLAYER : 4: BOOL_AND
+{
+Condition: AIScript_OutOfProduction
+  AIS_SPECIFICPLAYER : 4
+Condition: AIScript_SpecificUnitDeath
+  30
+Condition: AIScript_SpecificUnitDeath
+  31
+Action: AIScript_ChangeMissionObjectives
+  4
+  1
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetSwitch
+  3
+  1
+}
+
+Trigger: "Win" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_IsStunned
+  736
+Condition: AIScript_IsStunned
+  50
+Condition: AIScript_IsStunned
+  51
+Condition: AIScript_IsStunned
+  52
+Condition: AIScript_IsStunned
+  53
+Condition: AIScript_IsStunned
+  54
+Condition: AIScript_SwitchIsSet
+  1
+Condition: AIScript_SwitchIsSet
+  2
+Condition: AIScript_SwitchIsSet
+  3
+Condition: AIScript_SwitchIsSet
+  4
+Action: AIScript_Victory
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_PlaySound
+  "1204"
+Action: AIScript_PlaySound
+  "1205"
+Action: AIScript_TriggerCameraChange
+  4
+Action: AIScript_SetCountdownTimer
+  3
+  20
+}
+
+Trigger: "Command Centre Down" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SpecificUnitDeath
+  3
+Action: AIScript_SetSwitch
+  4
+  1
+Action: AIScript_PlaySound
+  "1215"
+Action: AIScript_PlaySound
+  "1216"
+Action: AIScript_PlaySound
+  "1217"
+Action: AIScript_PlaySound
+  "1218"
+Action: AIScript_ChangeMissionObjectives
+  5
+  1
+}
+
+Trigger: "All Subs Disabled" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_IsStunned
+  736
+Condition: AIScript_IsStunned
+  50
+Condition: AIScript_IsStunned
+  51
+Condition: AIScript_IsStunned
+  52
+Condition: AIScript_IsStunned
+  53
+Condition: AIScript_IsStunned
+  54
+Action: AIScript_ChangeMissionObjectives
+  1
+  1
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "Sub Destruction Lose" :  AIS_SPECIFICPLAYER : 0: BOOL_OR
+{
+Condition: AIScript_SpecificUnitDeath
+  50
+Condition: AIScript_SpecificUnitDeath
+  51
+Condition: AIScript_SpecificUnitDeath
+  52
+Condition: AIScript_SpecificUnitDeath
+  53
+Condition: AIScript_SpecificUnitDeath
+  54
+Condition: AIScript_SpecificUnitDeath
+  736
+Action: AIScript_Defeat
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_ChangeMissionObjectives
+  1
+  3
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetCountdownTimer
+  3
+  8
+}
+
+Trigger: "Go To Debrief" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  3
+  AIS_LESSEQUAL
+  0
+Action: AIScript_EndLevel
+}
+
+Trigger: "Response Factor" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  0
+Action: AIScript_SetForceResponseMultiplier
+  75
+}
+
+Trigger: "Set Switch 5 when Sub1 is Disabled" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_IsStunned
+  51
+Action: AIScript_SetSwitch
+  5
+  1
+}
+
+Trigger: "Set Switch 6 When Sub2 ID52 Is Stunned" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_IsStunned
+  52
+Action: AIScript_SetSwitch
+  6
+  1
+}
+
+Trigger: "Set Switch 7 When Sub3 ID50 Is Stunned" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_IsStunned
+  50
+Action: AIScript_SetSwitch
+  7
+  1
+}
+
+Trigger: "Set Switch 8 When Sub4 ID53 Is Stunned" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_IsStunned
+  53
+Action: AIScript_SetSwitch
+  8
+  1
+}
+
+Trigger: "Set Switch9 When Sub 5 ID54 Is Stunned" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_IsStunned
+  54
+Action: AIScript_SetSwitch
+  9
+  1
+}
+
+Trigger: "Respond to Threat" :  AIS_SPECIFICPLAYER : 4: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  1
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_THREATS
+}
+

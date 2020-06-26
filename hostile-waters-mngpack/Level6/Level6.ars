@@ -1,0 +1,1114 @@
+AIRS
+Trigger: "Init Build" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Harvester
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Lifter
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : chopper
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : hovertank
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : StaticPlatform
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Missile
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Minigun
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Ransom
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Borden
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Korolev
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Kroker
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Madsen
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Patton
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : soulunit
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : scavunit
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : armour
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : repair
+}
+
+Trigger: "Grey Out Command Buttons" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_ChangeInterfaceButton
+  "IB_ActionOnPreset_CarrierGuns"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_SelectGroupView"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_SelectWayPoints"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_SelectSingleGroup"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_RemoteCommand_AssignLifter"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_ChangeVehicleToMe"
+  1
+Action: AIScript_ChangeInterfaceButton
+  "IB_RemoteCommand_MyPosition"
+  1
+Action: AIScript_ChangeInterfaceButton
+  "IB_RemoteCommand_MyTarget"
+  1
+}
+
+Trigger: "Timer" :  AIS_ANYPLAYER : BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_SetCountdownTimer
+  1
+  500
+Action: AIScript_StartDisplayCountdown
+  1
+  "Repair Complete in t- "
+}
+
+Trigger: "BuildApache" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  499
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location1
+Apache
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location1
+}
+
+Trigger: "BuildApache000" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  450
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location1
+Apache
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location1
+}
+
+Trigger: "BuildBomber" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  495
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location1
+CabalBomber
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location1
+}
+
+Trigger: "BuildBubble" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  450
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location2
+BubbleCopter
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location2
+}
+
+Trigger: "BuildBubble001" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  400
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location3
+BubbleCopter
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location3
+}
+
+Trigger: "BuildBubble002" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  400
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location4
+BubbleCopter
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location4
+}
+
+Trigger: "BuildApache003" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  350
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location5
+Apache
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location5
+}
+
+Trigger: "BuildApache004" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  350
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location1
+Apache
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location1
+}
+
+Trigger: "BuildBubble005" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  350
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location3
+BubbleCopter
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location3
+}
+
+Trigger: "BuildApache006" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  310
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location6
+Apache
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location6
+}
+
+Trigger: "BuildApache007" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  275
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location2
+Apache
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location2
+}
+
+Trigger: "BuildApache008" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  275
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location7
+Apache
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location7
+}
+
+Trigger: "BuildBubble009" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  275
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location3
+BubbleCopter
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location3
+}
+
+Trigger: "BuildBomber010" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  270
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location2
+CabalBomber
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location2
+}
+
+Trigger: "BuildApache011" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  200
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location5
+Apache
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location5
+}
+
+Trigger: "BuildApache012" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  200
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location6
+Apache
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location6
+}
+
+Trigger: "BuildBubble013" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  200
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location8
+BubbleCopter
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location8
+}
+
+Trigger: "BuildBubble014" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  200
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location2
+BubbleCopter
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location2
+}
+
+Trigger: "BuildBubble015" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  200
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location7
+BubbleCopter
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location7
+}
+
+Trigger: "BuildApache016" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  100
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location5
+Apache
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location5
+Action: AIScript_PlaySound
+  "0601"
+}
+
+Trigger: "BuildApache017" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  100
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location4
+Apache
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location4
+}
+
+Trigger: "BuildApache018" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  100
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location6
+Apache
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location6
+}
+
+Trigger: "BuildBubble019" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  100
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location8
+BubbleCopter
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location8
+}
+
+Trigger: "BuildBubble020" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  100
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location2
+BubbleCopter
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location2
+}
+
+Trigger: "BuildBubble021" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  100
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location7
+BubbleCopter
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location7
+}
+
+Trigger: "BuildBomber022" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  98
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location6
+CabalBomber
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location6
+}
+
+Trigger: "BuildApache023" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  50
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location5
+Apache
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location5
+}
+
+Trigger: "BuildApache024" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  50
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location4
+Apache
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location4
+}
+
+Trigger: "BuildApache025" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  50
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location6
+Apache
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location6
+}
+
+Trigger: "BuildBubble027" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  50
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location2
+BubbleCopter
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location2
+}
+
+Trigger: "BuildBubble028" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  50
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location7
+BubbleCopter
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location7
+}
+
+Trigger: "BuildBubble029" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  50
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location2
+BubbleCopter
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location2
+}
+
+Trigger: "BuildBubble030" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  50
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location7
+BubbleCopter
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location7
+}
+
+Trigger: "BuildBomber031" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  49
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location7
+CabalBomber
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location7
+}
+
+Trigger: "BuildBomber032" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  49
+Action: AIScript_CreateUnitWithProperties
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location6
+CabalBomber
+None
+0, 0, 1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location6
+}
+
+Trigger: "Win" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  0
+Condition: AIScript_Command
+  AIS_SPECIFICPLAYER : 1
+  0
+  AIS_UNITTYPE_ENEMYVEHICLE
+Action: AIScript_Victory
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_StopDisplayCountdown
+Action: AIScript_ChangeMissionObjectives
+  1
+  1
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_ActivateObject
+  127
+Action: AIScript_ActivateObject
+  128
+Action: AIScript_ActivateObject
+  129
+Action: AIScript_ActivateObject
+  130
+Action: AIScript_PlaySound
+  "0603"
+Action: AIScript_ActivateObject
+  3
+Action: AIScript_ActivateObject
+  4
+Action: AIScript_ActivateObject
+  5
+Action: AIScript_ActivateObject
+  6
+Action: AIScript_ChangeMissionObjectives
+  2
+  1
+Action: AIScript_SetCountdownTimer
+  2
+  10
+Action: AIScript_TriggerCameraChange
+  2
+}
+
+Trigger: "Objectives" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  0
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetMissionObjectives
+  1
+  "win"
+Action: AIScript_SetMissionObjectives
+  2
+  "arms"
+}
+
+Trigger: "Carrier Death" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SpecificUnitDeath
+  224
+Action: AIScript_FailAllObjectives
+Action: AIScript_Defeat
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_StopDisplayCountdown
+Action: AIScript_PlaySound
+  "0605"
+Action: AIScript_ActivateObject
+  127
+Action: AIScript_ActivateObject
+  128
+Action: AIScript_ActivateObject
+  129
+Action: AIScript_ActivateObject
+  130
+Action: AIScript_TriggerObjectCameraChange
+  1
+  224
+Action: AIScript_SetCountdownTimer
+  2
+  30
+}
+
+Trigger: "Arm Defeat" :  AIS_SPECIFICPLAYER : 0: BOOL_OR
+{
+Condition: AIScript_SpecificUnitDeath
+  127
+Condition: AIScript_SpecificUnitDeath
+  128
+Condition: AIScript_SpecificUnitDeath
+  129
+Condition: AIScript_SpecificUnitDeath
+  130
+Action: AIScript_Defeat
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_StopDisplayCountdown
+Action: AIScript_FailAllObjectives
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_PlaySound
+  "0606"
+}
+
+Trigger: "Set Sound Bank" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_SetLevelSoundBank
+  "06"
+}
+
+Trigger: "Detects 1st Bomber" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Detects
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : cabalbomber
+  AIS_GREATEREQUAL
+Action: AIScript_PlaySound
+  "0602"
+}
+
+Trigger: "New Wave 1" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  470
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : NNW1
+  AIS_UNITTYPE_SPECIFIC : Apache
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : NNE2
+  AIS_UNITTYPE_SPECIFIC : Apache
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location6
+  AIS_UNITTYPE_SPECIFIC : Apache
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : NNE2
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : NNW1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location6
+}
+
+Trigger: "New Wave 2" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  95
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location5
+  AIS_UNITTYPE_SPECIFIC : cabalbomber
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location4
+  AIS_UNITTYPE_SPECIFIC : cabalbomber
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : NNE2
+  AIS_UNITTYPE_SPECIFIC : Apache
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : NNE1
+  AIS_UNITTYPE_SPECIFIC : bubblecopter
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location4
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location5
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : NNE1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : NNE2
+}
+
+Trigger: "New Wave 3 at 425 Seconds" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  425
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location1
+  AIS_UNITTYPE_SPECIFIC : Apache
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location2
+  AIS_UNITTYPE_SPECIFIC : Apache
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location3
+  AIS_UNITTYPE_SPECIFIC : bubblecopter
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location4
+  AIS_UNITTYPE_SPECIFIC : cabalbomber
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location5
+  AIS_UNITTYPE_SPECIFIC : cabalbomber
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location6
+  AIS_UNITTYPE_SPECIFIC : Apache
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location2
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location3
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location4
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location5
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location6
+}
+
+Trigger: "New Wave 4 at 150 Seconds" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  150
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : NNW1
+  AIS_UNITTYPE_SPECIFIC : Apache
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : NNE2
+  AIS_UNITTYPE_SPECIFIC : Apache
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : NNE1
+  AIS_UNITTYPE_SPECIFIC : Apache
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location8
+  AIS_UNITTYPE_SPECIFIC : bubblecopter
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location7
+  AIS_UNITTYPE_SPECIFIC : bubblecopter
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Location6
+  AIS_UNITTYPE_SPECIFIC : cabalbomber
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : NNW1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : NNE2
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : NNE1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location6
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location7
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location8
+}
+
+Trigger: "New Wave 5 At 85" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  85
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : NNW1
+  AIS_UNITTYPE_SPECIFIC : Apache
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : NNE2
+  AIS_UNITTYPE_SPECIFIC : Apache
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location4
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Location8
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : NNW1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : NNE1
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : NNE2
+}
+
+Trigger: "Go To Debrief" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  2
+  AIS_LESSEQUAL
+  0
+Action: AIScript_EndLevel
+}
+
+Trigger: "Stop Display Countdown at Zero Seconds" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  0
+Action: AIScript_StopDisplayCountdown
+}
+
+Trigger: "Play Countdown Sample" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  480
+Action: AIScript_PlaySound
+  "TM08"
+}
+
+Trigger: "Play Countdown Sample at 7mins" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  420
+Action: AIScript_PlaySound
+  "TM07"
+}
+
+Trigger: "Play Countdown Sample at 6mins" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  360
+Action: AIScript_PlaySound
+  "TM06"
+}
+
+Trigger: "Play Countdown Sample at 5mins" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  300
+Action: AIScript_PlaySound
+  "TM05"
+}
+
+Trigger: "Play Countdown Sample at 4mins" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  240
+Action: AIScript_PlaySound
+  "TM04"
+}
+
+Trigger: "Play Countdown Sample at 3mins" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  180
+Action: AIScript_PlaySound
+  "TM03"
+}
+
+Trigger: "Play Countdown Sample at 2mins" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  120
+Action: AIScript_PlaySound
+  "TM02"
+}
+
+Trigger: "Play Countdown" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  60
+Action: AIScript_PlaySound
+  "TM01"
+}
+

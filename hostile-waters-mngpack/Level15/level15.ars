@@ -1,0 +1,106 @@
+AIRS
+Trigger: "Start Cam" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  0
+Action: AIScript_TriggerCameraChange
+  3
+}
+
+Trigger: "Win" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Deaths
+  AIS_SPECIFICPLAYER : 1
+  1
+  AIS_UNITTYPE_SPECIFIC : L15Boss
+  AIS_GREATEREQUAL
+Action: AIScript_ChangeMissionObjectives
+  1
+  1
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_Victory
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_SetCountdownTimer
+  1
+  5
+Action: AIScript_TriggerObjectCameraChange
+  2
+  915
+}
+
+Trigger: "Objective" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  0
+Action: AIScript_SetMissionObjectives
+  1
+  "Objective2"
+}
+
+Trigger: "start some moozic" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  1
+Action: AIScript_PlayMusic
+  "START"
+  1
+  1
+Action: AIScript_PlayMusic
+  "BUILDUP0"
+  45
+  0
+}
+
+Trigger: "set sfx level" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_SetLevelSoundBank
+  "15"
+}
+
+Trigger: "Go To Debrief" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  0
+Action: AIScript_EndLevel
+}
+
+Trigger: "Grey Out Buttons" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_ChangeInterfaceButton
+  "IB_ChangeRoom_Construction"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_ChangeRoom_Map"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_SelectWayPoints"
+  0
+}
+
+Trigger: "Lose" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SpecificUnitDeath
+  922
+Action: AIScript_Defeat
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_SetCountdownTimer
+  1
+  8
+}
+
+Trigger: "Boss Follow Cam" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SpecificUnitDeath
+  915
+Action: AIScript_TriggerObjectCameraChange
+  2
+  915
+}
+

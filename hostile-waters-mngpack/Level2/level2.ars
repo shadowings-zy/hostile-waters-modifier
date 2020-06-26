@@ -1,0 +1,411 @@
+AIRS
+Trigger: "InitBuild" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  0
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Minigun
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Harvester
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Lifter
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : soulunit
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : scavunit
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Patton
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Borden
+}
+
+Trigger: "RescueChopper" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Scavenges
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : l2chopperdown
+  AIS_GREATEREQUAL
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : chopper
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Ransom
+Action: AIScript_SetCountdownTimer
+  1
+  35
+Action: AIScript_ChangeInterfaceButton
+  "IB_ActionOnPreset_Attack"
+  2
+Action: AIScript_ChangeMissionObjectives
+  3
+  1
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_ShowSampler
+  0
+Action: AIScript_CallHelp
+  "HornetAvailable04:igh"
+  "0"
+}
+
+Trigger: "Grey Out Command Buttons" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_ChangeInterfaceButton
+  "IB_ActionOnPreset_CarrierGuns"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_ActionOnPreset_Drop"
+  2
+Action: AIScript_ChangeInterfaceButton
+  "IB_ActionOnPreset_PickUp"
+  2
+Action: AIScript_ChangeInterfaceButton
+  "IB_ActionOnPreset_Recycle"
+  2
+Action: AIScript_ChangeInterfaceButton
+  "IB_SelectGroupView"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_SelectWayPoints"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_RemoteCommand_HoldPosition"
+  2
+Action: AIScript_ChangeInterfaceButton
+  "IB_SelectSingleGroup"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_RemoteCommand_AssignLifter"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_ChangeVehicleToMe"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_ActionOnPreset_Move"
+  2
+Action: AIScript_ChangeInterfaceButton
+  "IB_RemoteCommand_Me"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_RemoteCommand_MyPosition"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_RemoteCommand_MyTarget"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_ChooseAirLand_AirVehicles"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_ChooseAirLand_GroundVehicles"
+  0
+}
+
+Trigger: "ChopperAppears" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Deaths
+  AIS_SPECIFICPLAYER : 1
+  1
+  AIS_UNITTYPE_SPECIFIC : BubbleCopter
+  AIS_GREATEREQUAL
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Helistart1
+  AIS_UNITTYPE_SPECIFIC : BubbleCopter
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Helistart1
+}
+
+Trigger: "Win" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Accumulate
+  AIS_SPECIFICPLAYER : 0
+  5500
+Condition: AIScript_Deaths
+  AIS_ENEMIES 
+  3
+  AIS_UNITTYPE_SPECIFIC : BubbleCopter
+  AIS_GREATEREQUAL
+Condition: AIScript_Command
+  AIS_ENEMIES 
+  0
+  AIS_UNITTYPE_SPECIFIC : criticalradar
+Action: AIScript_Victory
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_TriggerCameraChange
+  1
+Action: AIScript_PlaySound
+  "0204"
+Action: AIScript_SetCountdownTimer
+  3
+  5
+}
+
+Trigger: "Objectives" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  0
+Action: AIScript_SetMissionObjectives
+  5
+  "Locate Ransom"
+Action: AIScript_SetMissionObjectives
+  6
+  "Resources"
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "Detect Ransom" :  AIS_SPECIFICPLAYER : 0: BOOL_OR
+{
+Condition: AIScript_CurrentTarget
+  165
+Condition: AIScript_BeingCarried
+  165
+Action: AIScript_SetMissionObjectives
+  3
+  "Collect Ransom"
+Action: AIScript_ChangeMissionObjectives
+  5
+  1
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_ShowSampler
+  1
+}
+
+Trigger: "Accumulates" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Accumulate2
+  AIS_SPECIFICPLAYER : 0
+  AIS_GREATEREQUAL
+  5500
+Action: AIScript_ChangeMissionObjectives
+  6
+  1
+Action: AIScript_PreserveTrigger
+}
+
+Trigger: "Three Choppers Dead" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Deaths
+  AIS_ENEMIES 
+  3
+  AIS_UNITTYPE_SPECIFIC : BubbleCopter
+  AIS_GREATEREQUAL
+Action: AIScript_ChangeMissionObjectives
+  1
+  1
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "Create First Bubblecopter When Timer Is Down Or Hornet Built" :  AIS_SPECIFICPLAYER : 1: BOOL_OR
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  0
+Condition: AIScript_Command
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : chopper
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Helistart4
+  AIS_UNITTYPE_SPECIFIC : BubbleCopter
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Helistart4
+}
+
+Trigger: "Lose" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  5
+Condition: AIScript_SpecificUnitDeath
+  207
+Action: AIScript_Defeat
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_TriggerCameraChange
+  2
+Action: AIScript_FailAllObjectives
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_PlaySound
+  "0205"
+Action: AIScript_SetCountdownTimer
+  3
+  35
+}
+
+Trigger: "Destroy Radar" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Command
+  AIS_SPECIFICPLAYER : 1
+  0
+  AIS_UNITTYPE_SPECIFIC : criticalradar
+Action: AIScript_ChangeMissionObjectives
+  4
+  1
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "Radar Countdown Timer 5 is Out" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  5
+  AIS_LESSEQUAL
+  0
+Action: AIScript_SetMissionObjectives
+  4
+  "Destroy tower"
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_PlaySound
+  "0201"
+Action: AIScript_SetCountdownTimer
+  2
+  13
+}
+
+Trigger: "Resources Drop" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Accumulate2
+  AIS_SPECIFICPLAYER : 0
+  AIS_LESS
+  5500
+Action: AIScript_ChangeMissionObjectives
+  6
+  2
+Action: AIScript_PreserveTrigger
+}
+
+Trigger: "Play Walker 02 Sample" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  2
+  AIS_LESSEQUAL
+  1
+Action: AIScript_PlaySound
+  "0202"
+}
+
+Trigger: "Set Sound Bank" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_SetLevelSoundBank
+  "02"
+}
+
+Trigger: "Display RMB Help After 1 Second" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  1
+Action: AIScript_CallHelpKeypress
+  "AutopilotToggle01:igh"
+  "0"
+}
+
+Trigger: "Start Display Timer When Player Brings Unit to Ransom Location" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : RansomLoc
+Action: AIScript_SetCountdownTimer
+  4
+  15
+}
+
+Trigger: "Go To debrief" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  3
+  AIS_LESSEQUAL
+  0
+Action: AIScript_EndLevel
+}
+
+Trigger: "Display Tab help when Timer 4 is At Zero" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  4
+  AIS_LESSEQUAL
+  0
+Action: AIScript_CallHelpKeypress
+  "TAB02:igh"
+  "0"
+}
+
+Trigger: "Build Wave 2 of Choppers" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Deaths
+  AIS_SPECIFICPLAYER : 1
+  2
+  AIS_UNITTYPE_SPECIFIC : BubbleCopter
+  AIS_GREATEREQUAL
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 1
+  AIS_LOCATION_SPECIFIC : Helistart3
+  AIS_UNITTYPE_SPECIFIC : BubbleCopter
+Action: AIScript_RunAIScriptAt
+  AIS_ATTACKTOCARRIER
+  AIS_LOCATION_SPECIFIC : Helistart3
+}
+
+Trigger: "Set Mission Objective to Defend When Choppers Are Detected" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Detects
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : BubbleCopter
+  AIS_GREATEREQUAL
+Action: AIScript_SetMissionObjectives
+  1
+  "Defend"
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_PlaySound
+  "0203"
+}
+
+Trigger: "Display Help When Hornet Built" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Command
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : chopper
+Action: AIScript_CallHelpKeypress
+  "TargetingColours03:igh"
+  "0"
+}
+
+Trigger: "Kill Scavenger Trigger After Carrier Exit" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  1
+Action: AIScript_ShowSampler
+  0
+}
+
+Trigger: "Detected By Radar" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Detects
+  AIS_ENEMIES 
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_GREATEREQUAL
+Action: AIScript_SetCountdownTimer
+  5
+  2
+}
+

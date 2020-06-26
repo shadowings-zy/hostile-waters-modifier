@@ -1,0 +1,941 @@
+AIRS
+Trigger: "Init Build" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Harvester
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Lifter
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : chopper
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : HeavyTank
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Missile
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Minigun
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Laser
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : ReconBuggy
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Lobber
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : StaticPlatform
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Ransom
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Borden
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Sinclair
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Korolev
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Patton
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Madsen
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : soulunit
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : scavunit
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : armour
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : repair
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : shield
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : carrierguns
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Hovertank
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Kroker
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Cloak
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : EMP
+}
+
+Trigger: "Set AI" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_REPLACE_VEHICLES
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_THREATS
+}
+
+Trigger: "Set AI" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_REPLACE_VEHICLES
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_THREATS
+}
+
+Trigger: "Set AI" :  AIS_SPECIFICPLAYER : 3: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+Action: AIScript_RunAIScript
+  AIS_REPLACE_VEHICLES
+}
+
+Trigger: "Nest 7 Attack" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_CURRENTPLAYER 
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : Nest7
+Action: AIScript_TriggerGrowingBuilding
+  885
+Action: AIScript_TriggerGrowingBuilding
+  886
+Action: AIScript_TriggerGrowingBuilding
+  887
+Action: AIScript_SetCountdownTimer
+  8
+  7
+}
+
+Trigger: "Victory" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Command
+  AIS_SPECIFICPLAYER : 3
+  0
+  AIS_UNITTYPE_SPECIFIC : maggot
+Condition: AIScript_SwitchIsSet
+  5
+Condition: AIScript_SwitchIsSet
+  6
+Action: AIScript_Victory
+  AIS_CURRENTPLAYER 
+Action: AIScript_PlaySound
+  "1619"
+Action: AIScript_SetCountdownTimer
+  12
+  7
+Action: AIScript_TriggerCameraChange
+  3
+}
+
+Trigger: "Set AI" :  AIS_SPECIFICPLAYER : 4: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_THREATS
+}
+
+Trigger: "Patrols" :  AIS_SPECIFICPLAYER : 3: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATER
+  0
+Action: AIScript_AssignRoute
+  "boggler1"
+  436
+Action: AIScript_AssignRoute
+  "boggler2"
+  437
+Action: AIScript_AssignRoute
+  "boggler3"
+  440
+Action: AIScript_AssignRoute
+  "boggler4"
+  445
+Action: AIScript_AssignRoute
+  "boggler5"
+  448
+}
+
+Trigger: "SetMissionObjectives1" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  0
+Action: AIScript_SetMissionObjectives
+  5
+  "Destroy east base"
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "MissionObjective3Complete" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Command
+  AIS_SPECIFICPLAYER : 3
+  0
+  AIS_UNITTYPE_SPECIFIC : maggot
+Action: AIScript_ChangeMissionObjectives
+  3
+  1
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "MissionObjective4Complete" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : Razed_complex
+Action: AIScript_ChangeMissionObjectives
+  4
+  1
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "Defeat1" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Deaths
+  AIS_ENEMIES 
+  1
+  AIS_UNITTYPE_SPECIFIC : chinock
+  AIS_EQUALTO
+Action: AIScript_Defeat
+  AIS_CURRENTPLAYER 
+Action: AIScript_PlaySound
+  "1620"
+Action: AIScript_TriggerCameraChange
+  1
+Action: AIScript_SetCountdownTimer
+  12
+  5
+}
+
+Trigger: "Carrier Death" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SpecificUnitDeath
+  8
+Action: AIScript_TriggerCameraChange
+  2
+Action: AIScript_Defeat
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_SetCountdownTimer
+  12
+  35
+}
+
+Trigger: "Chinooks Away" :  AIS_SPECIFICPLAYER : 1: BOOL_OR
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  30
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : main_base
+Action: AIScript_PlaySound
+  "1601"
+Action: AIScript_PlaySound
+  "1602"
+Action: AIScript_PlaySound
+  "1603"
+Action: AIScript_PlaySound
+  "1604"
+Action: AIScript_PlaySound
+  "1605"
+Action: AIScript_SetSwitch
+  3
+  1
+Action: AIScript_SetCountdownTimer
+  11
+  60
+Action: AIScript_DisplayTextMessage
+  "chinooks away"
+Action: AIScript_RunAIScriptAt
+  AIS_LEAVEAREA
+  AIS_LOCATION_SPECIFIC : ChinookLoc
+Action: AIScript_TriggerTrackingCameraChange
+  4
+  1489
+}
+
+Trigger: "GrowGuns7" :  AIS_SPECIFICPLAYER : 3: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  8
+  AIS_EQUALTO
+  0
+Action: AIScript_TriggerGrowingBuilding
+  1513
+Action: AIScript_TriggerGrowingBuilding
+  1514
+Action: AIScript_TriggerGrowingBuilding
+  1516
+Action: AIScript_TriggerGrowingBuilding
+  1519
+Action: AIScript_TriggerGrowingBuilding
+  958
+Action: AIScript_TriggerGrowingBuilding
+  960
+}
+
+Trigger: "Carrier Salvos" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  0
+Action: AIScript_SetCarrierShells
+  3
+}
+
+Trigger: "Finding the razed complex" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : Razed_complex
+Condition: AIScript_SwitchIsClear
+  0
+Action: AIScript_PlaySound
+  "1606"
+Action: AIScript_PlaySound
+  "1607"
+Action: AIScript_PlaySound
+  "1608"
+Action: AIScript_PlaySound
+  "1609"
+Action: AIScript_PlaySound
+  "1610"
+Action: AIScript_SetSwitch
+  1
+  1
+Action: AIScript_SetCountdownTimer
+  10
+  100
+}
+
+Trigger: "nests" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : Nest1
+Condition: AIScript_SwitchIsClear
+  1
+Condition: AIScript_SwitchIsClear
+  2
+Action: AIScript_PlaySound
+  "1613"
+Action: AIScript_PlaySound
+  "1614"
+Action: AIScript_PlaySound
+  "1615"
+Action: AIScript_PlaySound
+  "1616"
+Action: AIScript_SetCountdownTimer
+  9
+  120
+Action: AIScript_StartDisplayCountdown
+  9
+  "Download complete in:"
+Action: AIScript_SetSwitch
+  0
+  1
+Action: AIScript_SetMissionObjectives
+  3
+  "Destroy Nests"
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetSwitch
+  2
+  1
+}
+
+Trigger: "nests2" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : Nest2
+Condition: AIScript_SwitchIsClear
+  1
+Condition: AIScript_SwitchIsClear
+  2
+Action: AIScript_PlaySound
+  "1613"
+Action: AIScript_PlaySound
+  "1614"
+Action: AIScript_PlaySound
+  "1615"
+Action: AIScript_PlaySound
+  "1616"
+Action: AIScript_SetCountdownTimer
+  9
+  120
+Action: AIScript_StartDisplayCountdown
+  9
+  "Download complete in:"
+Action: AIScript_SetSwitch
+  0
+  1
+Action: AIScript_SetMissionObjectives
+  3
+  "Destroy Nests"
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetSwitch
+  2
+  1
+}
+
+Trigger: "nests3" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : Nest3
+Condition: AIScript_SwitchIsClear
+  1
+Condition: AIScript_SwitchIsClear
+  2
+Action: AIScript_PlaySound
+  "1613"
+Action: AIScript_PlaySound
+  "1614"
+Action: AIScript_PlaySound
+  "1615"
+Action: AIScript_PlaySound
+  "1616"
+Action: AIScript_SetCountdownTimer
+  9
+  120
+Action: AIScript_StartDisplayCountdown
+  9
+  "Download complete in:"
+Action: AIScript_SetSwitch
+  0
+  1
+Action: AIScript_SetMissionObjectives
+  3
+  "Destroy Nests"
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetSwitch
+  2
+  1
+}
+
+Trigger: "nests4" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : Nest4
+Condition: AIScript_SwitchIsClear
+  1
+Condition: AIScript_SwitchIsClear
+  2
+Action: AIScript_PlaySound
+  "1613"
+Action: AIScript_PlaySound
+  "1614"
+Action: AIScript_PlaySound
+  "1615"
+Action: AIScript_PlaySound
+  "1616"
+Action: AIScript_SetCountdownTimer
+  9
+  120
+Action: AIScript_StartDisplayCountdown
+  9
+  "Download complete in:"
+Action: AIScript_SetSwitch
+  0
+  1
+Action: AIScript_SetMissionObjectives
+  3
+  "Destroy Nests"
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetSwitch
+  2
+  1
+}
+
+Trigger: "nests5" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : Nest5
+Condition: AIScript_SwitchIsClear
+  1
+Condition: AIScript_SwitchIsClear
+  2
+Action: AIScript_PlaySound
+  "1613"
+Action: AIScript_PlaySound
+  "1614"
+Action: AIScript_PlaySound
+  "1615"
+Action: AIScript_PlaySound
+  "1616"
+Action: AIScript_SetCountdownTimer
+  9
+  120
+Action: AIScript_StartDisplayCountdown
+  9
+  "Download complete in:"
+Action: AIScript_SetSwitch
+  0
+  1
+Action: AIScript_SetMissionObjectives
+  3
+  "Destroy Nests"
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetSwitch
+  2
+  1
+}
+
+Trigger: "nests6" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : Nest6
+Condition: AIScript_SwitchIsClear
+  1
+Condition: AIScript_SwitchIsClear
+  2
+Action: AIScript_PlaySound
+  "1613"
+Action: AIScript_PlaySound
+  "1614"
+Action: AIScript_PlaySound
+  "1615"
+Action: AIScript_PlaySound
+  "1616"
+Action: AIScript_SetCountdownTimer
+  9
+  120
+Action: AIScript_StartDisplayCountdown
+  9
+  "Download complete in:"
+Action: AIScript_SetSwitch
+  0
+  1
+Action: AIScript_SetMissionObjectives
+  3
+  "Destroy Nests"
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetSwitch
+  2
+  1
+}
+
+Trigger: "nests7" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : Nest7
+Condition: AIScript_SwitchIsClear
+  1
+Condition: AIScript_SwitchIsClear
+  2
+Action: AIScript_PlaySound
+  "1613"
+Action: AIScript_PlaySound
+  "1614"
+Action: AIScript_PlaySound
+  "1615"
+Action: AIScript_PlaySound
+  "1616"
+Action: AIScript_SetCountdownTimer
+  9
+  120
+Action: AIScript_StartDisplayCountdown
+  9
+  "Download complete in:"
+Action: AIScript_SetSwitch
+  0
+  1
+Action: AIScript_SetMissionObjectives
+  3
+  "Destroy Nests"
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetSwitch
+  2
+  1
+}
+
+Trigger: "Flamer ready" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  9
+  AIS_EQUALTO
+  0
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Flamer
+Action: AIScript_StopDisplayCountdown
+}
+
+Trigger: "found recharge" :  AIS_SPECIFICPLAYER : 0: BOOL_OR
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : recharge_crares
+Condition: AIScript_Detects
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : recharge_crate
+  AIS_GREATEREQUAL
+Action: AIScript_PlaySound
+  "1617"
+Action: AIScript_SetMissionObjectives
+  2
+  "Sample recharge unit"
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetMissionObjectives
+  1
+  "Destroy Cabal"
+Action: AIScript_ShowSampler
+  1
+}
+
+Trigger: "sample crate" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Scavenges
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : recharge_crate
+  AIS_EQUALTO
+Action: AIScript_PlaySound
+  "1618"
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_ChangeMissionObjectives
+  2
+  1
+Action: AIScript_SetSwitch
+  5
+  1
+Action: AIScript_ShowSampler
+  0
+}
+
+Trigger: "Hybrid destroyed" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SpecificUnitDeath
+  152
+Condition: AIScript_SpecificUnitDeath
+  153
+Condition: AIScript_SpecificUnitDeath
+  154
+Condition: AIScript_SpecificUnitDeath
+  155
+Condition: AIScript_SpecificUnitDeath
+  156
+Condition: AIScript_SpecificUnitDeath
+  157
+Condition: AIScript_SpecificUnitDeath
+  412
+Condition: AIScript_SpecificUnitDeath
+  413
+Condition: AIScript_SpecificUnitDeath
+  414
+Condition: AIScript_SpecificUnitDeath
+  415
+Condition: AIScript_SpecificUnitDeath
+  91
+Action: AIScript_ChangeMissionObjectives
+  5
+  1
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetSwitch
+  3
+  1
+Action: AIScript_SetCountdownTimer
+  1
+  60
+}
+
+Trigger: "switch 0 clear" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  9
+  AIS_EQUALTO
+  103
+Action: AIScript_SetSwitch
+  0
+  0
+}
+
+Trigger: "Razed complext switch" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  10
+  AIS_EQUALTO
+  68
+Action: AIScript_SetSwitch
+  1
+  0
+}
+
+Trigger: "Eastern Large Base is Dead" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SpecificUnitDeath
+  427
+Condition: AIScript_SpecificUnitDeath
+  3
+Condition: AIScript_SpecificUnitDeath
+  2
+Condition: AIScript_SpecificUnitDeath
+  10
+Condition: AIScript_SpecificUnitDeath
+  434
+Condition: AIScript_SpecificUnitDeath
+  433
+Condition: AIScript_SpecificUnitDeath
+  17
+Condition: AIScript_SpecificUnitDeath
+  430
+Condition: AIScript_SpecificUnitDeath
+  432
+Condition: AIScript_SpecificUnitDeath
+  431
+Condition: AIScript_SpecificUnitDeath
+  429
+Condition: AIScript_SpecificUnitDeath
+  14
+Condition: AIScript_SpecificUnitDeath
+  9
+Condition: AIScript_SpecificUnitDeath
+  11
+Condition: AIScript_SpecificUnitDeath
+  12
+Condition: AIScript_SpecificUnitDeath
+  255
+Condition: AIScript_SpecificUnitDeath
+  256
+Condition: AIScript_SpecificUnitDeath
+  257
+Condition: AIScript_SpecificUnitDeath
+  258
+Condition: AIScript_SpecificUnitDeath
+  259
+Condition: AIScript_SpecificUnitDeath
+  260
+Action: AIScript_ChangeMissionObjectives
+  1
+  1
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetSwitch
+  6
+  1
+Action: AIScript_SetSwitch
+  7
+  1
+}
+
+Trigger: "open door01 " :  AIS_ENEMIES : BOOL_OR
+{
+Condition: AIScript_Bring
+  AIS_ENEMIES 
+  1
+  AIS_UNITTYPE_SPECIFIC : hybridmamtank
+  AIS_LOCATION_SPECIFIC : door01
+Condition: AIScript_Bring
+  AIS_ENEMIES 
+  1
+  AIS_UNITTYPE_SPECIFIC : M1_hybrid
+  AIS_LOCATION_SPECIFIC : door01
+Condition: AIScript_Bring
+  AIS_ENEMIES 
+  1
+  AIS_UNITTYPE_SPECIFIC : mobhybhow
+  AIS_LOCATION_SPECIFIC : door01
+Action: AIScript_ActivateObject
+  474
+}
+
+Trigger: "more IGS for razed" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  10
+  AIS_EQUALTO
+  76
+Action: AIScript_PlaySound
+  "1611"
+Action: AIScript_PlaySound
+  "1612"
+Action: AIScript_SetMissionObjectives
+  1
+  "Destroy Cabal"
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetSwitch
+  8
+  1
+}
+
+Trigger: "Switch 3 timer" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  11
+  AIS_EQUALTO
+  40
+Action: AIScript_SetSwitch
+  3
+  0
+Action: AIScript_SetMissionObjectives
+  4
+  "Cabal Escape"
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 0
+  AIS_LOCATION_SPECIFIC : razed_center
+  AIS_UNITTYPE_SPECIFIC : AreaMarker
+Action: AIScript_MiniMapPing
+  151
+  252
+}
+
+Trigger: "sound bank" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  0
+Action: AIScript_SetLevelSoundBank
+  "16"
+}
+
+Trigger: "switch 4" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_ENEMIES 
+  1
+  AIS_UNITTYPE_SPECIFIC : chinock
+  AIS_LOCATION_SPECIFIC : ChinockDest
+Action: AIScript_SetSwitch
+  4
+  1
+}
+
+Trigger: "Go To Debrief" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  12
+  AIS_LESSEQUAL
+  0
+Action: AIScript_EndLevel
+}
+
+Trigger: "mission objective default" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  1
+Action: AIScript_ChangeMissionObjectives
+  1
+  2
+Action: AIScript_ChangeMissionObjectives
+  2
+  2
+Action: AIScript_ChangeMissionObjectives
+  3
+  2
+Action: AIScript_ChangeMissionObjectives
+  4
+  2
+Action: AIScript_ChangeMissionObjectives
+  5
+  2
+Action: AIScript_ChangeMissionObjectives
+  6
+  2
+}
+
+Trigger: "OpenDoors" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_ANYPLAYER 
+  1
+  AIS_UNITTYPE_VEHICLE
+  AIS_LOCATION_SPECIFIC : DoorLoc
+Action: AIScript_ActivateObject
+  474
+Action: AIScript_PreserveTrigger
+}
+
+Trigger: "mission failed - no crates" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SpecificUnitDeath
+  1384
+Condition: AIScript_SpecificUnitDeath
+  1385
+Condition: AIScript_SpecificUnitDeath
+  1386
+Condition: AIScript_SpecificUnitDeath
+  1387
+Condition: AIScript_SpecificUnitDeath
+  1388
+Condition: AIScript_SwitchIsClear
+  5
+Action: AIScript_TriggerCameraChange
+  1
+Action: AIScript_ChangeMissionObjectives
+  2
+  3
+Action: AIScript_SetCountdownTimer
+  12
+  6
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_Defeat
+  AIS_SPECIFICPLAYER : 0
+}
+
+Trigger: "Change Mission Objective 1 When Switch 7 is Set" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  7
+Condition: AIScript_SwitchIsSet
+  8
+Action: AIScript_ChangeMissionObjectives
+  1
+  1
+}
+

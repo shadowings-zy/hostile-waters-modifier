@@ -1,0 +1,1465 @@
+AIRS
+Trigger: "Init Build" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Harvester
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Lifter
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : chopper
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Missile
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Minigun
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Laser
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : ReconBuggy
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : StaticPlatform
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Ransom
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Borden
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Kroker
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Korolev
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Patton
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Madsen
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : soulunit
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : scavunit
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : armour
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : repair
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : carrierguns
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Hovertank
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Cloak
+}
+
+Trigger: "win" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Accumulate
+  AIS_SPECIFICPLAYER : 0
+  6000
+Condition: AIScript_SwitchIsSet
+  11
+Action: AIScript_Victory
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_AssignRoute
+  "Sub_escape"
+  4049
+Action: AIScript_TriggerTrackingCameraChange
+  1
+  4049
+Action: AIScript_SetCountdownTimer
+  6
+  18
+}
+
+Trigger: "set ai" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_REPLACE_VEHICLES
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_THREATS
+}
+
+Trigger: "set ai" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_REPLACE_VEHICLES
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_THREATS
+}
+
+Trigger: "hybrid patrol" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  120
+Action: AIScript_AssignRoute
+  "hybridpatrol1"
+  2085
+}
+
+Trigger: "set allies" :  AIS_ENEMIES : BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_SetAlliance
+  "1"
+  "2"
+  1
+Action: AIScript_SetAlliance
+  "1"
+  "3"
+  1
+Action: AIScript_SetAlliance
+  "1"
+  "4"
+  1
+Action: AIScript_SetAlliance
+  "2"
+  "3"
+  1
+Action: AIScript_SetAlliance
+  "2"
+  "4"
+  1
+Action: AIScript_SetAlliance
+  "3"
+  "4"
+  1
+Action: AIScript_SetAlliance
+  "1"
+  "7"
+  1
+Action: AIScript_SetAlliance
+  "2"
+  "7"
+  1
+Action: AIScript_SetAlliance
+  "3"
+  "7"
+  1
+Action: AIScript_SetAlliance
+  "4"
+  "7"
+  1
+Action: AIScript_SetAlliance
+  "5"
+  "7"
+  1
+Action: AIScript_SetAlliance
+  "6"
+  "7"
+  1
+}
+
+Trigger: "Outpost1" :  AIS_SPECIFICPLAYER : 4: BOOL_AND
+{
+Condition: AIScript_TakesDamage
+  2752
+  AIS_SPECIFICPLAYER : 0
+Condition: AIScript_TakesDamage
+  2753
+  AIS_SPECIFICPLAYER : 0
+Condition: AIScript_TakesDamage
+  2754
+  AIS_SPECIFICPLAYER : 0
+Condition: AIScript_TakesDamage
+  2755
+  AIS_SPECIFICPLAYER : 0
+Condition: AIScript_TakesDamage
+  2756
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : BubbleCopter
+  AIS_LOCATION_SPECIFIC : team4_loc
+  AIS_SPECIFICPLAYER : 4
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : BubbleCopter
+  AIS_LOCATION_SPECIFIC : team4_loc
+  AIS_SPECIFICPLAYER : 4
+Action: AIScript_RunAIScriptToLocation
+  AIS_ATTACKTOLOCATION
+  AIS_LOCATION_SPECIFIC : team4_loc
+  AIS_LOCATION_SPECIFIC : Outpost1
+}
+
+Trigger: "set ai" :  AIS_SPECIFICPLAYER : 3: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+}
+
+Trigger: "Set ai" :  AIS_SPECIFICPLAYER : 4: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_REPLACE_VEHICLES
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_THREATS
+}
+
+Trigger: "Hybrid Patrol along train track" :  AIS_SPECIFICPLAYER : 7: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  120
+Action: AIScript_AssignRoute
+  "route1"
+  2773
+Action: AIScript_AssignRoute
+  "route1"
+  2774
+}
+
+Trigger: "carrier attack" :  AIS_SPECIFICPLAYER : 1: BOOL_OR
+{
+Condition: AIScript_Detects
+  AIS_ENEMIES 
+  3
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_GREATEREQUAL
+Action: AIScript_RunAIScript
+  AIS_CREATE_WAVES
+}
+
+Trigger: "Objectives" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  0
+Action: AIScript_SetMissionObjectives
+  6
+  "Detection"
+Action: AIScript_SetMissionObjectives
+  4
+  "Investigate"
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "Detects Recon Chopper" :  AIS_SPECIFICPLAYER : 0: BOOL_OR
+{
+Condition: AIScript_Detects
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : hybrid_chopper
+  AIS_GREATEREQUAL
+Condition: AIScript_Detects
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : hybrid_apache
+  AIS_GREATEREQUAL
+Action: AIScript_SetMissionObjectives
+  3
+  "Chopper Patrol"
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetSwitch
+  12
+  1
+}
+
+Trigger: "Detects Hybrid Facility" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : ReconBuggy
+  AIS_LOCATION_SPECIFIC : Hybrid
+Action: AIScript_ChangeMissionObjectives
+  3
+  1
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetSwitch
+  1
+  1
+Action: AIScript_PlaySound
+  "1105"
+}
+
+Trigger: "Lose Upon Detection" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Detects
+  AIS_ENEMIES 
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_GREATEREQUAL
+Condition: AIScript_SwitchIsClear
+  2
+Action: AIScript_Defeat
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_ChangeMissionObjectives
+  6
+  3
+Action: AIScript_PlaySound
+  "1116"
+Action: AIScript_SetCountdownTimer
+  6
+  10
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "Carrier Death" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SpecificUnitDeath
+  2879
+Action: AIScript_TriggerCameraChange
+  3
+Action: AIScript_Defeat
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_SetCountdownTimer
+  6
+  30
+}
+
+Trigger: "Carrier Salvos" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_SetCarrierShells
+  2
+}
+
+Trigger: "Trigger launch" :  AIS_ENEMIES : BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  2
+  AIS_LESSEQUAL
+  0
+Action: AIScript_SetCountdownTimer
+  1
+  1200
+Action: AIScript_SetMissionObjectives
+  1
+  "Tracking Stations"
+Action: AIScript_SetSwitch
+  7
+  1
+Action: AIScript_ChangeMissionObjectives
+  2
+  0
+Action: AIScript_PlaySound
+  "1111"
+Action: AIScript_TriggerCameraChange
+  2
+Action: AIScript_StartDisplayCountdown
+  1
+  "Missiles Will Hit Targets in: "
+}
+
+Trigger: "silo activation 1" :  AIS_ANYPLAYER : BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_EQUALTO
+  1220
+Action: AIScript_ActivateObject
+  1088
+}
+
+Trigger: "silo activation 2" :  AIS_ANYPLAYER : BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_EQUALTO
+  1165
+Action: AIScript_ActivateObject
+  1094
+}
+
+Trigger: "silo activation 3" :  AIS_ANYPLAYER : BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_EQUALTO
+  1160
+Action: AIScript_ActivateObject
+  1087
+}
+
+Trigger: "silo activation 4" :  AIS_ANYPLAYER : BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_EQUALTO
+  1155
+Action: AIScript_ActivateObject
+  1093
+}
+
+Trigger: "silo activation 5" :  AIS_ANYPLAYER : BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_EQUALTO
+  1150
+Action: AIScript_ActivateObject
+  2923
+}
+
+Trigger: "silo activation 6" :  AIS_ANYPLAYER : BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_EQUALTO
+  1200
+Action: AIScript_ActivateObject
+  1092
+}
+
+Trigger: "silo activation 7" :  AIS_ANYPLAYER : BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_EQUALTO
+  1195
+Action: AIScript_ActivateObject
+  1089
+}
+
+Trigger: "silo activation 8" :  AIS_ANYPLAYER : BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_EQUALTO
+  1190
+Action: AIScript_ActivateObject
+  1095
+}
+
+Trigger: "silo activation 9" :  AIS_ANYPLAYER : BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_EQUALTO
+  1185
+Action: AIScript_ActivateObject
+  1090
+}
+
+Trigger: "silo activation 10" :  AIS_ANYPLAYER : BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_EQUALTO
+  1180
+Action: AIScript_ActivateObject
+  1096
+}
+
+Trigger: "silo activation 11" :  AIS_ANYPLAYER : BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_EQUALTO
+  1175
+Action: AIScript_ActivateObject
+  1091
+}
+
+Trigger: "silo activation 12" :  AIS_ANYPLAYER : BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_EQUALTO
+  1170
+Action: AIScript_ActivateObject
+  1097
+}
+
+Trigger: "Change Objectives When Railway Area is Discovered" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_ANYUNIT
+  AIS_LOCATION_SPECIFIC : Initial
+Action: AIScript_ChangeMissionObjectives
+  4
+  0
+Action: AIScript_SetMissionObjectives
+  7
+  "Scavenge"
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 0
+  AIS_LOCATION_SPECIFIC : BeachLoc
+  AIS_UNITTYPE_SPECIFIC : areamarker
+Action: AIScript_SetCountdownTimer
+  5
+  10
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 0
+  AIS_LOCATION_SPECIFIC : OPLoc
+  AIS_UNITTYPE_SPECIFIC : AreaMarker
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 0
+  AIS_LOCATION_SPECIFIC : OPLoc
+  AIS_UNITTYPE_SPECIFIC : MapRevealer1
+}
+
+Trigger: "Scarab on Land and Recon Detected" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Command
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : SCAVharvester
+Condition: AIScript_Detects
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : hybrid_chopper
+  AIS_GREATEREQUAL
+Action: AIScript_SetCountdownTimer
+  3
+  10
+}
+
+Trigger: "Set Sound Bank" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_SetLevelSoundBank
+  "11"
+}
+
+Trigger: "Detects Missiles On Dock" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : Missiledockloc
+Action: AIScript_PlaySound
+  "1109"
+}
+
+Trigger: "Play Sound 1107 When Friendly Unit in Diseased Area" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : diseasedarea
+Action: AIScript_PlaySound
+  "1107"
+}
+
+Trigger: "Gathers 6000ej of Energy" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Accumulate2
+  AIS_SPECIFICPLAYER : 0
+  AIS_GREATEREQUAL
+  6000
+Action: AIScript_ChangeMissionObjectives
+  7
+  1
+Action: AIScript_PreserveTrigger
+}
+
+Trigger: "Energy Falls Below 6000ej" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Accumulate2
+  AIS_SPECIFICPLAYER : 0
+  AIS_LESS
+  6000
+Action: AIScript_ChangeMissionObjectives
+  7
+  2
+Action: AIScript_PreserveTrigger
+}
+
+Trigger: "Detected Silos Switch" :  AIS_SPECIFICPLAYER : 0: BOOL_OR
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : Siloloc
+Action: AIScript_SetSwitch
+  2
+  1
+Action: AIScript_PlaySound
+  "1106"
+Action: AIScript_SetCountdownTimer
+  2
+  100
+Action: AIScript_SetCountdownTimer
+  4
+  8
+Action: AIScript_ChangeMissionObjectives
+  6
+  0
+}
+
+Trigger: "Detects Hybrid Facility Before Silos" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsClear
+  2
+Condition: AIScript_SwitchIsSet
+  1
+Action: AIScript_SetMissionObjectives
+  8
+  "Further Investigation"
+Action: AIScript_SetSwitch
+  3
+  1
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetCountdownTimer
+  8
+  120
+}
+
+Trigger: "Silos Discoverd After Hybrid Factory" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  1
+Condition: AIScript_SwitchIsSet
+  2
+Condition: AIScript_SwitchIsSet
+  3
+Action: AIScript_ChangeMissionObjectives
+  8
+  1
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "Play Sound 1117 When Silos Detected Before Hybrid Facility" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  2
+Condition: AIScript_CountdownTimer
+  4
+  AIS_LESSEQUAL
+  0
+Condition: AIScript_SwitchIsClear
+  3
+Action: AIScript_PlaySound
+  "1117"
+Action: AIScript_SetMissionObjectives
+  2
+  "Missile Silos"
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_ChangeMissionObjectives
+  6
+  0
+}
+
+Trigger: "NW Array Switch" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : NWArray
+Action: AIScript_SetSwitch
+  4
+  1
+}
+
+Trigger: "NE Array Switch" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : NEArray
+Action: AIScript_SetSwitch
+  5
+  1
+}
+
+Trigger: "South Array Switch" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : SArray
+Action: AIScript_SetSwitch
+  6
+  1
+}
+
+Trigger: "Play Sound 1113 When S Array Detected First" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  6
+Condition: AIScript_SwitchIsClear
+  5
+Condition: AIScript_SwitchIsClear
+  4
+Condition: AIScript_SwitchIsClear
+  7
+Action: AIScript_PlaySound
+  "1113"
+}
+
+Trigger: "Play Sound 1113 When NE Array Detected First" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  5
+Condition: AIScript_SwitchIsClear
+  6
+Condition: AIScript_SwitchIsClear
+  4
+Condition: AIScript_SwitchIsClear
+  7
+Action: AIScript_PlaySound
+  "1113"
+}
+
+Trigger: "Play Sound 1113 When NW Array Detected First" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  4
+Condition: AIScript_SwitchIsClear
+  5
+Condition: AIScript_SwitchIsClear
+  6
+Condition: AIScript_SwitchIsClear
+  7
+Action: AIScript_PlaySound
+  "1113"
+}
+
+Trigger: "Play 1114 When Detect NW Array After Missile Launch" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  7
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : NWArray
+Condition: AIScript_SwitchIsClear
+  11
+Action: AIScript_PlaySound
+  "1114"
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 0
+  AIS_LOCATION_SPECIFIC : NWArray
+  AIS_UNITTYPE_SPECIFIC : MapRevealer1
+}
+
+Trigger: "Play 1114 When Detect NE Array After Missile Launch" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : NEArray
+Condition: AIScript_SwitchIsSet
+  7
+Condition: AIScript_SwitchIsClear
+  11
+Action: AIScript_PlaySound
+  "1114"
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 0
+  AIS_LOCATION_SPECIFIC : NEArray
+  AIS_UNITTYPE_SPECIFIC : MapRevealer1
+}
+
+Trigger: "Play 1114 When Detect S Array After Missile Launch" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  7
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : SArray
+Condition: AIScript_SwitchIsClear
+  11
+Action: AIScript_PlaySound
+  "1114"
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 0
+  AIS_LOCATION_SPECIFIC : SArray
+  AIS_UNITTYPE_SPECIFIC : MapRevealer1
+}
+
+Trigger: "Play Sound 1108 When Silos Detected After Hybrid facility" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  3
+Condition: AIScript_SwitchIsSet
+  1
+Condition: AIScript_CountdownTimer
+  4
+  AIS_LESSEQUAL
+  0
+Action: AIScript_PlaySound
+  "1108"
+Action: AIScript_SetMissionObjectives
+  2
+  "Missile Silos"
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_ChangeMissionObjectives
+  6
+  0
+Action: AIScript_SetCountdownTimer
+  8
+  0
+}
+
+Trigger: "When Arrays Take Hits" :  AIS_SPECIFICPLAYER : 0: BOOL_OR
+{
+Condition: AIScript_TakesDamage
+  3680
+  AIS_SPECIFICPLAYER : 0
+Condition: AIScript_TakesDamage
+  3543
+  AIS_SPECIFICPLAYER : 0
+Condition: AIScript_TakesDamage
+  3571
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_SetCountdownTimer
+  7
+  5
+Action: AIScript_PreserveTrigger
+}
+
+Trigger: "Print Cloak Help When Puma Built" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Command
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : ReconBuggy
+Action: AIScript_CallHelp
+  "Cloak"
+  "0"
+}
+
+Trigger: "Display Beach Help Text When Timer 5 is at 5 Seconds" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  5
+  AIS_LESSEQUAL
+  0
+Action: AIScript_CallHelp
+  "MarkerAdded"
+  "0"
+}
+
+Trigger: "Open Silo Base Doors" :  AIS_SPECIFICPLAYER : 0: BOOL_OR
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : ExtBaseDoor
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : IntBaseDoorsLoc
+Action: AIScript_ActivateObject
+  1038
+Action: AIScript_PreserveTrigger
+}
+
+Trigger: "Switch When NE Array Is Destroyed" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SpecificUnitDeath
+  3680
+Action: AIScript_SetSwitch
+  8
+  1
+}
+
+Trigger: "Switch When NW Array Is Destroyed" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SpecificUnitDeath
+  3543
+Action: AIScript_SetSwitch
+  9
+  1
+}
+
+Trigger: "Switch When S Array Is Destroyed" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SpecificUnitDeath
+  3571
+Action: AIScript_SetSwitch
+  10
+  1
+}
+
+Trigger: "Display Train Detection Help" :  AIS_SPECIFICPLAYER : 0: BOOL_OR
+{
+Condition: AIScript_BringSingleUnit
+  AIS_NEUTRALS 
+  72
+  AIS_LOCATION_SPECIFIC : SidingLoc
+Condition: AIScript_BringSingleUnit
+  AIS_NEUTRALS 
+  1954
+  AIS_LOCATION_SPECIFIC : SidingLoc
+Action: AIScript_CallHelp
+  "Train"
+  "0"
+Action: AIScript_PlaySound
+  "1121"
+}
+
+Trigger: "Display Crossing Points Help" :  AIS_SPECIFICPLAYER : 0: BOOL_OR
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : CrossingLoc
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : Crossingloc2
+Action: AIScript_CallHelp
+  "Crossings"
+  "0"
+}
+
+Trigger: "dive" :  AIS_ENEMIES : BOOL_AND
+{
+Condition: AIScript_BringSingleUnit
+  AIS_ENEMIES 
+  4049
+  AIS_LOCATION_SPECIFIC : Sub_submerge
+Action: AIScript_ActivateObject
+  4049
+}
+
+Trigger: "Set Switch When All Three Arrays Are Dead" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  8
+Condition: AIScript_SwitchIsSet
+  9
+Condition: AIScript_SwitchIsSet
+  10
+Condition: AIScript_SwitchIsSet
+  7
+Action: AIScript_SetSwitch
+  11
+  1
+Action: AIScript_PlaySound
+  "1120"
+Action: AIScript_ChangeMissionObjectives
+  1
+  1
+Action: AIScript_StopDisplayCountdown
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "Play Sample 1118 When NE Array Destroyed" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  8
+Condition: AIScript_SwitchIsClear
+  9
+Condition: AIScript_SwitchIsClear
+  10
+Condition: AIScript_SwitchIsSet
+  7
+Action: AIScript_PlaySound
+  "1118"
+}
+
+Trigger: "Play Sample 1118 When NW Array Destroyed" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  9
+Condition: AIScript_SwitchIsClear
+  8
+Condition: AIScript_SwitchIsClear
+  10
+Condition: AIScript_SwitchIsSet
+  7
+Action: AIScript_PlaySound
+  "1118"
+}
+
+Trigger: "Play Sample 1118 When S Array Destroyed" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  10
+Condition: AIScript_SwitchIsClear
+  9
+Condition: AIScript_SwitchIsClear
+  8
+Condition: AIScript_SwitchIsSet
+  7
+Action: AIScript_PlaySound
+  "1118"
+}
+
+Trigger: "Play Sample When NE and NW Destroyed" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsClear
+  10
+Condition: AIScript_SwitchIsSet
+  9
+Condition: AIScript_SwitchIsSet
+  8
+Action: AIScript_PlaySound
+  "1119"
+}
+
+Trigger: "Play Sample When NE and S Destroyed" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsClear
+  9
+Condition: AIScript_SwitchIsSet
+  10
+Condition: AIScript_SwitchIsSet
+  8
+Action: AIScript_PlaySound
+  "1119"
+}
+
+Trigger: "Play Sample When S and NW Destroyed" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsClear
+  8
+Condition: AIScript_SwitchIsSet
+  9
+Condition: AIScript_SwitchIsSet
+  10
+Action: AIScript_PlaySound
+  "1119"
+}
+
+Trigger: "Set Train Canister Switch" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  0
+Action: AIScript_SetSwitch
+  14
+  1
+}
+
+Trigger: "Go To debrief" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  6
+  AIS_LESSEQUAL
+  0
+Action: AIScript_EndLevel
+}
+
+Trigger: "Lose When CountDown Timer Reaches Zero" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  0
+Condition: AIScript_SwitchIsClear
+  11
+Action: AIScript_Defeat
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_SetCountdownTimer
+  6
+  10
+Action: AIScript_ChangeMissionObjectives
+  1
+  3
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_StopDisplayCountdown
+}
+
+Trigger: "Play Sample 1112 When Weapons Aren't Making An Impact" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  7
+  AIS_LESSEQUAL
+  0
+Condition: AIScript_SwitchIsClear
+  8
+Condition: AIScript_SwitchIsClear
+  9
+Condition: AIScript_SwitchIsClear
+  10
+Action: AIScript_PlaySound
+  "1112"
+Action: AIScript_PreserveTrigger
+}
+
+Trigger: "Play Sample 1102 and Not 1103 When Detects Helis and Scarab not On Land" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsClear
+  2
+Condition: AIScript_SwitchIsSet
+  12
+Condition: AIScript_Detects
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : hybrid_apache
+  AIS_GREATEREQUAL
+Action: AIScript_PlaySound
+  "1102"
+Action: AIScript_SetSwitch
+  13
+  1
+}
+
+Trigger: "Play Sample 1103 When Detects Helis and Scarab On Land" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Command
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : SCAVharvester
+Condition: AIScript_SwitchIsClear
+  2
+Condition: AIScript_SwitchIsSet
+  12
+Condition: AIScript_Detects
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : hybrid_apache
+  AIS_GREATEREQUAL
+Action: AIScript_PlaySound
+  "1103"
+Action: AIScript_SetSwitch
+  13
+  1
+}
+
+Trigger: "Play Sound 1101 When Railway Area is Discovered Before Silos" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : Initial
+Condition: AIScript_SwitchIsClear
+  2
+Action: AIScript_PlaySound
+  "1101"
+}
+
+Trigger: "Play Countdown Sample at 8mins" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  480
+Condition: AIScript_SwitchIsClear
+  11
+Action: AIScript_PlaySound
+  "TM08"
+}
+
+Trigger: "Play Countdown Sample at 7mins" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  420
+Condition: AIScript_SwitchIsClear
+  11
+Action: AIScript_PlaySound
+  "TM07"
+}
+
+Trigger: "Play Countdown Sample at 6mins" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  360
+Condition: AIScript_SwitchIsClear
+  11
+Action: AIScript_PlaySound
+  "TM06"
+}
+
+Trigger: "Play Countdown Sample at 5mins" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  300
+Condition: AIScript_SwitchIsClear
+  11
+Action: AIScript_PlaySound
+  "TM05"
+}
+
+Trigger: "Play Countdown Sample at 4mins" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  240
+Condition: AIScript_SwitchIsClear
+  11
+Action: AIScript_PlaySound
+  "TM04"
+}
+
+Trigger: "Play Countdown Sample at 3mins" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  180
+Condition: AIScript_SwitchIsClear
+  11
+Action: AIScript_PlaySound
+  "TM03"
+}
+
+Trigger: "Play Countdown Sample at 2mins" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  120
+Condition: AIScript_SwitchIsClear
+  11
+Action: AIScript_PlaySound
+  "TM02"
+}
+
+Trigger: "Play Countdown Sample at 1mins" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  60
+Condition: AIScript_SwitchIsClear
+  11
+Action: AIScript_PlaySound
+  "TM01"
+}
+
+Trigger: "Play Countdown Sample at 9mins" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  540
+Condition: AIScript_SwitchIsClear
+  11
+Action: AIScript_PlaySound
+  "TM09"
+}
+
+Trigger: "Play Countdown Sample at 10mins" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  600
+Condition: AIScript_SwitchIsClear
+  11
+Action: AIScript_PlaySound
+  "TM10"
+}
+
+Trigger: "Ping Areas When Investigate Further Is Triggered" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  8
+  AIS_LESSEQUAL
+  119
+Action: AIScript_MiniMapPing
+  344
+  468
+Action: AIScript_MiniMapPing
+  296
+  445
+Action: AIScript_MiniMapPing
+  407
+  453
+}
+
+Trigger: "Ping Areas When Investigate Further Is Triggered 2" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  8
+  AIS_LESSEQUAL
+  105
+Action: AIScript_MiniMapPing
+  344
+  468
+Action: AIScript_MiniMapPing
+  296
+  445
+Action: AIScript_MiniMapPing
+  407
+  453
+}
+
+Trigger: "Ping Areas When Investigate Further Is Triggered 3" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  8
+  AIS_LESSEQUAL
+  90
+Action: AIScript_MiniMapPing
+  344
+  468
+Action: AIScript_MiniMapPing
+  296
+  445
+Action: AIScript_MiniMapPing
+  407
+  453
+}
+
+Trigger: "Ping Areas When Investigate Further Is Triggered 4" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  8
+  AIS_LESSEQUAL
+  75
+Action: AIScript_MiniMapPing
+  344
+  468
+Action: AIScript_MiniMapPing
+  296
+  445
+Action: AIScript_MiniMapPing
+  407
+  453
+}
+
+Trigger: "Ping Areas When Investigate Further Is Triggered 5" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  8
+  AIS_LESSEQUAL
+  60
+Action: AIScript_MiniMapPing
+  344
+  468
+Action: AIScript_MiniMapPing
+  296
+  445
+Action: AIScript_MiniMapPing
+  407
+  453
+}
+
+Trigger: "Ping Areas When Investigate Further Is Triggered 6" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  8
+  AIS_LESSEQUAL
+  45
+Action: AIScript_MiniMapPing
+  344
+  468
+Action: AIScript_MiniMapPing
+  296
+  445
+Action: AIScript_MiniMapPing
+  407
+  453
+}
+
+Trigger: "Ping Areas When Investigate Further Is Triggered 6000" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  8
+  AIS_LESSEQUAL
+  30
+Action: AIScript_MiniMapPing
+  344
+  468
+Action: AIScript_MiniMapPing
+  296
+  445
+Action: AIScript_MiniMapPing
+  407
+  453
+}
+
+Trigger: "Ping Areas When Investigate Further Is Triggered 7" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  8
+  AIS_LESSEQUAL
+  15
+Action: AIScript_MiniMapPing
+  344
+  468
+Action: AIScript_MiniMapPing
+  296
+  445
+Action: AIScript_MiniMapPing
+  407
+  453
+}
+
+Trigger: "Ping Areas When Investigate Further Is Triggered 8" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  8
+  AIS_LESSEQUAL
+  5
+Action: AIScript_MiniMapPing
+  344
+  468
+Action: AIScript_MiniMapPing
+  296
+  445
+Action: AIScript_MiniMapPing
+  407
+  453
+}
+
+Trigger: "Fail level if arrays are destroyed before missiles launched" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsClear
+  2
+Condition: AIScript_CountdownTimer
+  9
+  AIS_LESSEQUAL
+  0
+Action: AIScript_Defeat
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_SetCountdownTimer
+  6
+  8
+Action: AIScript_ChangeMissionObjectives
+  6
+  3
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "Set Countdown Timer 9 When Any array is destroyed" :  AIS_SPECIFICPLAYER : 0: BOOL_OR
+{
+Condition: AIScript_SwitchIsSet
+  8
+Condition: AIScript_SwitchIsSet
+  9
+Condition: AIScript_SwitchIsSet
+  10
+Action: AIScript_SetCountdownTimer
+  9
+  1
+}
+

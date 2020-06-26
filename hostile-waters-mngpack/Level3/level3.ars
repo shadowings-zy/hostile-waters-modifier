@@ -1,0 +1,444 @@
+AIRS
+Trigger: "init build" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  0
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Minigun
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : chopper
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Harvester
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Lifter
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : soulunit
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : scavunit
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : armour
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Ransom
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Borden
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Patton
+}
+
+Trigger: "Grey Out Command Buttons" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_ChangeInterfaceButton
+  "IB_ActionOnPreset_CarrierGuns"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_ActionOnPreset_Drop"
+  2
+Action: AIScript_ChangeInterfaceButton
+  "IB_ActionOnPreset_PickUp"
+  2
+Action: AIScript_ChangeInterfaceButton
+  "IB_ActionOnPreset_Recycle"
+  2
+Action: AIScript_ChangeInterfaceButton
+  "IB_SelectGroupView"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_SelectWayPoints"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_RemoteCommand_HoldPosition"
+  2
+Action: AIScript_ChangeInterfaceButton
+  "IB_SelectSingleGroup"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_RemoteCommand_AssignLifter"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_ChangeVehicleToMe"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_ActionOnPreset_Move"
+  2
+Action: AIScript_ChangeInterfaceButton
+  "IB_RemoteCommand_Me"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_RemoteCommand_MyPosition"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_RemoteCommand_MyTarget"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_ChooseAirLand_AirVehicles"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_ChooseAirLand_GroundVehicles"
+  0
+Action: AIScript_ChangeInterfaceButton
+  "IB_ActionOnPreset_Attack"
+  2
+}
+
+Trigger: "GetMissile" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Scavenges
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : MissilePlatfrom
+  AIS_GREATEREQUAL
+Action: AIScript_SetSwitch
+  1
+  1
+Action: AIScript_ChangeMissionObjectives
+  1
+  1
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_ShowSampler
+  0
+}
+
+Trigger: "Win" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Command
+  AIS_SPECIFICPLAYER : 1
+  0
+  AIS_UNITTYPE_SPECIFIC : criticalradar
+Condition: AIScript_SwitchIsSet
+  1
+Condition: AIScript_Accumulate
+  AIS_SPECIFICPLAYER : 0
+  2000
+Condition: AIScript_SwitchIsSet
+  2
+Action: AIScript_Victory
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_PlaySound
+  "0306"
+Action: AIScript_SetCountdownTimer
+  4
+  8
+Action: AIScript_TriggerCameraChange
+  3
+}
+
+Trigger: "Set AI" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_REPLACE_VEHICLES
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_THREATS
+}
+
+Trigger: "Tank Camera" :  AIS_SPECIFICPLAYER : 0: BOOL_OR
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  1
+Condition: AIScript_TakesDamage
+  638
+  AIS_SPECIFICPLAYER : 0
+Condition: AIScript_CurrentTarget
+  638
+Action: AIScript_TriggerCameraChange
+  1
+Action: AIScript_SetMissionObjectives
+  2
+  "tank facility"
+Action: AIScript_SetCountdownTimer
+  1
+  6
+}
+
+Trigger: "Missile Cam" :  AIS_ENEMIES : BOOL_AND
+{
+Condition: AIScript_SpecificUnitDeath
+  603
+Condition: AIScript_SpecificUnitDeath
+  348
+Condition: AIScript_SpecificUnitDeath
+  343
+Action: AIScript_TriggerCameraChange
+  2
+Action: AIScript_ChangeMissionObjectives
+  4
+  0
+Action: AIScript_SetCountdownTimer
+  2
+  8
+Action: AIScript_SetMissionObjectives
+  1
+  "missile platform"
+Action: AIScript_PlaySound
+  "0304"
+Action: AIScript_ShowSampler
+  1
+}
+
+Trigger: "Objectives" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  0
+Action: AIScript_SetMissionObjectives
+  4
+  "locate air prod"
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetMissionObjectives
+  5
+  "Scavenge"
+Action: AIScript_SetMissionObjectives
+  6
+  "Destroy comms"
+Action: AIScript_SetMissionObjectives
+  3
+  "Destroy Oil"
+}
+
+Trigger: "Display after tank cam" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  1
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_PlaySound
+  "0303"
+}
+
+Trigger: "Objectives after missile cam" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  2
+  AIS_LESSEQUAL
+  1
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "Destroyed Oil" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Deaths
+  AIS_SPECIFICPLAYER : 1
+  2
+  AIS_UNITTYPE_SPECIFIC : l4oilpump
+  AIS_GREATEREQUAL
+Action: AIScript_ChangeMissionObjectives
+  3
+  1
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "Destroyed Tank Facility" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Deaths
+  AIS_SPECIFICPLAYER : 1
+  1
+  AIS_UNITTYPE_SPECIFIC : groundprod
+  AIS_GREATEREQUAL
+Action: AIScript_ChangeMissionObjectives
+  2
+  1
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetSwitch
+  2
+  1
+}
+
+Trigger: "Tank Camera000" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Deaths
+  AIS_ENEMIES 
+  2
+  AIS_UNITTYPE_SPECIFIC : BubbleCopter
+  AIS_GREATEREQUAL
+Condition: AIScript_Deaths
+  AIS_ENEMIES 
+  1
+  AIS_UNITTYPE_SPECIFIC : M1Tank
+  AIS_GREATEREQUAL
+Action: AIScript_SetCountdownTimer
+  1
+  3
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : M1Tank
+  AIS_LOCATION_SPECIFIC : Tank
+  AIS_SPECIFICPLAYER : 1
+}
+
+Trigger: "Radar Objectives change" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Command
+  AIS_SPECIFICPLAYER : 1
+  0
+  AIS_UNITTYPE_SPECIFIC : criticalradar
+Action: AIScript_ChangeMissionObjectives
+  6
+  1
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "Resources Drop" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Accumulate2
+  AIS_SPECIFICPLAYER : 0
+  AIS_LESS
+  2000
+Action: AIScript_ChangeMissionObjectives
+  5
+  2
+Action: AIScript_PreserveTrigger
+}
+
+Trigger: "Carrier Death" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SpecificUnitDeath
+  1
+Action: AIScript_TriggerCameraChange
+  3
+Action: AIScript_Defeat
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_SetCountdownTimer
+  4
+  35
+}
+
+Trigger: "Allies" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_SetAlliance
+  "1"
+  "7"
+  1
+Action: AIScript_SetAlliance
+  "1"
+  "2"
+  1
+Action: AIScript_SetAlliance
+  "2"
+  "7"
+  1
+}
+
+Trigger: "Resources Correct" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Accumulate2
+  AIS_SPECIFICPLAYER : 0
+  AIS_GREATEREQUAL
+  2000
+Action: AIScript_ChangeMissionObjectives
+  5
+  1
+Action: AIScript_PreserveTrigger
+}
+
+Trigger: "Play Walker 01" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  10
+Action: AIScript_PlaySound
+  "0301"
+}
+
+Trigger: "Play Church 05" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  2
+  AIS_LESSEQUAL
+  3
+Action: AIScript_PlaySound
+  "0305"
+}
+
+Trigger: "Set Sound Bank" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_SetLevelSoundBank
+  "03"
+}
+
+Trigger: "Display TAB Help After 1 Second" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  1
+Action: AIScript_CallHelpKeypress
+  "RMBTargeting01:igh"
+  "0"
+}
+
+Trigger: "Missile Fail" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsClear
+  1
+Condition: AIScript_CountdownTimer
+  3
+  AIS_LESSEQUAL
+  0
+Action: AIScript_Defeat
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_ChangeMissionObjectives
+  1
+  3
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetCountdownTimer
+  4
+  5
+}
+
+Trigger: "Start Timer When Missile is Absorbed" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SpecificUnitDeath
+  377
+Action: AIScript_SetCountdownTimer
+  3
+  5
+}
+
+Trigger: "Go To Debrief" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  4
+  AIS_LESSEQUAL
+  0
+Action: AIScript_EndLevel
+}
+
+Trigger: "Set Al" :  AIS_SPECIFICPLAYER : 3: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_THREATS
+}
+
+Trigger: "Play Sample 0302 When Destroyed Oil " :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Command
+  AIS_SPECIFICPLAYER : 1
+  0
+  AIS_UNITTYPE_SPECIFIC : l4oilpump
+Condition: AIScript_SwitchIsClear
+  2
+Action: AIScript_PlaySound
+  "0302"
+}
+

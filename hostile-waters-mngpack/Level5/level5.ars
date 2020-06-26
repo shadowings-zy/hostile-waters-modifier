@@ -1,0 +1,630 @@
+AIRS
+Trigger: "init build" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  0
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Minigun
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Missile
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : chopper
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Harvester
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Lifter
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Ransom
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Borden
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Kroker
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Korolev
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Patton
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : soulunit
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : scavunit
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : armour
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : repair
+}
+
+Trigger: "StartBaseBuild" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Deaths
+  AIS_SPECIFICPLAYER : 1
+  1
+  AIS_UNITTYPE_SPECIFIC : cargoplane
+  AIS_GREATEREQUAL
+Action: AIScript_SetCountdownTimer
+  1
+  21
+Action: AIScript_TriggerCameraChange
+  2
+Action: AIScript_ChangeMissionObjectives
+  3
+  1
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_PlaySound
+  "0505"
+}
+
+Trigger: "Sampled Hovertank" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Scavenges
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : HoverTankRescue
+  AIS_GREATEREQUAL
+Action: AIScript_SetSwitch
+  1
+  1
+Action: AIScript_ChangeMissionObjectives
+  4
+  1
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetCountdownTimer
+  4
+  180
+Action: AIScript_StartDisplayCountdown
+  4
+  "Schematic Integration in"
+Action: AIScript_PlaySound
+  "0502"
+Action: AIScript_ShowSampler
+  0
+}
+
+Trigger: "Blue Casing Destroyed" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Deaths
+  AIS_SPECIFICPLAYER : 1
+  1
+  AIS_UNITTYPE_SPECIFIC : *CultureClub
+  AIS_GREATEREQUAL
+Action: AIScript_SetCountdownTimer
+  2
+  15
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetMissionObjectives
+  1
+  "Scavenge Stone"
+Action: AIScript_SetSwitch
+  2
+  1
+Action: AIScript_ChangeMissionObjectives
+  6
+  1
+Action: AIScript_PlaySound
+  "0510"
+}
+
+Trigger: "Set AI" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_REPLACE_VEHICLES
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_THREATS
+}
+
+Trigger: "Set AI" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_THREATS
+Action: AIScript_RunAIScript
+  AIS_REPLACE_VEHICLES
+}
+
+Trigger: "SetAI" :  AIS_SPECIFICPLAYER : 3: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_THREATS
+}
+
+Trigger: "Set Allies" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_SetAlliance
+  "1"
+  "3"
+  1
+Action: AIScript_SetAlliance
+  "1"
+  "2"
+  1
+Action: AIScript_SetAlliance
+  "1"
+  "4"
+  1
+Action: AIScript_SetAlliance
+  "1"
+  "5"
+  1
+Action: AIScript_SetAlliance
+  "2"
+  "3"
+  1
+Action: AIScript_SetAlliance
+  "2"
+  "4"
+  1
+Action: AIScript_SetAlliance
+  "2"
+  "5"
+  1
+Action: AIScript_SetAlliance
+  "3"
+  "4"
+  1
+Action: AIScript_SetAlliance
+  "3"
+  "5"
+  1
+Action: AIScript_SetAlliance
+  "4"
+  "5"
+  1
+Action: AIScript_SetAlliance
+  "1"
+  "6"
+  1
+Action: AIScript_SetAlliance
+  "2"
+  "6"
+  1
+Action: AIScript_SetAlliance
+  "3"
+  "6"
+  1
+Action: AIScript_SetAlliance
+  "4"
+  "6"
+  1
+Action: AIScript_SetAlliance
+  "5"
+  "6"
+  1
+Action: AIScript_SetAlliance
+  "1"
+  "7"
+  1
+Action: AIScript_SetAlliance
+  "2"
+  "7"
+  1
+Action: AIScript_SetAlliance
+  "3"
+  "7"
+  1
+Action: AIScript_SetAlliance
+  "4"
+  "7"
+  1
+Action: AIScript_SetAlliance
+  "5"
+  "7"
+  1
+Action: AIScript_SetAlliance
+  "6"
+  "7"
+  1
+}
+
+Trigger: "Set AI" :  AIS_SPECIFICPLAYER : 4: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_THREATS
+}
+
+Trigger: "Set AI" :  AIS_SPECIFICPLAYER : 5: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_THREATS
+}
+
+Trigger: "Set AI" :  AIS_SPECIFICPLAYER : 6: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_THREATS
+}
+
+Trigger: "Build Waves" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Detects
+  AIS_SPECIFICPLAYER : 1
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_GREATEREQUAL
+Action: AIScript_RunAIScript
+  AIS_CREATE_WAVES
+}
+
+Trigger: "Hover Camera" :  AIS_ENEMIES : BOOL_AND
+{
+Condition: AIScript_SpecificUnitDeath
+  620
+Condition: AIScript_SpecificUnitDeath
+  621
+Condition: AIScript_SpecificUnitDeath
+  622
+Condition: AIScript_SpecificUnitDeath
+  623
+Condition: AIScript_SpecificUnitDeath
+  624
+Action: AIScript_TriggerCameraChange
+  1
+Action: AIScript_ChangeMissionObjectives
+  5
+  1
+Action: AIScript_PlaySound
+  "0501"
+Action: AIScript_ShowSampler
+  1
+}
+
+Trigger: "Set Objectives" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  0
+Action: AIScript_SetMissionObjectives
+  5
+  "Secure beach-head"
+Action: AIScript_SetMissionObjectives
+  6
+  "Locate plane"
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetMissionObjectives
+  9
+  "Investigate"
+}
+
+Trigger: "Locate Hovertank" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : HoverLoc
+Action: AIScript_SetMissionObjectives
+  4
+  "Hovertank"
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_ChangeMissionObjectives
+  9
+  0
+}
+
+Trigger: "Win" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  1
+Condition: AIScript_SwitchIsSet
+  2
+Condition: AIScript_SwitchIsSet
+  3
+Action: AIScript_Victory
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_PlaySound
+  "0512"
+Action: AIScript_TriggerCameraChange
+  6
+Action: AIScript_SetCountdownTimer
+  6
+  7
+}
+
+Trigger: "Hovertank Lose Timer" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SpecificUnitDeath
+  613
+Condition: AIScript_SwitchIsClear
+  1
+Action: AIScript_SetCountdownTimer
+  3
+  4
+}
+
+Trigger: "Carrier Death" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SpecificUnitDeath
+  428
+Action: AIScript_TriggerCameraChange
+  5
+Action: AIScript_FailAllObjectives
+Action: AIScript_Defeat
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetCountdownTimer
+  6
+  35
+}
+
+Trigger: "Grow1" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_EQUALTO
+  13
+Action: AIScript_TriggerGrowingBuilding
+  823
+}
+
+Trigger: "Grow2" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_EQUALTO
+  10
+Action: AIScript_TriggerGrowingBuilding
+  821
+}
+
+Trigger: "Grow3" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_EQUALTO
+  8
+Action: AIScript_TriggerGrowingBuilding
+  822
+}
+
+Trigger: "Grow4" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_EQUALTO
+  4
+Action: AIScript_TriggerGrowingBuilding
+  825
+}
+
+Trigger: "Grow5" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_EQUALTO
+  2
+Action: AIScript_TriggerGrowingBuilding
+  824
+Action: AIScript_TriggerGrowingBuilding
+  826
+}
+
+Trigger: "Grow6" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_EQUALTO
+  7
+Action: AIScript_TriggerGrowingBuilding
+  431
+}
+
+Trigger: "Grow7" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_EQUALTO
+  5
+Action: AIScript_TriggerGrowingBuilding
+  430
+}
+
+Trigger: "Grow8" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_EQUALTO
+  3
+Action: AIScript_TriggerGrowingBuilding
+  432
+Action: AIScript_SetMissionObjectives
+  2
+  "Destroy that base"
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetCountdownTimer
+  5
+  10
+}
+
+Trigger: "HoverTankAvailable" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  4
+  AIS_LESSEQUAL
+  0
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Hovertank
+Action: AIScript_StopDisplayCountdown
+Action: AIScript_PlaySound
+  "0503"
+}
+
+Trigger: "All Towers Destroyed" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Deaths
+  AIS_SPECIFICPLAYER : 1
+  2
+  AIS_UNITTYPE_SPECIFIC : BlastTower
+  AIS_GREATEREQUAL
+Condition: AIScript_Deaths
+  AIS_SPECIFICPLAYER : 1
+  3
+  AIS_UNITTYPE_SPECIFIC : Alienackackgun
+  AIS_GREATEREQUAL
+Action: AIScript_ChangeMissionObjectives
+  2
+  1
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_PlaySound
+  "0508"
+}
+
+Trigger: "Brainpod" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Deaths
+  AIS_SPECIFICPLAYER : 1
+  1
+  AIS_UNITTYPE_SPECIFIC : *BrainPod
+  AIS_GREATEREQUAL
+Action: AIScript_ChangeMissionObjectives
+  5
+  1
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetMissionObjectives
+  6
+  "Blue Casing"
+Action: AIScript_PlaySound
+  "0509"
+}
+
+Trigger: "Brain Pod Objective 5" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  5
+  AIS_LESSEQUAL
+  1
+Action: AIScript_SetMissionObjectives
+  5
+  "Brain Pod"
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "Play CH06 When Base Grows" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  12
+Action: AIScript_PlaySound
+  "0506"
+}
+
+Trigger: "Play WA07 When Base is Building" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  4
+Action: AIScript_PlaySound
+  "0507"
+}
+
+Trigger: "Play Sound CH11 When Culture Stone" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  2
+  AIS_LESSEQUAL
+  12
+Action: AIScript_PlaySound
+  "0511"
+}
+
+Trigger: "Set Sound Bank" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_SetLevelSoundBank
+  "05"
+}
+
+Trigger: "Detects Plane" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : PlaneLoc
+Action: AIScript_ChangeMissionObjectives
+  6
+  1
+Action: AIScript_PlaySound
+  "0504"
+Action: AIScript_SetMissionObjectives
+  3
+  "Destroy the plane"
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "Go To Debrief" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  6
+  AIS_LESSEQUAL
+  0
+Action: AIScript_EndLevel
+}
+
+Trigger: "Hovertank Lose" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  3
+  AIS_LESSEQUAL
+  0
+Condition: AIScript_SwitchIsClear
+  1
+Action: AIScript_Defeat
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_SetCountdownTimer
+  6
+  8
+Action: AIScript_ChangeMissionObjectives
+  4
+  3
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "Stone Scavenged Switch" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  2
+Condition: AIScript_BringScarabWithRecycler
+  AIS_LOCATION_SPECIFIC : PlaneScavLoc
+Action: AIScript_SetSwitch
+  3
+  1
+Action: AIScript_ChangeMissionObjectives
+  1
+  1
+Action: AIScript_DisplayMissionObjectives
+}
+

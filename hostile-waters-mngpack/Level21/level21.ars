@@ -1,0 +1,751 @@
+AIRS
+Trigger: "ReachCommTower" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : SuperTank
+  AIS_LOCATION_SPECIFIC : CommTower
+Condition: AIScript_SwitchIsSet
+  2
+Condition: AIScript_SwitchIsSet
+  3
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 2
+  AIS_LOCATION_SPECIFIC : Heavy2
+  AIS_UNITTYPE_SPECIFIC : HeavyWalker
+Action: AIScript_AssignRoute
+  "alien"
+  632
+Action: AIScript_AssignRoute
+  "alien"
+  632
+Action: AIScript_AssignRoute
+  "alien"
+  633
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 2
+  AIS_LOCATION_SPECIFIC : Bydock
+  AIS_UNITTYPE_SPECIFIC : HeavyWalker
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 2
+  AIS_LOCATION_SPECIFIC : walkersatramp
+  AIS_UNITTYPE_SPECIFIC : LightWalker
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 2
+  AIS_LOCATION_SPECIFIC : walkersatramp
+  AIS_UNITTYPE_SPECIFIC : LightWalker
+Action: AIScript_SetSwitch
+  4
+  1
+Action: AIScript_SetMissionObjectives
+  4
+  "GoToPickup"
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_ChangeMissionObjectives
+  3
+  1
+}
+
+Trigger: "Defeat 1" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Command
+  AIS_SPECIFICPLAYER : 0
+  0
+  AIS_UNITTYPE_SPECIFIC : SuperTank
+Action: AIScript_Defeat
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_SetCountdownTimer
+  3
+  5
+Action: AIScript_TriggerCameraChange
+  1
+}
+
+Trigger: "Defeat 2" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Command
+  AIS_NEUTRALS 
+  0
+  AIS_UNITTYPE_SPECIFIC : commtower
+Action: AIScript_Defeat
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_SetCountdownTimer
+  3
+  5
+Action: AIScript_TriggerCameraChange
+  1
+}
+
+Trigger: "Run_AI" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+}
+
+Trigger: "Run_AI" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_REPLACE_VEHICLES
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_THREATS
+}
+
+Trigger: "Patrols" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScriptToLocation
+  AIS_ATTACKTO
+  AIS_LOCATION_SPECIFIC : FlyingProd
+  AIS_LOCATION_SPECIFIC : GoToLoc2
+Action: AIScript_RunAIScriptToLocation
+  AIS_ATTACKTO
+  AIS_LOCATION_SPECIFIC : GroundProd
+  AIS_LOCATION_SPECIFIC : GoToLoc1
+}
+
+Trigger: "StartProduction" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  1
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : MediumFlyer
+  AIS_LOCATION_SPECIFIC : FlyingProd
+  AIS_SPECIFICPLAYER : 2
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : SmallFlyer
+  AIS_LOCATION_SPECIFIC : FlyingProd
+  AIS_SPECIFICPLAYER : 2
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : LightWalker
+  AIS_LOCATION_SPECIFIC : GroundProd
+  AIS_SPECIFICPLAYER : 2
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : HeavyWalker
+  AIS_LOCATION_SPECIFIC : GroundProd
+  AIS_SPECIFICPLAYER : 2
+}
+
+Trigger: "Init Objectives" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  0
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetMissionObjectives
+  1
+  "Identify Comms Tower"
+Action: AIScript_SetMissionObjectives
+  2
+  "Energy"
+}
+
+Trigger: "Victory" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : SuperTank
+  AIS_LOCATION_SPECIFIC : End
+Condition: AIScript_SwitchIsSet
+  2
+Condition: AIScript_SwitchIsSet
+  3
+Condition: AIScript_SwitchIsSet
+  4
+Action: AIScript_Victory
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_SetCountdownTimer
+  3
+  5
+Action: AIScript_TriggerCameraChange
+  2
+Action: AIScript_ChangeMissionObjectives
+  4
+  1
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "BaseGrow1" :  AIS_SPECIFICPLAYER : 2: BOOL_OR
+{
+Condition: AIScript_Accumulate
+  AIS_SPECIFICPLAYER : 0
+  800
+Condition: AIScript_ElapsedTime
+  AIS_EQUALTO
+  600
+Action: AIScript_TriggerGrowingBuilding
+  574
+Action: AIScript_TriggerGrowingBuilding
+  575
+Action: AIScript_TriggerGrowingBuilding
+  591
+Action: AIScript_TriggerGrowingBuilding
+  596
+}
+
+Trigger: "BaseGrow2" :  AIS_SPECIFICPLAYER : 2: BOOL_OR
+{
+Condition: AIScript_Accumulate
+  AIS_SPECIFICPLAYER : 0
+  800
+Condition: AIScript_ElapsedTime
+  AIS_EQUALTO
+  600
+Action: AIScript_TriggerGrowingBuilding
+  603
+Action: AIScript_TriggerGrowingBuilding
+  567
+Action: AIScript_TriggerGrowingBuilding
+  570
+}
+
+Trigger: "BaseGrow3" :  AIS_SPECIFICPLAYER : 2: BOOL_OR
+{
+Condition: AIScript_Accumulate
+  AIS_SPECIFICPLAYER : 0
+  800
+Condition: AIScript_ElapsedTime
+  AIS_EQUALTO
+  600
+Action: AIScript_TriggerGrowingBuilding
+  569
+Action: AIScript_TriggerGrowingBuilding
+  640
+}
+
+Trigger: "BaseGrow4" :  AIS_SPECIFICPLAYER : 2: BOOL_OR
+{
+Condition: AIScript_Accumulate
+  AIS_SPECIFICPLAYER : 0
+  1000
+Condition: AIScript_ElapsedTime
+  AIS_EQUALTO
+  600
+Action: AIScript_TriggerGrowingBuilding
+  559
+Action: AIScript_TriggerGrowingBuilding
+  560
+Action: AIScript_TriggerGrowingBuilding
+  561
+Action: AIScript_TriggerGrowingBuilding
+  562
+Action: AIScript_TriggerGrowingBuilding
+  563
+}
+
+Trigger: "BaseGrow6" :  AIS_SPECIFICPLAYER : 2: BOOL_OR
+{
+Condition: AIScript_Accumulate
+  AIS_SPECIFICPLAYER : 0
+  800
+Condition: AIScript_ElapsedTime
+  AIS_EQUALTO
+  600
+Action: AIScript_TriggerGrowingBuilding
+  564
+Action: AIScript_TriggerGrowingBuilding
+  566
+}
+
+Trigger: "BaseGrow5" :  AIS_SPECIFICPLAYER : 2: BOOL_OR
+{
+Condition: AIScript_Accumulate
+  AIS_SPECIFICPLAYER : 0
+  900
+Condition: AIScript_ElapsedTime
+  AIS_EQUALTO
+  600
+Action: AIScript_TriggerGrowingBuilding
+  637
+Action: AIScript_TriggerGrowingBuilding
+  638
+Action: AIScript_TriggerGrowingBuilding
+  639
+Action: AIScript_TriggerGrowingBuilding
+  642
+}
+
+Trigger: "BaseGrow7" :  AIS_SPECIFICPLAYER : 2: BOOL_OR
+{
+Condition: AIScript_Accumulate
+  AIS_SPECIFICPLAYER : 0
+  700
+Condition: AIScript_ElapsedTime
+  AIS_EQUALTO
+  600
+Action: AIScript_TriggerGrowingBuilding
+  594
+}
+
+Trigger: "Wave1" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_EQUALTO
+  550
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 2
+  AIS_LOCATION_SPECIFIC : FlyingProd
+  AIS_UNITTYPE_SPECIFIC : SmallFlyer
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 2
+  AIS_LOCATION_SPECIFIC : FlyingProd
+  AIS_UNITTYPE_SPECIFIC : MediumFlyer
+Action: AIScript_RunAIScriptToLocation
+  AIS_ATTACKTO
+  AIS_LOCATION_SPECIFIC : WavLoc
+  AIS_LOCATION_SPECIFIC : GoToLoc1
+}
+
+Trigger: "BaseGrow8" :  AIS_SPECIFICPLAYER : 2: BOOL_OR
+{
+Condition: AIScript_Accumulate
+  AIS_SPECIFICPLAYER : 0
+  600
+Condition: AIScript_ElapsedTime
+  AIS_EQUALTO
+  600
+Action: AIScript_TriggerGrowingBuilding
+  568
+Action: AIScript_TriggerGrowingBuilding
+  571
+Action: AIScript_TriggerGrowingBuilding
+  572
+}
+
+Trigger: "Wave2" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_EQUALTO
+  500
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 2
+  AIS_LOCATION_SPECIFIC : FlyingProd
+  AIS_UNITTYPE_SPECIFIC : HoverLaser
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 2
+  AIS_LOCATION_SPECIFIC : FlyingProd
+  AIS_UNITTYPE_SPECIFIC : SmallFlyer
+Action: AIScript_RunAIScriptToLocation
+  AIS_ATTACKTO
+  AIS_LOCATION_SPECIFIC : WavLoc
+  AIS_LOCATION_SPECIFIC : GoToLoc2
+}
+
+Trigger: "Wave3" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_EQUALTO
+  450
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 2
+  AIS_LOCATION_SPECIFIC : FlyingProd
+  AIS_UNITTYPE_SPECIFIC : MediumFlyer
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 2
+  AIS_LOCATION_SPECIFIC : FlyingProd
+  AIS_UNITTYPE_SPECIFIC : SmallFlyer
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 2
+  AIS_LOCATION_SPECIFIC : FlyingProd
+  AIS_UNITTYPE_SPECIFIC : SmallFlyer
+Action: AIScript_RunAIScriptToLocation
+  AIS_ATTACKTO
+  AIS_LOCATION_SPECIFIC : WavLoc
+  AIS_LOCATION_SPECIFIC : GoToLoc3
+}
+
+Trigger: "send out patrol" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  1
+Action: AIScript_AssignRoute
+  "islandpatrol"
+  817
+Action: AIScript_AssignRoute
+  "islandpatrol"
+  818
+}
+
+Trigger: "Build blast tower 2" :  AIS_SPECIFICPLAYER : 2: BOOL_OR
+{
+Condition: AIScript_Accumulate
+  AIS_SPECIFICPLAYER : 0
+  200
+Condition: AIScript_ElapsedTime
+  AIS_EQUALTO
+  600
+Action: AIScript_TriggerGrowingBuilding
+  814
+}
+
+Trigger: "Send walkers to ramp" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 2
+  2
+  AIS_UNITTYPE_SPECIFIC : LightWalker
+  AIS_LOCATION_SPECIFIC : GroundProd
+Action: AIScript_RunAIScriptToLocation
+  AIS_MOVETO
+  AIS_LOCATION_SPECIFIC : GroundProd
+  AIS_LOCATION_SPECIFIC : walkersatramp
+}
+
+Trigger: "holding route" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  1
+Action: AIScript_AssignRoute
+  "holding"
+  817
+Action: AIScript_AssignRoute
+  "holding"
+  818
+}
+
+Trigger: "Go To Debrief" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  3
+  AIS_LESSEQUAL
+  0
+Action: AIScript_EndLevel
+}
+
+Trigger: "Create Area Marker At End Location" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  2
+Condition: AIScript_SwitchIsSet
+  3
+Condition: AIScript_SwitchIsSet
+  4
+Action: AIScript_CreateUnit
+  AIS_SPECIFICPLAYER : 0
+  AIS_LOCATION_SPECIFIC : End
+  AIS_UNITTYPE_SPECIFIC : AreaMarker
+}
+
+Trigger: "scavenge energy" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Accumulate2
+  AIS_SPECIFICPLAYER : 0
+  AIS_GREATEREQUAL
+  4000
+Action: AIScript_SetSwitch
+  2
+  1
+Action: AIScript_ChangeMissionObjectives
+  2
+  1
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "ping" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  2
+Condition: AIScript_SwitchIsSet
+  3
+Condition: AIScript_SwitchIsSet
+  4
+Action: AIScript_MiniMapPing
+  184
+  162
+Action: AIScript_PreserveTrigger
+}
+
+Trigger: "Display Objectives Help Box After 1 Second" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  1
+Action: AIScript_CallHelpKeypress
+  "Level21Objective"
+  "0"
+}
+
+Trigger: "Complete Objective 1 When Tower is Target" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CurrentTarget
+  601
+Action: AIScript_ChangeMissionObjectives
+  1
+  1
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetSwitch
+  3
+  1
+Action: AIScript_SetSwitch
+  1
+  1
+}
+
+Trigger: "Set Send Transmission Objective When Energy Is Scavenged" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  2
+Condition: AIScript_SwitchIsSet
+  3
+Action: AIScript_SetMissionObjectives
+  3
+  "Activate"
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "lightning gun trap" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_BringSingleUnit
+  AIS_SPECIFICPLAYER : 0
+  930
+  AIS_LOCATION_SPECIFIC : road
+Condition: AIScript_SwitchIsSet
+  2
+Condition: AIScript_SwitchIsSet
+  3
+Condition: AIScript_SwitchIsSet
+  4
+Action: AIScript_SetCountdownTimer
+  4
+  20
+}
+
+Trigger: "lighning growth01" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  4
+  AIS_EQUALTO
+  20
+Action: AIScript_TriggerGrowingBuilding
+  936
+}
+
+Trigger: "lighning growth02" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  4
+  AIS_EQUALTO
+  18
+Action: AIScript_TriggerGrowingBuilding
+  937
+}
+
+Trigger: "lightning growth03" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  4
+  AIS_EQUALTO
+  16
+Action: AIScript_TriggerGrowingBuilding
+  938
+Action: AIScript_TriggerGrowingBuilding
+  945
+}
+
+Trigger: "lightning growth04" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  4
+  AIS_EQUALTO
+  18
+Action: AIScript_TriggerGrowingBuilding
+  951
+Action: AIScript_TriggerGrowingBuilding
+  944
+}
+
+Trigger: "lightning growth05" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  4
+  AIS_EQUALTO
+  16
+Action: AIScript_TriggerGrowingBuilding
+  949
+Action: AIScript_TriggerGrowingBuilding
+  947
+}
+
+Trigger: "Lightnig growth spy trigger" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  4
+  AIS_EQUALTO
+  0
+Action: AIScript_TriggerGrowingBuilding
+  960
+}
+
+Trigger: "lightning growth spy head" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_HasFinishedGrowing
+  AIS_NEUTRALS 
+  960
+Action: AIScript_TriggerGrowingBuilding
+  961
+}
+
+Trigger: "Start cloaked" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  0
+Action: AIScript_CloakObject
+  930
+}
+
+Trigger: "turn off map room" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_ChangeInterfaceButton
+  "IB_ChangeRoom_Map"
+  0
+}
+
+Trigger: "turn off construction room" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_ChangeInterfaceButton
+  "IB_ChangeRoom_Construction"
+  0
+}
+
+Trigger: "Fly base grow in south trigger" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_BringSingleUnit
+  AIS_SPECIFICPLAYER : 0
+  930
+  AIS_LOCATION_SPECIFIC : flybasetrap
+Action: AIScript_SetCountdownTimer
+  5
+  30
+}
+
+Trigger: "fly base growth01" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  5
+  AIS_EQUALTO
+  25
+Action: AIScript_TriggerGrowingBuilding
+  587
+Action: AIScript_TriggerGrowingBuilding
+  595
+}
+
+Trigger: "fly base growth02" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  5
+  AIS_EQUALTO
+  15
+Action: AIScript_TriggerGrowingBuilding
+  588
+Action: AIScript_TriggerGrowingBuilding
+  589
+Action: AIScript_TriggerGrowingBuilding
+  590
+Action: AIScript_TriggerGrowingBuilding
+  576
+Action: AIScript_TriggerGrowingBuilding
+  577
+}
+
+Trigger: "cold growth 01" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_BringSingleUnit
+  AIS_SPECIFICPLAYER : 0
+  930
+  AIS_LOCATION_SPECIFIC : coldgrow01
+Action: AIScript_TriggerGrowingBuilding
+  972
+}
+
+Trigger: "cold growth 02" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_BringSingleUnit
+  AIS_SPECIFICPLAYER : 0
+  930
+  AIS_LOCATION_SPECIFIC : coldgrow02
+Action: AIScript_SetCountdownTimer
+  6
+  2
+}
+
+Trigger: "cold growth 03" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_BringSingleUnit
+  AIS_SPECIFICPLAYER : 0
+  930
+  AIS_LOCATION_SPECIFIC : coldgrow03
+Action: AIScript_SetCountdownTimer
+  7
+  4
+}
+
+Trigger: "turn off way points" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_ChangeInterfaceButton
+  "IB_SelectWayPoints"
+  0
+}
+
+Trigger: "cold growth 02a" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  6
+  AIS_EQUALTO
+  2
+Action: AIScript_TriggerGrowingBuilding
+  967
+}
+
+Trigger: "cold growth 02b" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  6
+  AIS_EQUALTO
+  0
+Action: AIScript_TriggerGrowingBuilding
+  966
+}
+
+Trigger: "cold growth 03a" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  7
+  AIS_EQUALTO
+  4
+Action: AIScript_TriggerGrowingBuilding
+  969
+}
+
+Trigger: "cold growth 03b" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  7
+  AIS_EQUALTO
+  2
+Action: AIScript_TriggerGrowingBuilding
+  974
+}
+
+Trigger: "cold growth 03c" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  7
+  AIS_EQUALTO
+  1
+Action: AIScript_TriggerGrowingBuilding
+  968
+}
+

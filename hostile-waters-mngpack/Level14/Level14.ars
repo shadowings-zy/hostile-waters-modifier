@@ -1,0 +1,1019 @@
+AIRS
+Trigger: "Init Build" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Harvester
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Lifter
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : chopper
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : hovertank
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : StaticPlatform
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Missile
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Minigun
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Ransom
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Borden
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Sinclair
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Kroker
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Madsen
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Patton
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : soulunit
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : scavunit
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : armour
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : repair
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : carrierguns
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : heavytank
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : reconbuggy
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Korolev
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Cloak
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Laser
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Lobber
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : CarrierGuns
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : EMP
+}
+
+Trigger: "Set AI" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_REPLACE_VEHICLES
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_THREATS
+}
+
+Trigger: "Set AI" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+Action: AIScript_RunAIScript
+  AIS_REPLACE_VEHICLES
+}
+
+Trigger: "Set Allies" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_SetAlliance
+  "1"
+  "3"
+  1
+Action: AIScript_SetAlliance
+  "1"
+  "2"
+  1
+Action: AIScript_SetAlliance
+  "1"
+  "4"
+  1
+Action: AIScript_SetAlliance
+  "1"
+  "5"
+  1
+Action: AIScript_SetAlliance
+  "2"
+  "3"
+  1
+Action: AIScript_SetAlliance
+  "2"
+  "4"
+  1
+Action: AIScript_SetAlliance
+  "2"
+  "5"
+  1
+Action: AIScript_SetAlliance
+  "3"
+  "4"
+  1
+Action: AIScript_SetAlliance
+  "3"
+  "5"
+  1
+Action: AIScript_SetAlliance
+  "4"
+  "5"
+  1
+Action: AIScript_SetAlliance
+  "1"
+  "6"
+  1
+Action: AIScript_SetAlliance
+  "2"
+  "6"
+  1
+Action: AIScript_SetAlliance
+  "3"
+  "6"
+  1
+Action: AIScript_SetAlliance
+  "4"
+  "6"
+  1
+Action: AIScript_SetAlliance
+  "5"
+  "6"
+  1
+Action: AIScript_SetAlliance
+  "1"
+  "7"
+  1
+Action: AIScript_SetAlliance
+  "2"
+  "7"
+  1
+Action: AIScript_SetAlliance
+  "3"
+  "7"
+  1
+Action: AIScript_SetAlliance
+  "4"
+  "7"
+  1
+Action: AIScript_SetAlliance
+  "5"
+  "7"
+  1
+Action: AIScript_SetAlliance
+  "6"
+  "7"
+  1
+}
+
+Trigger: "Set AI" :  AIS_SPECIFICPLAYER : 4: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_CREATE_WAVES
+}
+
+Trigger: "Wave1" :  AIS_ENEMIES : BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : SCAVharvester
+  AIS_LOCATION_SPECIFIC : ResLoc4
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : hybrid_apache
+  AIS_LOCATION_SPECIFIC : Team4wavloc
+  AIS_SPECIFICPLAYER : 4
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : hybrid_apache
+  AIS_LOCATION_SPECIFIC : Team4wavloc
+  AIS_SPECIFICPLAYER : 4
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : hybrid_chopper
+  AIS_LOCATION_SPECIFIC : Team4wavloc
+  AIS_SPECIFICPLAYER : 4
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : hybrid_chopper
+  AIS_LOCATION_SPECIFIC : Team4wavloc
+  AIS_SPECIFICPLAYER : 4
+Action: AIScript_SetSwitch
+  4
+  1
+}
+
+Trigger: "team1 patrol1" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_AssignRoute
+  "team1patrol1"
+  1650
+}
+
+Trigger: "team2 patrol1" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_AssignRoute
+  "team2patrol1"
+  1649
+}
+
+Trigger: "win" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  5
+Condition: AIScript_SwitchIsSet
+  6
+Condition: AIScript_SwitchIsSet
+  10
+Condition: AIScript_SwitchIsSet
+  11
+Action: AIScript_Victory
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_TriggerCameraChange
+  3
+Action: AIScript_SetCountdownTimer
+  4
+  30
+}
+
+Trigger: "lose" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Kills
+  AIS_ENEMIES 
+  1
+  AIS_UNITTYPE_SPECIFIC : Carrier
+  AIS_EQUALTO
+Action: AIScript_Defeat
+  AIS_SPECIFICPLAYER : 0
+}
+
+Trigger: "Initial Objectives" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  0
+Action: AIScript_SetMissionObjectives
+  7
+  "Destroy Communications"
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "Carrier Death" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SpecificUnitDeath
+  1715
+Action: AIScript_TriggerCameraChange
+  2
+Action: AIScript_Defeat
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_SetCountdownTimer
+  4
+  35
+}
+
+Trigger: "com station 1 located" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_ANYUNIT
+  AIS_LOCATION_SPECIFIC : Comstation1
+Action: AIScript_PlaySound
+  "1401"
+Action: AIScript_SetCountdownTimer
+  3
+  300
+}
+
+Trigger: "picking up readings" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  3
+  AIS_EQUALTO
+  1
+Action: AIScript_PlaySound
+  "1406"
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetMissionObjectives
+  6
+  "Locate the Source of cold"
+Action: AIScript_ChangeMissionObjectives
+  6
+  2
+Action: AIScript_SetMissionObjectives
+  5
+  "2nd cold gen"
+Action: AIScript_SetSwitch
+  9
+  1
+}
+
+Trigger: "door open 1" :  AIS_ENEMIES : BOOL_OR
+{
+Condition: AIScript_Bring
+  AIS_ENEMIES 
+  1
+  AIS_UNITTYPE_SPECIFIC : hybridmamtank
+  AIS_LOCATION_SPECIFIC : door01
+Condition: AIScript_Bring
+  AIS_ENEMIES 
+  1
+  AIS_UNITTYPE_SPECIFIC : M1_hybrid
+  AIS_LOCATION_SPECIFIC : door01
+Condition: AIScript_Bring
+  AIS_ENEMIES 
+  1
+  AIS_UNITTYPE_SPECIFIC : mobhybhow
+  AIS_LOCATION_SPECIFIC : door01
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : HeavyTank
+  AIS_LOCATION_SPECIFIC : door01
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : HoverTank
+  AIS_LOCATION_SPECIFIC : door01
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : SCAVharvester
+  AIS_LOCATION_SPECIFIC : door01
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : ReconBuggy
+  AIS_LOCATION_SPECIFIC : door01
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : REPAIRharvester
+  AIS_LOCATION_SPECIFIC : door01
+Action: AIScript_ActivateObject
+  2075
+Action: AIScript_PreserveTrigger
+}
+
+Trigger: "door open 2" :  AIS_ENEMIES : BOOL_OR
+{
+Condition: AIScript_Bring
+  AIS_ENEMIES 
+  1
+  AIS_UNITTYPE_SPECIFIC : hybridmamtank
+  AIS_LOCATION_SPECIFIC : door02
+Condition: AIScript_Bring
+  AIS_ENEMIES 
+  1
+  AIS_UNITTYPE_SPECIFIC : M1_hybrid
+  AIS_LOCATION_SPECIFIC : door02
+Condition: AIScript_Bring
+  AIS_ENEMIES 
+  1
+  AIS_UNITTYPE_SPECIFIC : mobhybhow
+  AIS_LOCATION_SPECIFIC : door02
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : HeavyTank
+  AIS_LOCATION_SPECIFIC : door02
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : HoverTank
+  AIS_LOCATION_SPECIFIC : door02
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : SCAVharvester
+  AIS_LOCATION_SPECIFIC : door02
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : ReconBuggy
+  AIS_LOCATION_SPECIFIC : door02
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_SPECIFIC : REPAIRharvester
+  AIS_LOCATION_SPECIFIC : door02
+Action: AIScript_ActivateObject
+  2074
+Action: AIScript_PreserveTrigger
+}
+
+Trigger: "tank plague" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 1
+  1
+  AIS_UNITTYPE_SPECIFIC : hybridmamtank
+  AIS_LOCATION_SPECIFIC : tank_plague
+Condition: AIScript_SwitchIsClear
+  2
+Action: AIScript_PlaySound
+  "1405"
+Action: AIScript_PlaySound
+  "1411"
+Action: AIScript_SetMissionObjectives
+  4
+  "take out bridge"
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetSwitch
+  3
+  1
+}
+
+Trigger: "coldgen 1 located" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : coldgen1
+Condition: AIScript_SwitchIsClear
+  1
+Condition: AIScript_SwitchIsSet
+  9
+Action: AIScript_PlaySound
+  "1407"
+Action: AIScript_SetSwitch
+  0
+  1
+Action: AIScript_SetCountdownTimer
+  1
+  20
+Action: AIScript_StartDisplayCountdown
+  1
+  "Collecting data:"
+}
+
+Trigger: "coldgen 2 located" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsClear
+  0
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : coldgen2
+Condition: AIScript_SwitchIsSet
+  9
+Action: AIScript_SetSwitch
+  1
+  1
+Action: AIScript_PlaySound
+  "1407"
+Action: AIScript_SetCountdownTimer
+  5
+  20
+Action: AIScript_StartDisplayCountdown
+  5
+  "Collecting data:"
+}
+
+Trigger: "Find NW coldgen" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_EQUALTO
+  0
+Action: AIScript_PlaySound
+  "1408"
+Action: AIScript_StopDisplayCountdown
+Action: AIScript_ChangeMissionObjectives
+  6
+  1
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetSwitch
+  10
+  1
+}
+
+Trigger: "Found 2nd coldgen (NE)" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : coldgen1
+Condition: AIScript_SwitchIsSet
+  1
+Action: AIScript_SetCountdownTimer
+  2
+  20
+Action: AIScript_PlaySound
+  "1409"
+Action: AIScript_StartDisplayCountdown
+  2
+  "Collecting data:"
+}
+
+Trigger: "Found 2nd coldgen (NW)" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  0
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : coldgen2
+Action: AIScript_PlaySound
+  "1409"
+Action: AIScript_SetCountdownTimer
+  6
+  20
+Action: AIScript_StartDisplayCountdown
+  6
+  "Collecting data:"
+}
+
+Trigger: "Finnished NE Coldgen" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  2
+  AIS_EQUALTO
+  0
+Action: AIScript_PlaySound
+  "1410"
+Action: AIScript_ChangeMissionObjectives
+  6
+  1
+Action: AIScript_SetSwitch
+  5
+  1
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_StopDisplayCountdown
+Action: AIScript_SetSwitch
+  10
+  1
+}
+
+Trigger: "The base doors" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  8
+Action: AIScript_PlaySound
+  "1402"
+Action: AIScript_SetMissionObjectives
+  1
+  "Hover tank to entrance"
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "hover tank near entrance" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_BringSalamanderWithScalpel
+  AIS_LOCATION_SPECIFIC : hovertank_near
+Condition: AIScript_SwitchIsSet
+  5
+Action: AIScript_PlaySound
+  "1403"
+Action: AIScript_PlaySound
+  "1404"
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "Objectives - locate base" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SpecificUnitDeath
+  2175
+Condition: AIScript_SpecificUnitDeath
+  2176
+Condition: AIScript_SpecificUnitDeath
+  2178
+Condition: AIScript_SpecificUnitDeath
+  2179
+Condition: AIScript_SpecificUnitDeath
+  2180
+Condition: AIScript_SpecificUnitDeath
+  2181
+Condition: AIScript_SpecificUnitDeath
+  2182
+Condition: AIScript_SpecificUnitDeath
+  2183
+Condition: AIScript_SpecificUnitDeath
+  2184
+Condition: AIScript_SpecificUnitDeath
+  2185
+Condition: AIScript_SpecificUnitDeath
+  2186
+Condition: AIScript_SpecificUnitDeath
+  2187
+Action: AIScript_ChangeMissionObjectives
+  7
+  1
+Action: AIScript_SetMissionObjectives
+  3
+  "Locate base"
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_ChangeMissionObjectives
+  3
+  2
+}
+
+Trigger: "Carrier Guns" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_EQUALTO
+  1
+Action: AIScript_SetCarrierShells
+  2
+}
+
+Trigger: "secure the entrance" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SpecificUnitDeath
+  355
+Condition: AIScript_SpecificUnitDeath
+  356
+Condition: AIScript_SpecificUnitDeath
+  357
+Condition: AIScript_SpecificUnitDeath
+  358
+Condition: AIScript_SpecificUnitDeath
+  442
+Condition: AIScript_SpecificUnitDeath
+  1241
+Condition: AIScript_SpecificUnitDeath
+  1242
+Condition: AIScript_SpecificUnitDeath
+  1247
+Action: AIScript_ChangeMissionObjectives
+  3
+  1
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_SetSwitch
+  8
+  1
+}
+
+Trigger: "Bridge destroyed" :  AIS_SPECIFICPLAYER : 1: BOOL_OR
+{
+Condition: AIScript_SpecificUnitDeath
+  2117
+Action: AIScript_SetSwitch
+  2
+  1
+Action: AIScript_ChangeMissionObjectives
+  4
+  1
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_THREATS
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+Action: AIScript_RunAIScript
+  AIS_REPLACE_VEHICLES
+}
+
+Trigger: "Soundbank" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  0
+Action: AIScript_SetLevelSoundBank
+  "14"
+}
+
+Trigger: "tankattack 1" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_SwitchIsClear
+  2
+Condition: AIScript_CountdownTimer
+  3
+  AIS_EQUALTO
+  299
+Action: AIScript_RunAIScriptToLocation
+  AIS_MOVETO
+  AIS_LOCATION_SPECIFIC : tankloc01
+  AIS_LOCATION_SPECIFIC : tank_plague
+}
+
+Trigger: "tanks attack1" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 1
+  1
+  AIS_UNITTYPE_SPECIFIC : hybridmamtank
+  AIS_LOCATION_SPECIFIC : tank_plague
+Condition: AIScript_SwitchIsClear
+  2
+Action: AIScript_RunAIScriptToLocation
+  AIS_ATTACKTO
+  AIS_LOCATION_SPECIFIC : tank_plague
+  AIS_LOCATION_SPECIFIC : Comstation1
+Action: AIScript_PreserveTrigger
+}
+
+Trigger: "tanks attack2" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 1
+  1
+  AIS_UNITTYPE_SPECIFIC : M1_hybrid
+  AIS_LOCATION_SPECIFIC : tank_plague
+Condition: AIScript_SwitchIsClear
+  2
+Action: AIScript_RunAIScriptToLocation
+  AIS_ATTACKTO
+  AIS_LOCATION_SPECIFIC : tank_plague
+  AIS_LOCATION_SPECIFIC : Comstation1
+Action: AIScript_PreserveTrigger
+}
+
+Trigger: "tanks attack3" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 1
+  1
+  AIS_UNITTYPE_SPECIFIC : mobhybhow
+  AIS_LOCATION_SPECIFIC : tank_plague
+Condition: AIScript_SwitchIsClear
+  2
+Action: AIScript_RunAIScriptToLocation
+  AIS_ATTACKTO
+  AIS_LOCATION_SPECIFIC : tank_plague
+  AIS_LOCATION_SPECIFIC : Comstation1
+Action: AIScript_PreserveTrigger
+}
+
+Trigger: "Go To Debrief" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  4
+  AIS_LESSEQUAL
+  0
+Action: AIScript_EndLevel
+}
+
+Trigger: "launch wave " :  AIS_SPECIFICPLAYER : 4: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 4
+  2
+  AIS_UNITTYPE_SPECIFIC : hybrid_apache
+  AIS_LOCATION_SPECIFIC : Team4wavloc
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 4
+  2
+  AIS_UNITTYPE_SPECIFIC : hybrid_chopper
+  AIS_LOCATION_SPECIFIC : Team4wavloc
+Condition: AIScript_SwitchIsSet
+  4
+Action: AIScript_RunAIScriptToLocation
+  AIS_ATTACKTOLOCATION
+  AIS_LOCATION_SPECIFIC : Team4wavloc
+  AIS_LOCATION_SPECIFIC : ResLoc4
+}
+
+Trigger: "set ai" :  AIS_SPECIFICPLAYER : 5: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_REPLACE_VEHICLES
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_THREATS
+}
+
+Trigger: "Salamander at entrance" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_BringSalamanderWithScalpel
+  AIS_LOCATION_SPECIFIC : hovertank_near
+Condition: AIScript_SwitchIsSet
+  8
+Condition: AIScript_SwitchIsSet
+  11
+Condition: AIScript_SwitchIsSet
+  10
+Action: AIScript_SetSwitch
+  6
+  1
+Action: AIScript_ChangeMissionObjectives
+  1
+  1
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "bring hovertank to entrance" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  5
+Condition: AIScript_SwitchIsSet
+  8
+Action: AIScript_SetMissionObjectives
+  1
+  "Hover tank to entrance"
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "Find NE coldgen" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  5
+  AIS_EQUALTO
+  0
+Action: AIScript_ChangeMissionObjectives
+  5
+  1
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_PlaySound
+  "1408"
+Action: AIScript_StopDisplayCountdown
+Action: AIScript_SetSwitch
+  11
+  1
+}
+
+Trigger: "Finnished NW Coldgen" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  6
+  AIS_EQUALTO
+  0
+Action: AIScript_PlaySound
+  "1410"
+Action: AIScript_ChangeMissionObjectives
+  5
+  1
+Action: AIScript_SetSwitch
+  5
+  1
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_StopDisplayCountdown
+Action: AIScript_SetSwitch
+  11
+  1
+}
+
+Trigger: "new tanks" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  2
+Condition: AIScript_Detects
+  AIS_SPECIFICPLAYER : 1
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_GREATEREQUAL
+Condition: AIScript_SwitchIsSet
+  8
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+Action: AIScript_RunAIScript
+  AIS_REPLACE_VEHICLES
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_THREATS
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : hybridmamtank
+  AIS_LOCATION_SPECIFIC : mammoths
+  AIS_SPECIFICPLAYER : 1
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : hybridmamtank
+  AIS_LOCATION_SPECIFIC : mammoths
+  AIS_SPECIFICPLAYER : 1
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : mobhybhow
+  AIS_LOCATION_SPECIFIC : newmobhows
+  AIS_SPECIFICPLAYER : 1
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : mobhybhow
+  AIS_LOCATION_SPECIFIC : newmobhows
+  AIS_SPECIFICPLAYER : 1
+}
+
+Trigger: "NE Coldgen ping" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  9
+Condition: AIScript_SwitchIsClear
+  10
+Action: AIScript_MiniMapPing
+  356
+  347
+Action: AIScript_PreserveTrigger
+}
+
+Trigger: "NW Coldgen ping" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  9
+Condition: AIScript_SwitchIsClear
+  11
+Action: AIScript_MiniMapPing
+  168
+  370
+Action: AIScript_PreserveTrigger
+}
+
+Trigger: "tankattack 2" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_SwitchIsClear
+  2
+Condition: AIScript_CountdownTimer
+  3
+  AIS_EQUALTO
+  295
+Action: AIScript_RunAIScriptToLocation
+  AIS_MOVETO
+  AIS_LOCATION_SPECIFIC : tankloc02
+  AIS_LOCATION_SPECIFIC : tank_plague
+}
+
+Trigger: "tankattack 3" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_SwitchIsClear
+  2
+Condition: AIScript_CountdownTimer
+  3
+  AIS_EQUALTO
+  290
+Action: AIScript_RunAIScriptToLocation
+  AIS_MOVETO
+  AIS_LOCATION_SPECIFIC : tankloc03
+  AIS_LOCATION_SPECIFIC : tank_plague
+}
+
+Trigger: "tankattack 4" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_SwitchIsClear
+  2
+Condition: AIScript_CountdownTimer
+  3
+  AIS_EQUALTO
+  285
+Action: AIScript_RunAIScriptToLocation
+  AIS_MOVETO
+  AIS_LOCATION_SPECIFIC : tankloc04
+  AIS_LOCATION_SPECIFIC : tank_plague
+}
+
+Trigger: "tankattack 5" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_SwitchIsClear
+  2
+Condition: AIScript_CountdownTimer
+  3
+  AIS_EQUALTO
+  280
+Action: AIScript_RunAIScriptToLocation
+  AIS_MOVETO
+  AIS_LOCATION_SPECIFIC : tankloc05
+  AIS_LOCATION_SPECIFIC : tank_plague
+}
+
+Trigger: "tankattack 6" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_SwitchIsClear
+  2
+Condition: AIScript_CountdownTimer
+  3
+  AIS_EQUALTO
+  275
+Action: AIScript_RunAIScriptToLocation
+  AIS_MOVETO
+  AIS_LOCATION_SPECIFIC : tankloc06
+  AIS_LOCATION_SPECIFIC : tank_plague
+}
+
+Trigger: "Carry on attacking tanks" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_SwitchIsClear
+  2
+Condition: AIScript_CountdownTimer
+  3
+  AIS_LESSEQUAL
+  270
+Action: AIScript_RunAIScriptToLocation
+  AIS_MOVETO
+  AIS_LOCATION_SPECIFIC : mammoths
+  AIS_LOCATION_SPECIFIC : tank_plague
+Action: AIScript_PreserveTrigger
+}
+

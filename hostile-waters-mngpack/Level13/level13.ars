@@ -1,0 +1,882 @@
+AIRS
+Trigger: "Initial Build" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Harvester
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Lifter
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : chopper
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : HeavyTank
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Missile
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Minigun
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Laser
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : ReconBuggy
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Lobber
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : StaticPlatform
+Action: AIScript_MakeAvailableForBuilding
+  AIS_CURRENTPLAYER 
+  AIS_UNITTYPE_SPECIFIC : Hovertank
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Ransom
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Borden
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Korolev
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Patton
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : soulunit
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : scavunit
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : armour
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : repair
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : carrierguns
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Cloak
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Sinclair
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Madsen
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : Kroker
+Action: AIScript_MakeAvailableForBuilding
+  AIS_SPECIFICPLAYER : 0
+  AIS_UNITTYPE_SPECIFIC : EMP
+}
+
+Trigger: "Set AI" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_THREATS
+Action: AIScript_RunAIScript
+  AIS_REPLACE_VEHICLES
+}
+
+Trigger: "Set AI" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_THREATS
+Action: AIScript_RunAIScript
+  AIS_REPLACE_VEHICLES
+}
+
+Trigger: "Set AI" :  AIS_SPECIFICPLAYER : 3: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_THREATS
+Action: AIScript_RunAIScript
+  AIS_REPLACE_VEHICLES
+}
+
+Trigger: "Set AI" :  AIS_SPECIFICPLAYER : 5: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_THREATS
+}
+
+Trigger: "North Island waves" :  AIS_SPECIFICPLAYER : 4: BOOL_OR
+{
+Condition: AIScript_Accumulate
+  AIS_SPECIFICPLAYER : 0
+  6750
+Condition: AIScript_OutOfProduction
+  AIS_SPECIFICPLAYER : 3
+Action: AIScript_RunAIScript
+  AIS_CREATE_WAVES
+}
+
+Trigger: "Rail control counter attack" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Deaths
+  AIS_NEUTRALS 
+  1
+  AIS_UNITTYPE_SPECIFIC : Control_building
+  AIS_EQUALTO
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : hybrid_apache
+  AIS_LOCATION_SPECIFIC : Team1_air
+  AIS_SPECIFICPLAYER : 1
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : hybrid_vtol
+  AIS_LOCATION_SPECIFIC : Team1_air
+  AIS_SPECIFICPLAYER : 1
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : hybrid_chopper
+  AIS_LOCATION_SPECIFIC : Team1_air
+  AIS_SPECIFICPLAYER : 1
+}
+
+Trigger: "Win" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  2
+  AIS_LESSEQUAL
+  4
+Action: AIScript_Victory
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_DisplayTextMessage
+  "tanker at location"
+Action: AIScript_SetSwitch
+  2
+  1
+Action: AIScript_SetCountdownTimer
+  1
+  15
+Action: AIScript_ChangeMissionObjectives
+  1
+  1
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_PlaySound
+  "1311"
+Action: AIScript_PlaySound
+  "1310"
+}
+
+Trigger: "patrol" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_AssignRoute
+  "t2chopper1"
+  2273
+}
+
+Trigger: "Allies" :  AIS_ANYPLAYER : BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_SetAlliance
+  "1"
+  "2"
+  1
+Action: AIScript_SetAlliance
+  "1"
+  "3"
+  1
+Action: AIScript_SetAlliance
+  "1"
+  "4"
+  1
+Action: AIScript_SetAlliance
+  "1"
+  "5"
+  1
+Action: AIScript_SetAlliance
+  "2"
+  "3"
+  1
+Action: AIScript_SetAlliance
+  "2"
+  "4"
+  1
+Action: AIScript_SetAlliance
+  "2"
+  "5"
+  1
+Action: AIScript_SetAlliance
+  "3"
+  "4"
+  1
+Action: AIScript_SetAlliance
+  "3"
+  "5"
+  1
+Action: AIScript_SetAlliance
+  "4"
+  "5"
+  1
+Action: AIScript_SetAlliance
+  "1"
+  "6"
+  1
+Action: AIScript_SetAlliance
+  "2"
+  "6"
+  1
+Action: AIScript_SetAlliance
+  "3"
+  "6"
+  1
+Action: AIScript_SetAlliance
+  "4"
+  "6"
+  1
+Action: AIScript_SetAlliance
+  "5"
+  "6"
+  1
+}
+
+Trigger: "bunker2 patrol" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_AssignRoute
+  "bunker2chopper1"
+  2282
+}
+
+Trigger: "t3chopper1" :  AIS_SPECIFICPLAYER : 3: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_AssignRoute
+  "t3chopper1"
+  2283
+}
+
+Trigger: "tank build" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  2
+  AIS_UNITTYPE_SPECIFIC : HeavyTank
+  AIS_LOCATION_SPECIFIC : team2
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : hybridmamtank
+  AIS_LOCATION_SPECIFIC : team3_tanks
+  AIS_SPECIFICPLAYER : 3
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : hybridmamtank
+  AIS_LOCATION_SPECIFIC : team3_tanks
+  AIS_SPECIFICPLAYER : 3
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : M1_hybrid
+  AIS_LOCATION_SPECIFIC : team3_tanks
+  AIS_SPECIFICPLAYER : 3
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : M1_hybrid
+  AIS_LOCATION_SPECIFIC : team3_tanks
+  AIS_SPECIFICPLAYER : 3
+}
+
+Trigger: "tank rush" :  AIS_SPECIFICPLAYER : 3: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 3
+  2
+  AIS_UNITTYPE_SPECIFIC : M1_hybrid
+  AIS_LOCATION_SPECIFIC : team3_tanks
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 3
+  2
+  AIS_UNITTYPE_SPECIFIC : hybridmamtank
+  AIS_LOCATION_SPECIFIC : team3_tanks
+Action: AIScript_RunAIScriptToLocation
+  AIS_ATTACKTO
+  AIS_LOCATION_SPECIFIC : team3_tanks
+  AIS_LOCATION_SPECIFIC : team2
+}
+
+Trigger: "carrier attack" :  AIS_SPECIFICPLAYER : 1: BOOL_OR
+{
+Condition: AIScript_Detects
+  AIS_SPECIFICPLAYER : 1
+  3
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_EQUALTO
+Condition: AIScript_SwitchIsSet
+  12
+Action: AIScript_RunAIScript
+  AIS_CREATE_WAVES
+}
+
+Trigger: "Intial Objective" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  0
+Action: AIScript_SetMissionObjectives
+  5
+  "Locate Control Centre"
+Action: AIScript_SetMissionObjectives
+  6
+  "Find alternative method of destruction"
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "Carrier Death" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SpecificUnitDeath
+  1
+Action: AIScript_Defeat
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_TriggerCameraChange
+  2
+Action: AIScript_SetCountdownTimer
+  1
+  35
+}
+
+Trigger: "island patrol 1" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_EQUALTO
+  10
+Action: AIScript_AssignRoute
+  "t1island"
+  684
+}
+
+Trigger: "island patrol 2" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_EQUALTO
+  60
+Action: AIScript_AssignRoute
+  "t1island"
+  685
+}
+
+Trigger: "Carrier Shots" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  0
+Action: AIScript_SetCarrierShells
+  2
+}
+
+Trigger: "Set AI" :  AIS_SPECIFICPLAYER : 6: BOOL_AND
+{
+Condition: AIScript_Always
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_THREATS
+Action: AIScript_RunAIScript
+  AIS_RESPOND_TO_ATTACK
+}
+
+Trigger: "Play Sample CH01 When Player Brings Unit To Siding" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : Siding
+Condition: AIScript_SwitchIsClear
+  0
+Condition: AIScript_SwitchIsClear
+  14
+Action: AIScript_PlaySound
+  "1301"
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_ChangeMissionObjectives
+  6
+  1
+}
+
+Trigger: "Set Switch When Player Detects Control Centre" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CurrentTarget
+  1209
+Action: AIScript_SetSwitch
+  0
+  1
+Action: AIScript_ChangeMissionObjectives
+  5
+  1
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "Play Sample CH02 When Player Detects Control Centre" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsClear
+  14
+Condition: AIScript_CurrentTarget
+  1209
+Action: AIScript_PlaySound
+  "1302"
+Action: AIScript_SetMissionObjectives
+  4
+  "Destroy Control Centre"
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_ChangeMissionObjectives
+  5
+  1
+}
+
+Trigger: "Set Switch When Player Detects Siding" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : Siding
+Action: AIScript_SetSwitch
+  1
+  1
+Action: AIScript_ChangeMissionObjectives
+  6
+  1
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "Set Switch When Control Centre Is Destroyed" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SpecificUnitDeath
+  1209
+Action: AIScript_SetSwitch
+  14
+  1
+Action: AIScript_ChangeMissionObjectives
+  4
+  1
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "Set Switch When Canister Is Destroyed" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SpecificUnitDeath
+  1824
+Action: AIScript_SetSwitch
+  3
+  1
+}
+
+Trigger: "Play Sample WA03 When Player Has Destoyed Control Centre and Knows Canister Location" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  1
+Condition: AIScript_SwitchIsSet
+  14
+Condition: AIScript_SwitchIsSet
+  4
+Action: AIScript_PlaySound
+  "1303"
+}
+
+Trigger: "Set Switch When Canister Is Tagged" :  AIS_SPECIFICPLAYER : 0: BOOL_OR
+{
+Condition: AIScript_BringOnGround
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : tanker
+Action: AIScript_SetSwitch
+  4
+  1
+Action: AIScript_PlaySound
+  "1308"
+}
+
+Trigger: "Play Sample WA14 When Control Destroyed But Canister Not Located" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  14
+Condition: AIScript_SwitchIsClear
+  1
+Action: AIScript_PlaySound
+  "1314"
+}
+
+Trigger: "Play Sample WA04 When Canister Is On main line" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  12
+Action: AIScript_PlaySound
+  "1304"
+Action: AIScript_ChangeMissionObjectives
+  2
+  1
+Action: AIScript_SetMissionObjectives
+  1
+  "Destroy Warhead Production Facility"
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "Set Sound Bank" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_ElapsedTime
+  AIS_GREATEREQUAL
+  0
+Action: AIScript_SetLevelSoundBank
+  "13"
+}
+
+Trigger: "OperateDoorsWhenUnitEntersLocation" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_BringOnGround
+  AIS_ANYPLAYER 
+  1
+  AIS_UNITTYPE_VEHICLE
+  AIS_LOCATION_SPECIFIC : HybridBaseDoors
+Action: AIScript_ActivateObject
+  1144
+Action: AIScript_PreserveTrigger
+}
+
+Trigger: "Go To Debrief" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  1
+  AIS_LESSEQUAL
+  0
+Action: AIScript_EndLevel
+}
+
+Trigger: "Control Centre Not Destroyed Lose" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  13
+Action: AIScript_Defeat
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_SetCountdownTimer
+  1
+  10
+Action: AIScript_PlaySound
+  "1312"
+Action: AIScript_TriggerCameraChange
+  1
+}
+
+Trigger: "Lose When No Canisters Left" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsClear
+  2
+Condition: AIScript_CountdownTimer
+  3
+  AIS_LESSEQUAL
+  0
+Action: AIScript_Defeat
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_SetCountdownTimer
+  1
+  10
+Action: AIScript_PlaySound
+  "1312"
+Action: AIScript_TriggerCameraChange
+  1
+}
+
+Trigger: "open door" :  AIS_SPECIFICPLAYER : 1: BOOL_OR
+{
+Condition: AIScript_Bring
+  AIS_ENEMIES 
+  1
+  AIS_UNITTYPE_SPECIFIC : hybridmamtank
+  AIS_LOCATION_SPECIFIC : Team1_base_doors
+Condition: AIScript_Bring
+  AIS_ENEMIES 
+  1
+  AIS_UNITTYPE_SPECIFIC : M1_hybrid
+  AIS_LOCATION_SPECIFIC : Team1_base_doors
+Action: AIScript_ActivateObject
+  528
+Action: AIScript_PreserveTrigger
+}
+
+Trigger: "build helicopters" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_Detects
+  AIS_SPECIFICPLAYER : 2
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_GREATEREQUAL
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : hybrid_chopper
+  AIS_LOCATION_SPECIFIC : team2_choppers
+  AIS_SPECIFICPLAYER : 2
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : hybrid_chopper
+  AIS_LOCATION_SPECIFIC : team2_choppers
+  AIS_SPECIFICPLAYER : 2
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : hybrid_apache
+  AIS_LOCATION_SPECIFIC : team2_choppers
+  AIS_SPECIFICPLAYER : 2
+}
+
+Trigger: "attack to control" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 1
+  4
+  AIS_UNITTYPE_ENEMYVEHICLE
+  AIS_LOCATION_SPECIFIC : Team1_air
+Action: AIScript_RunAIScriptToLocation
+  AIS_ATTACKTO
+  AIS_LOCATION_SPECIFIC : Team1_air
+  AIS_LOCATION_SPECIFIC : Rail_control
+}
+
+Trigger: "build tanks" :  AIS_SPECIFICPLAYER : 2: BOOL_AND
+{
+Condition: AIScript_Detects
+  AIS_SPECIFICPLAYER : 2
+  2
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_GREATEREQUAL
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : M1_hybrid
+  AIS_LOCATION_SPECIFIC : team2_tanks
+  AIS_SPECIFICPLAYER : 2
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : M1_hybrid
+  AIS_LOCATION_SPECIFIC : team2_tanks
+  AIS_SPECIFICPLAYER : 2
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : M1_hybrid
+  AIS_LOCATION_SPECIFIC : team2_tanks
+  AIS_SPECIFICPLAYER : 2
+}
+
+Trigger: "build tanks" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : team1detection
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : M1_hybrid
+  AIS_LOCATION_SPECIFIC : team1_tanks
+  AIS_SPECIFICPLAYER : 1
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : M1_hybrid
+  AIS_LOCATION_SPECIFIC : team1_tanks
+  AIS_SPECIFICPLAYER : 1
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : M1_hybrid
+  AIS_LOCATION_SPECIFIC : team1_tanks
+  AIS_SPECIFICPLAYER : 1
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : hybridmamtank
+  AIS_LOCATION_SPECIFIC : team1_tanks
+  AIS_SPECIFICPLAYER : 1
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : hybridmamtank
+  AIS_LOCATION_SPECIFIC : team1_tanks
+  AIS_SPECIFICPLAYER : 1
+}
+
+Trigger: "detects" :  AIS_SPECIFICPLAYER : 3: BOOL_AND
+{
+Condition: AIScript_Detects
+  AIS_SPECIFICPLAYER : 3
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_GREATEREQUAL
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : hybrid_apache
+  AIS_LOCATION_SPECIFIC : team3choppers
+  AIS_SPECIFICPLAYER : 3
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : hybridmamtank
+  AIS_LOCATION_SPECIFIC : team3_tanks
+  AIS_SPECIFICPLAYER : 3
+Action: AIScript_BuildUnitAtLocation
+  AIS_UNITTYPE_SPECIFIC : M1_hybrid
+  AIS_LOCATION_SPECIFIC : team3_tanks
+  AIS_SPECIFICPLAYER : 3
+}
+
+Trigger: "Play 1313 When Player Brings Unit Onto Island" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_SPECIFICPLAYER : 0
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_LOCATION_SPECIFIC : team2
+Action: AIScript_PlaySound
+  "1313"
+}
+
+Trigger: "When Team 1 Brings The Train Tanker to Bunker Start Countdown" :  AIS_SPECIFICPLAYER : 1: BOOL_AND
+{
+Condition: AIScript_Bring
+  AIS_NEUTRALS 
+  1
+  AIS_UNITTYPE_SPECIFIC : train_tanker
+  AIS_LOCATION_SPECIFIC : bunker2
+Action: AIScript_SetCountdownTimer
+  2
+  16
+Action: AIScript_TriggerCameraChange
+  3
+}
+
+Trigger: "MISSION OBJECTIVE CANISTER" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  1
+Condition: AIScript_SwitchIsSet
+  14
+Action: AIScript_SetMissionObjectives
+  3
+  "Canister"
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "end camera change" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_CountdownTimer
+  2
+  AIS_EQUALTO
+  10
+Action: AIScript_TriggerCameraChange
+  5
+}
+
+Trigger: "Display Help When Detected By Team1" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Detects
+  AIS_SPECIFICPLAYER : 1
+  1
+  AIS_UNITTYPE_FRIENDLYVEHICLE
+  AIS_GREATEREQUAL
+Action: AIScript_CallHelp
+  "TanksFromEast"
+  "0"
+}
+
+Trigger: "Wait for connect" :  AIS_SPECIFICPLAYER : 0: BOOL_OR
+{
+Condition: AIScript_Bring
+  AIS_NEUTRALS 
+  1
+  AIS_UNITTYPE_SPECIFIC : train_tanker
+  AIS_LOCATION_SPECIFIC : mainline1
+Condition: AIScript_Bring
+  AIS_NEUTRALS 
+  1
+  AIS_UNITTYPE_SPECIFIC : train_tanker
+  AIS_LOCATION_SPECIFIC : mainline2
+Action: AIScript_SetSwitch
+  5
+  1
+}
+
+Trigger: "Set Switch When Control centre destroyed but not detected" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsClear
+  0
+Condition: AIScript_SpecificUnitDeath
+  1209
+Action: AIScript_ChangeMissionObjectives
+  5
+  1
+Action: AIScript_SetSwitch
+  0
+  1
+}
+
+Trigger: "Centre destroyed and tanker on main line" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  14
+Condition: AIScript_SwitchIsSet
+  5
+Action: AIScript_SetMissionObjectives
+  2
+  "Connection"
+Action: AIScript_ChangeMissionObjectives
+  3
+  1
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_ChangeMissionObjectives
+  6
+  1
+}
+
+Trigger: "Set switch if control centre is destroyed but not targeted" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsSet
+  14
+Condition: AIScript_SwitchIsClear
+  0
+Action: AIScript_SetSwitch
+  0
+  1
+Action: AIScript_ChangeMissionObjectives
+  5
+  1
+Action: AIScript_DisplayMissionObjectives
+Action: AIScript_ChangeMissionObjectives
+  4
+  1
+}
+
+Trigger: "Lose When Trains No Longer Exist" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_SwitchIsClear
+  2
+Condition: AIScript_CountdownTimer
+  4
+  AIS_LESSEQUAL
+  0
+Action: AIScript_Defeat
+  AIS_SPECIFICPLAYER : 0
+Action: AIScript_SetCountdownTimer
+  1
+  8
+Action: AIScript_ChangeMissionObjectives
+  1
+  3
+Action: AIScript_DisplayMissionObjectives
+}
+
+Trigger: "Start Countdown When No Canisters Are Left" :  AIS_SPECIFICPLAYER : 0: BOOL_AND
+{
+Condition: AIScript_Command
+  AIS_NEUTRALS 
+  0
+  AIS_UNITTYPE_SPECIFIC : train_tanker
+Action: AIScript_SetCountdownTimer
+  3
+  10
+}
+
+Trigger: "Set Countdown Timer4 When Trains Are Gone" :  AIS_SPECIFICPLAYER : 0: BOOL_OR
+{
+Condition: AIScript_SpecificUnitDeath
+  1587
+Condition: AIScript_SpecificUnitDeath
+  2642
+Action: AIScript_SetCountdownTimer
+  4
+  10
+}
+
