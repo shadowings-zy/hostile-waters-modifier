@@ -2,7 +2,7 @@
   <div id="level">
     <div id="level-collapse">
       <el-collapse v-model="activeNames">
-        <el-collapse-item title="关卡选择" :name="5" :key="5">
+        <el-collapse-item title="关卡选择" :name="1" :key="1">
           <el-select v-model="level" filterable placeholder="请选择关卡">
             <el-option
               v-for="item in levelList"
@@ -12,33 +12,38 @@
             ></el-option>
           </el-select>
         </el-collapse-item>
-        <template v-for="(unitBuildingItem, index) in unitBuildingList">
-          <el-collapse-item
-            :title="unitBuildingItem.name"
-            :name="unitBuildingItem.type"
-            :key="index"
-          >
-            <el-checkbox
-              :indeterminate="isIndeterminateList[index]"
-              v-model="checkAllList[index]"
-              @change="(value) => {handleCheckAllChange(value, index)}"
-            >全选</el-checkbox>
-            <div class="divider"></div>
-            <el-checkbox-group
-              v-model="checkedList[index]"
-              @change="(value) => {handleCheckedChange(value, index)}"
-            >
+        <el-collapse-item title="出场单位选择" :name="0" :key="0">
+          <template v-for="(unitBuildingItem, index) in unitBuildingList">
+            <div class="level-unit-group" :key="index">
               <el-checkbox
-                v-for="unit in unitBuildingItem.detail"
-                :label="unit"
-                :key="unit.key"
-              >{{unit.description}}</el-checkbox>
-            </el-checkbox-group>
-          </el-collapse-item>
-        </template>
+                :indeterminate="isIndeterminateList[index]"
+                v-model="checkAllList[index]"
+                @change="(value) => {handleCheckAllChange(value, index)}"
+              >全选</el-checkbox>
+              <el-checkbox-group
+                v-model="checkedList[index]"
+                @change="(value) => {handleCheckedChange(value, index)}"
+              >
+                <el-checkbox
+                  v-for="unit in unitBuildingItem.detail"
+                  :label="unit"
+                  :key="unit.key"
+                >{{unit.description}}</el-checkbox>
+              </el-checkbox-group>
+            </div>
+          </template>
+        </el-collapse-item>
       </el-collapse>
     </div>
     <el-button type="primary" @click="modifyLevelUnit">修改出场单位</el-button>
+    <el-divider></el-divider>
+    <div id="unit-slot-introduction">
+      <p class="warning">
+        注意：
+        <br />修改当前关卡的可建造产品后，必须从上一关重新进入本关卡，修改的结果才会生效。
+        <br />否则无论是直接读当前关卡还是直接读了当前关卡后再重新开始本关，修改的效果都不会体现出来。
+      </p>
+    </div>
   </div>
 </template>
 
@@ -50,7 +55,7 @@ export default {
   name: "Level",
   data() {
     return {
-      activeNames: [0, 1, 2, 3, 4, 5],
+      activeNames: [0, 1],
       level: "",
       unitBuildingList: unitBuildingObject,
       levelList: levelObject,
@@ -112,7 +117,10 @@ export default {
   text-align: left;
   margin: 10px 0 20px 0;
 }
-#level .divider {
-  margin: 15px 0;
+#level .level-unit-group {
+  margin: 5px 0 20px 0;
+}
+#level .warning {
+  color: #f56c6c;
 }
 </style>

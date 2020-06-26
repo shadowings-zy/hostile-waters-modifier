@@ -4,6 +4,7 @@
     <div id="root-path-input">
       <el-input placeholder="游戏根目录路径" v-model="gameRootPath" :disabled="true">
         <el-button slot="prepend" icon="el-icon-folder-add" @click="selectGameRootPath">选择游戏根目录</el-button>
+        <el-button slot="append" icon="el-icon-delete"  @click="deleteModify">清理已修改的文件</el-button>
       </el-input>
     </div>
     <el-tabs type="border-card" v-model="activeTab">
@@ -44,12 +45,10 @@
         <Level />
       </el-tab-pane>
       <el-tab-pane :name="tabName[4]">
-        <el-tooltip slot="label" content="开发者信息及贡献指南" placement="top">
-          <div>
-            <i class="el-icon-user"></i>
-            <span>&nbsp;关于我们</span>
-          </div>
-        </el-tooltip>
+        <div slot="label">
+          <i class="el-icon-user"></i>
+          <span>&nbsp;关于我们</span>
+        </div>
         <About />
       </el-tab-pane>
     </el-tabs>
@@ -83,12 +82,21 @@ export default {
         .then(function(result) {
           if (!result.canceled) {
             _this.gameRootPath = result.filePaths[0];
-            _this.$store.commit("setRootPath", result.filePaths[0])
+            _this.$store.commit("setRootPath", result.filePaths[0]);
           }
         })
         .catch(function(err) {
           _this.$message.error(err.toString());
         });
+    },
+    deleteModify: function() {
+      const { rootPath } = this.$store.state;
+      if (rootPath === undefined || rootPath === "") {
+        this.$message.error("请指定敌对水域游戏根目录");
+        return;
+      }
+      window.deleteModifiedFile(rootPath);
+      this.$message.success("清理文件成功");
     }
   }
 };

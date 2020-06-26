@@ -23,6 +23,22 @@
       </el-form-item>
       <el-button type="primary" @click="modifyUnitSlot">修改载具装备槽</el-button>
     </el-form>
+    <el-divider></el-divider>
+    <div id="unit-slot-introduction">
+      <p>
+        举个例子：
+        <br />如果你想把游戏中秃鹰的载具插槽换成凤凰的载具插槽，那么你需要：
+        <br />在初始模型中选择“秃鹰 - (vulture item box_s01.bin_n)”，
+        <br />在目标模型中选择“凤凰 - (phoenix item box_s01.bin_n)”，
+        <br />然后点击“修改载具装备槽”按钮，这样就完成载具插槽的修改了。
+      </p>
+      <p class="warning">
+        注意：
+        <br />读档前确保以下两点之一，否则读档时会卡退:
+        <br />1.该存档是每一关数据统计结束后，过场动画前的存档点存的档。
+        <br />2.该存档所有模组和卡槽数据与游戏数据文档相吻合。
+      </p>
+    </div>
   </div>
 </template>
 
@@ -37,7 +53,8 @@ export default {
         sourceUnitSlot: "",
         targetUnitSlot: ""
       },
-      unitSlotList: unitSlotObject
+      unitSlotList: unitSlotObject,
+      dialogVisible: false
     };
   },
   methods: {
@@ -69,5 +86,12 @@ export default {
 }
 #unit-slot-form .el-select {
   width: 100% !important;
+}
+#unit-slot-introduction {
+  text-align: left;
+  font-size: 12px;
+}
+#unit-slot .warning {
+  color: #f56c6c;
 }
 </style>

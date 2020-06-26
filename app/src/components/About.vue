@@ -1,5 +1,6 @@
 <template>
   <div id="about">
+    <div class="about-text">{{`敌对水域修改器 Ver${version}`}}</div>
     <div class="about-text">
       本修改器由shadowingszy开发，我的个人主页：
       <span class="about-url" @click="openUrl('http://www.shadowingszy.top')">点击这里</span>
@@ -19,7 +20,9 @@
 export default {
   name: "About",
   data() {
-    return {};
+    return {
+      version: window.version
+    };
   },
   methods: {
     openUrl: function(url){

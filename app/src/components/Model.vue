@@ -22,20 +22,26 @@
         </el-select>
       </el-form-item>
       <el-button type="primary" @click="modifyModel">修改载具模型</el-button>
-      <el-button @click="openHelp">帮助</el-button>
     </el-form>
-    <el-dialog title="帮助" :visible.sync="dialogVisible" width="80%">
-      <p id="model-introduction">
-        举个例子，如果你想把游戏中鲨鱼的模型换成火蜥蜴的模型，那么你需要：
-        <br />1、在初始模型中选择"SuperHover.bin_b"，在目标模型中选择"HoverTank.bin_b"，点击修改载具模型按钮。
-        <br />2、在初始模型中选择"SuperHover.bin_c"，在目标模型中选择"HoverTank.bin_c"，点击修改载具模型按钮。
-        <br />3、在初始模型中选择"SuperHover.bin_n"，在目标模型中选择"HoverTank.bin_n"，点击修改载具模型按钮。
-        <br />这样就完成了模型的修改了。
+    <el-divider></el-divider>
+    <div id="model-introduction">
+      <p>
+        举个例子：
+        <br />如果你想把游戏中鲨鱼的模型换成火蜥蜴的模型，那么你需要：
+        <br />1、在初始模型中选择“SuperHover.bin_b”，在目标模型中选择“HoverTank.bin_b”，点击修改载具模型按钮。
+        <br />2、在初始模型中选择“SuperHover.bin_c”，在目标模型中选择“HoverTank.bin_c”，点击修改载具模型按钮。
+        <br />3、在初始模型中选择“SuperHover.bin_n”，在目标模型中选择“HoverTank.bin_n”，点击修改载具模型按钮。
+        <br />这样进入游戏你就会发现鲨鱼的模型已经被换成火蜥蜴的模型了。
         <br />由于敌对水域模型太多，本功能实际上只是将选定的初始模型和目标模型的文件进行了一个替换。
         <br />所以这里还需要各位使用者自行探索。
-        <br />
       </p>
-    </el-dialog>
+      <p class="warning">
+        注意：
+        <br />读档前确保以下两点之一，否则读档时会卡退:
+        <br />1.该存档是每一关数据统计结束后，过场动画前的存档点存的档。
+        <br />2.该存档所有模组和卡槽数据与游戏数据文档相吻合。
+      </p>
+    </div>
   </div>
 </template>
 
@@ -50,8 +56,7 @@ export default {
         sourceModel: "",
         targetModel: ""
       },
-      unitModelList: unitModelObject,
-      dialogVisible: false
+      unitModelList: unitModelObject
     };
   },
   methods: {
@@ -68,9 +73,6 @@ export default {
       }
       window.objectBinModify(sourceModel, targetModel, rootPath);
       this.$message.success("修改成功");
-    },
-    openHelp: function() {
-      this.dialogVisible = true;
     }
   }
 };
@@ -89,5 +91,9 @@ export default {
 }
 #model-introduction {
   text-align: left;
+  font-size: 12px;
+}
+#model .warning {
+  color: #f56c6c;
 }
 </style>

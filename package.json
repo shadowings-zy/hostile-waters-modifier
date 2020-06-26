@@ -1,11 +1,11 @@
 {
-  "name": "hostile-waters-electron-project",
-  "version": "1.0.0",
-  "description": "Hostile Waters Modifiers",
+  "name": "hostile-waters-modifier",
+  "version": "1.0.1",
+  "description": "Hostile Waters Modifier",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "package": "electron-packager . hostile-waters-modifier --platform=win32 --arch=x64 --out=./out --app-version=0.0.1 --overwrite"
+    "package": "electron-packager . hostile-waters-modifier --platform=win32 --arch=x64 --out=./out --app-version=1.0.1 --overwrite --asar"
   },
   "devDependencies": {
     "electron": "^9.0.5",
