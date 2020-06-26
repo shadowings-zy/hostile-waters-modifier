@@ -1,12 +1,17 @@
 <template>
   <div id="level">
-    <div id="level-select">
-      <el-select v-model="level" filterable placeholder="请选择关卡">
-        <el-option v-for="item in levelList" :key="item.key" :label="item.key" :value="item.value"></el-option>
-      </el-select>
-    </div>
     <div id="level-collapse">
       <el-collapse v-model="activeNames">
+        <el-collapse-item title="关卡选择" :name="5" :key="5">
+          <el-select v-model="level" filterable placeholder="请选择关卡">
+            <el-option
+              v-for="item in levelList"
+              :key="item.key"
+              :label="item.key"
+              :value="item.value"
+            ></el-option>
+          </el-select>
+        </el-collapse-item>
         <template v-for="(unitBuildingItem, index) in unitBuildingList">
           <el-collapse-item
             :title="unitBuildingItem.name"
@@ -45,7 +50,7 @@ export default {
   name: "Level",
   data() {
     return {
-      activeNames: [0, 1, 2, 3, 4],
+      activeNames: [0, 1, 2, 3, 4, 5],
       level: "",
       unitBuildingList: unitBuildingObject,
       levelList: levelObject,

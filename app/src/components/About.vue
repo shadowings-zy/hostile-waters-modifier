@@ -6,7 +6,7 @@
     </div>
     <div class="about-text">
       本修改器已开源至GitHub，源代码地址：
-      <span class="about-url" @click="openUrl('http://www.shadowingszy.top')">点击这里</span>
+      <span class="about-url" @click="openUrl('https://github.com/shadowings-zy/hostile-waters-modifier')">点击这里</span>
     </div>
     <div class="about-text">开发不易，还请各位能在GitHub上为本项目点个star。</div>
     <div class="about-text">感谢百度贴吧敌对水域吧吧主@葛西一树，以及其他玩家的大力支持。</div>
@@ -39,5 +39,6 @@ export default {
 }
 #about .about-url {
   font-weight: bold;
+  cursor: default;
 }
 </style>
