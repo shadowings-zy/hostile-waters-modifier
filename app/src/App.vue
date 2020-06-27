@@ -4,7 +4,7 @@
     <div id="root-path-input">
       <el-input placeholder="游戏根目录路径" v-model="gameRootPath" :disabled="true">
         <el-button slot="prepend" icon="el-icon-folder-add" @click="selectGameRootPath">选择游戏根目录</el-button>
-        <el-button slot="append" icon="el-icon-delete"  @click="deleteModify">清理已修改的文件</el-button>
+        <el-button slot="append" icon="el-icon-delete" @click="deleteModify">清理已修改的文件</el-button>
       </el-input>
     </div>
     <el-tabs type="border-card" v-model="activeTab">
@@ -56,6 +56,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import Values from "./components/Values";
 import Model from "./components/Model";
 import UnitSlot from "./components/UnitSlot";
@@ -98,6 +99,31 @@ export default {
       window.deleteModifiedFile(rootPath);
       this.$message.success("清理文件成功");
     }
+  },
+  mounted() {
+    const _this = this;
+    const currentVersion = window.version;
+    axios
+      .get("http://www.shadowingszy.top/HostileWatersModifier/version.txt")
+      .then(function(response) {
+        if (response.data !== currentVersion) {
+          _this.$alert(
+            `点击确定前往百度网盘下载最新版本${response.data}，提取码：qhvk`,
+            "有新版本",
+            {
+              confirmButtonText: "确定",
+              callback: function() {
+                window.shell.openExternal(
+                  "https://pan.baidu.com/s/1dNZeLULqS4ldJR9OSjkB8Q"
+                );
+              }
+            }
+          );
+        }
+      })
+      .catch(function(error) {
+        _this.$message.error("检查更新失败");
+      });
   }
 };
 </script>

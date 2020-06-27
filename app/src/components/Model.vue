@@ -40,6 +40,10 @@
         <br />读档前确保以下两点之一，否则读档时会卡退:
         <br />1.该存档是每一关数据统计结束后，过场动画前的存档点存的档。
         <br />2.该存档所有模组和卡槽数据与游戏数据文档相吻合。
+        <br />
+        <br />比如存档里鲨鱼的模型（SuperHover.bin_b）换成了火蜥蜴的模型（HoverTank.bin_b），
+        <br />若游戏文件里鲨鱼的模型（SuperHover.bin_b）和存档里的数据（SuperHover.bin_b）一样，这种情况可正常读档。
+        <br />若游戏文件里鲨鱼的模型（SuperHover.bin_b）和存档里的数据（HoverTank.bin_b）不一样，这种情况读档会卡退。
       </p>
     </div>
   </div>
