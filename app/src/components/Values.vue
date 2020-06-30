@@ -1,22 +1,26 @@
 <template>
   <div id="values">
-    <el-input v-model="search" placeholder="输入关键字搜索">
+    <el-input v-model="search" :placeholder="$t('values.placeholder')">
       <template slot="prepend">
         <i class="el-icon-search"></i>
       </template>
     </el-input>
     <div id="values-table">
       <el-table :data="valuesObject.filter(data => valuesObjectFilter(data, search))" height="400">
-        <el-table-column label="参数" prop="key"></el-table-column>
-        <el-table-column label="描述" prop="description"></el-table-column>
-        <el-table-column label="值" prop="value">
+        <el-table-column :label="$t('values.tableHeader.key')" prop="key"></el-table-column>
+        <el-table-column :label="$t('values.tableHeader.description')" prop="description">
+          <template slot-scope="scope">
+            <p>{{$t(scope.row.description)}}</p>
+          </template>
+        </el-table-column>
+        <el-table-column :label="$t('values.tableHeader.value')" prop="value">
           <template slot-scope="scope">
             <el-input v-model="scope.row.value"></el-input>
           </template>
         </el-table-column>
       </el-table>
     </div>
-    <el-button type="primary" @click="modifyValues">修改单位参数</el-button>
+    <el-button type="primary" @click="modifyValues">{{$t('values.button')}}</el-button>
   </div>
 </template>
 
@@ -35,16 +39,12 @@ export default {
   },
   methods: {
     valuesObjectFilter: function(data, search) {
-      return (
-        !search ||
-        data.description.toLowerCase().includes(search.toLowerCase()) ||
-        data.key.toLowerCase().includes(search.toLowerCase())
-      );
+      return !search || data.key.toLowerCase().includes(search.toLowerCase());
     },
     modifyValues: function() {
       const { rootPath } = this.$store.state;
       if (rootPath === undefined || rootPath === "") {
-        this.$message.error("请指定敌对水域游戏根目录");
+        this.$message.error(this.$i18n.tc("message.rootPathEmpty"));
         return;
       }
       const values = {};
@@ -52,19 +52,19 @@ export default {
         if (isNumber(item.value)) {
           values[item.key] = item.value;
         } else {
-          this.$message.error(`[数据不合法] ${item.key} - ${item.value}`);
+          this.$message.error(this.$i18n.tc("message.unknownValuesParam"));
           return;
         }
       }
       window.valuesModify(values, rootPath);
-      this.$message.success("修改成功");
+      this.$message.success(this.$i18n.tc("message.success"));
     }
   }
 };
 </script>
 
 <style>
-#values{
+#values {
   margin: 10px 0;
 }
 #values-table {

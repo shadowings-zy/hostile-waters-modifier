@@ -2,8 +2,8 @@
   <div id="level">
     <div id="level-collapse">
       <el-collapse v-model="activeNames">
-        <el-collapse-item title="关卡选择" :name="1" :key="1">
-          <el-select v-model="level" filterable placeholder="请选择关卡">
+        <el-collapse-item :title="$t('level.selectLevel.title')" :name="1" :key="1">
+          <el-select v-model="level" filterable :placeholder="$t('level.selectLevel.placeholder')">
             <el-option
               v-for="item in levelList"
               :key="item.key"
@@ -12,14 +12,14 @@
             ></el-option>
           </el-select>
         </el-collapse-item>
-        <el-collapse-item title="出场单位选择" :name="0" :key="0">
+        <el-collapse-item :title="$t('level.selectUnit.title')" :name="0" :key="0">
           <template v-for="(unitBuildingItem, index) in unitBuildingList">
             <div class="level-unit-group" :key="index">
               <el-checkbox
                 :indeterminate="isIndeterminateList[index]"
                 v-model="checkAllList[index]"
                 @change="(value) => {handleCheckAllChange(value, index)}"
-              >全选</el-checkbox>
+              >{{$t('level.selectUnit.all')}}</el-checkbox>
               <el-checkbox-group
                 v-model="checkedList[index]"
                 @change="(value) => {handleCheckedChange(value, index)}"
@@ -28,20 +28,17 @@
                   v-for="unit in unitBuildingItem.detail"
                   :label="unit"
                   :key="unit.key"
-                >{{unit.description}}</el-checkbox>
+                >{{$t(unit.description)}}</el-checkbox>
               </el-checkbox-group>
             </div>
           </template>
         </el-collapse-item>
       </el-collapse>
     </div>
-    <el-button type="primary" @click="modifyLevelUnit">修改出场单位</el-button>
+    <el-button type="primary" @click="modifyLevelUnit">{{$t('level.button')}}</el-button>
     <el-divider></el-divider>
     <div id="unit-slot-introduction">
-      <p class="warning">
-        注意：
-        <br />修改当前关卡的可建造产品后，必须从上一关重新进入本关卡，修改的结果才会生效。
-        <br />否则无论是直接读当前关卡还是直接读了当前关卡后再重新开始本关，修改的效果都不会体现出来。
+      <p class="warning">{{$t('level.warning')}}
       </p>
     </div>
   </div>
@@ -86,11 +83,11 @@ export default {
     modifyLevelUnit: function() {
       const { rootPath } = this.$store.state;
       if (rootPath === undefined || rootPath === "") {
-        this.$message.error("请指定敌对水域游戏根目录");
+        this.$message.error(this.$i18n.tc("message.rootPathEmpty"));
         return;
       }
       if (this.level === "") {
-        this.$message.error("请选择你要修改的关卡");
+        this.$message.error(this.$i18n.tc("message.levelEmpty"));
         return;
       }
       const unitCodeList = [];
@@ -100,7 +97,7 @@ export default {
         }
       }
       window.levelModify(this.level, unitCodeList, rootPath);
-      this.$message.success("修改成功");
+      this.$message.success(this.$i18n.tc("message.success"));
     }
   }
 };
@@ -119,6 +116,9 @@ export default {
 }
 #level .level-unit-group {
   margin: 5px 0 20px 0;
+}
+#level .unit-slot-introduction {
+  white-space: pre-wrap;
 }
 #level .warning {
   color: #f56c6c;

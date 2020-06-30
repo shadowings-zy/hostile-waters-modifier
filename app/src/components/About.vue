@@ -1,18 +1,22 @@
 <template>
   <div id="about">
-    <div class="about-text">{{`敌对水域修改器 Ver${version}`}}</div>
+    <div class="about-text">{{$t('title')}}{{` Ver${version}`}}</div>
     <div class="about-text">
-      本修改器由shadowingszy开发，我的个人主页：
-      <span class="about-url" @click="openUrl('http://www.shadowingszy.top')">点击这里</span>
+      {{$t('about.author')}}
+      <span
+        class="about-url"
+        @click="openUrl('http://www.shadowingszy.top')"
+      >{{$t('about.clickHere')}}</span>
     </div>
     <div class="about-text">
-      本修改器已开源至GitHub，源代码地址：
-      <span class="about-url" @click="openUrl('https://github.com/shadowings-zy/hostile-waters-modifier')">点击这里</span>
+      {{$t('about.github')}}
+      <span
+        class="about-url"
+        @click="openUrl('https://github.com/shadowings-zy/hostile-waters-modifier')"
+      >{{$t('about.clickHere')}}</span>
     </div>
-    <div class="about-text">开发不易，还请各位能在GitHub上为本项目点个star。</div>
-    <div class="about-text">感谢百度贴吧敌对水域吧吧主@葛西一树，以及其他玩家的大力支持。</div>
-    <div class="about-text">如在使用本修改器时遇到问题，或有更好的建议，</div>
-    <div class="about-text">请直接在百度贴吧敌对水域吧发帖，或加入敌对水域吧吧群：214158350。</div>
+    <div class="about-text">{{$t('about.githubStar')}}</div>
+    <div class="thanks">{{$t('about.thanks')}}</div>
   </div>
 </template>
 
@@ -25,7 +29,7 @@ export default {
     };
   },
   methods: {
-    openUrl: function(url){
+    openUrl: function(url) {
       window.shell.openExternal(url);
     }
   }
@@ -37,8 +41,14 @@ export default {
   margin: 10px;
 }
 #about .about-text {
-  margin: 10px 0;
+  line-height: 40px;
   text-align: left;
+  white-space: nowrap;
+}
+#about .thanks {
+  line-height: 40px;
+  text-align: left;
+  white-space: pre-wrap;
 }
 #about .about-url {
   font-weight: bold;

@@ -1,45 +1,54 @@
 <template>
   <div id="app">
-    <h1 id="modifier-title">敌对水域修改器</h1>
+    <el-button id="language" plain @click="changeLanguage">{{$t("changeLanguage")}}</el-button>
+    <h1 id="modifier-title">{{$t("title")}}</h1>
     <div id="root-path-input">
-      <el-input placeholder="游戏根目录路径" v-model="gameRootPath" :disabled="true">
-        <el-button slot="prepend" icon="el-icon-folder-add" @click="selectGameRootPath">选择游戏根目录</el-button>
-        <el-button slot="append" icon="el-icon-delete" @click="deleteModify">清理已修改的文件</el-button>
+      <el-input :placeholder="$t('rootPath.placeholder')" v-model="gameRootPath" :disabled="true">
+        <el-button
+          slot="prepend"
+          icon="el-icon-folder-add"
+          @click="selectGameRootPath"
+        >{{$t("rootPath.select")}}</el-button>
+        <el-button
+          slot="append"
+          icon="el-icon-delete"
+          @click="deleteModify"
+        >{{$t("rootPath.restore")}}</el-button>
       </el-input>
     </div>
     <el-tabs type="border-card" v-model="activeTab">
       <el-tab-pane :name="tabName[0]">
-        <el-tooltip slot="label" content="通过修改敌对水域中values.txt文件，可更改单位参数。" placement="top">
+        <el-tooltip slot="label" :content="$t('values.description')" placement="top">
           <div>
             <i class="el-icon-data-analysis"></i>
-            <span>&nbsp;单位参数</span>
+            <span>{{$t("values.tab")}}</span>
           </div>
         </el-tooltip>
         <Values />
       </el-tab-pane>
       <el-tab-pane :name="tabName[1]">
-        <el-tooltip slot="label" content="通过修改敌对水域中ObjectBin文件夹中的文件，可更改载具模型。" placement="top">
+        <el-tooltip slot="label" :content="$t('model.description')" placement="top">
           <div>
             <i class="el-icon-files"></i>
-            <span>&nbsp;载具模型</span>
+            <span>{{$t("model.tab")}}</span>
           </div>
         </el-tooltip>
         <Model />
       </el-tab-pane>
       <el-tab-pane :name="tabName[2]">
-        <el-tooltip slot="label" content="通过修改敌对水域中ObjectBin文件夹中的文件，可更改载具装备槽。" placement="top">
+        <el-tooltip slot="label" :content="$t('unitSlot.description')" placement="top">
           <div>
             <i class="el-icon-box"></i>
-            <span>&nbsp;载具插槽</span>
+            <span>{{$t("unitSlot.tab")}}</span>
           </div>
         </el-tooltip>
         <UnitSlot />
       </el-tab-pane>
       <el-tab-pane :name="tabName[3]">
-        <el-tooltip slot="label" content="通过修改敌对水域中各关卡文件夹中的文件，可更改每关可出场单位。" placement="top">
+        <el-tooltip slot="label" :content="$t('level.description')" placement="top">
           <div>
             <i class="el-icon-bangzhu"></i>
-            <span>&nbsp;出场单位</span>
+            <span>{{$t("level.tab")}}</span>
           </div>
         </el-tooltip>
         <Level />
@@ -47,7 +56,7 @@
       <el-tab-pane :name="tabName[4]">
         <div slot="label">
           <i class="el-icon-user"></i>
-          <span>&nbsp;关于我们</span>
+          <span>{{$t("about.tab")}}</span>
         </div>
         <About />
       </el-tab-pane>
@@ -93,20 +102,26 @@ export default {
     deleteModify: function() {
       const { rootPath } = this.$store.state;
       if (rootPath === undefined || rootPath === "") {
-        this.$message.error("请指定敌对水域游戏根目录");
+        this.$message.error(this.$i18n.tc("message.rootPathEmpty"));
         return;
       }
       window.deleteModifiedFile(rootPath);
-      this.$message.success("清理文件成功");
+      this.$message.success(this.$i18n.tc("message.clear"));
+    },
+    changeLanguage: function() {
+      const locale = this.$i18n.locale;
+      locale === "zh" ? (this.$i18n.locale = "en") : (this.$i18n.locale = "zh");
     }
   },
   mounted() {
     const _this = this;
     const currentVersion = window.version;
+    const locale = this.$i18n.locale;
+
     axios
       .get("http://www.shadowingszy.top/HostileWatersModifier/version.txt")
       .then(function(response) {
-        if (response.data !== currentVersion) {
+        if (locale === "zh" && response.data !== currentVersion) {
           _this.$alert(
             `点击确定前往百度网盘下载最新版本${response.data}，提取码：qhvk`,
             "有新版本",
@@ -122,7 +137,7 @@ export default {
         }
       })
       .catch(function(error) {
-        _this.$message.error("检查更新失败");
+        console.log("检查更新失败");
       });
   }
 };
@@ -136,6 +151,12 @@ export default {
   text-align: center;
   color: #606266;
   margin: 20px;
+}
+#language {
+  position: absolute;
+  top: 23px;
+  right: 30px;
+  height: 40px;
 }
 #modifier-title {
   margin: 20px 0;
