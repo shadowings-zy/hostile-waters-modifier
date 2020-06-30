@@ -123,16 +123,8 @@ export default {
       .then(function(response) {
         if (locale === "zh" && response.data !== currentVersion) {
           _this.$alert(
-            `点击确定前往百度网盘下载最新版本${response.data}，提取码：qhvk`,
+            `前往百度网盘下载最新版本${response.data}，下载地址：https://pan.baidu.com/s/1dNZeLULqS4ldJR9OSjkB8Q，提取码：qhvk`,
             "有新版本",
-            {
-              confirmButtonText: "确定",
-              callback: function() {
-                window.shell.openExternal(
-                  "https://pan.baidu.com/s/1dNZeLULqS4ldJR9OSjkB8Q"
-                );
-              }
-            }
           );
         }
       })
