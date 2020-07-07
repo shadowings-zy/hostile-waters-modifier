@@ -1,14 +1,25 @@
 {
   "name": "hostile-waters-modifier",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Hostile Waters Modifier",
   "main": "main.js",
   "scripts": {
+    "build": "vue-cli-service build",    
+    "package": "electron-packager . hostile-waters-modifier --platform=win32 --arch=x64 --out=./out --app-version=1.0.1 --overwrite --asar",
     "start": "electron .",
-    "package": "electron-packager . hostile-waters-modifier --platform=win32 --arch=x64 --out=./out --app-version=1.0.1 --overwrite --asar"
+    "watch": "vue-cli-service build --watch"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "electron": "^9.0.5",
+    "element-ui": "^2.13.2",
+    "vue": "^2.6.11",
+    "vue-i18n": "^8.18.2",
+    "vuex": "^3.4.0"
   },
   "devDependencies": {
-    "electron": "^9.0.5",
-    "electron-packager": "^14.2.1"
+    "@vue/cli-service": "^4.4.0",
+    "electron-packager": "^14.2.1",
+    "vue-template-compiler": "^2.6.11"
   }
 }

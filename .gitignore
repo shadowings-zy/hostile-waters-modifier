@@ -3,6 +3,7 @@ node_modules
 app/node_modules
 test/hostile-waters
 out
+packed-app
 
 # local env files
 .env.local

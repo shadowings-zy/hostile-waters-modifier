@@ -124,8 +124,8 @@ export default {
         if (locale === "zh" && response.data !== currentVersion) {
           _this.$alert(
             `前往百度网盘下载最新版本${response.data}，下载地址：https://pan.baidu.com/s/1dNZeLULqS4ldJR9OSjkB8Q，提取码：qhvk`,
-            "有新版本",
-          );
+            "有新版本"
+          ).catch(function(error) {});
         }
       })
       .catch(function(error) {
