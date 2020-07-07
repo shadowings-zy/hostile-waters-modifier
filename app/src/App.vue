@@ -119,7 +119,7 @@ export default {
     const locale = this.$i18n.locale;
 
     axios
-      .get("http://www.shadowingszy.top/HostileWatersModifier/version.txt")
+      .get("http://www.shadowingszy.top/HostileWatersModifier/version")
       .then(function(response) {
         if (locale === "zh" && response.data !== currentVersion) {
           _this.$alert(
