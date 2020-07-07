@@ -119,8 +119,9 @@ export default {
     const locale = this.$i18n.locale;
 
     axios
-      .get("http://www.shadowingszy.top/HostileWatersModifier/version.txt")
+      .get("http://www.shadowingszy.top/HostileWatersModifier/version")
       .then(function(response) {
+          console.log('response.data & currentVersion: ', response.data, currentVersion);
         if (locale === "zh" && response.data !== currentVersion) {
           _this.$alert(
             `前往百度网盘下载最新版本${response.data}，下载地址：https://pan.baidu.com/s/1dNZeLULqS4ldJR9OSjkB8Q，提取码：qhvk`,
