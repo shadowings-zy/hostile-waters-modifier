@@ -39,7 +39,13 @@ export default {
   },
   methods: {
     valuesObjectFilter: function(data, search) {
-      return !search || data.key.toLowerCase().includes(search.toLowerCase());
+      const key = data.key
+      const description = this.$i18n.tc(data.description)
+      return (
+        !search ||
+        key.toLowerCase().includes(search.toLowerCase()) ||
+        description.toLowerCase().includes(search.toLowerCase())
+      );
     },
     modifyValues: function() {
       const { rootPath } = this.$store.state;
