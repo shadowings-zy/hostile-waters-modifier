@@ -1,5 +1,9 @@
 # 敌对水域修改工具
 
+## 下载地址
+
+[http://www.shadowingszy.top/hw-modifier/modifier/1.0.5.zip](http://www.shadowingszy.top/hw-modifier/modifier/1.0.5.zip)
+
 ## 目标
 
 1、针对values.txt的修改
