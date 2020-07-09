@@ -135,10 +135,8 @@ export default {
       .get("http://www.shadowingszy.top/hw-modifier")
       .then(function(response) {
         const { version, url } = response.data;
-        console.log('version: ', version);
         if (version !== currentVersion) {
           _this.newVersionUrl = url;
-          console.log('_this.newVersionUrl: ', _this.newVersionUrl);
         }
       })
       .catch(function(error) {
