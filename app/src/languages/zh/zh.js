@@ -5,6 +5,7 @@ import level from './level'
 import about from './about'
 
 export default {
+  update: '新版本可用，点此下载',
   changeLanguage: 'English',
   title: '敌对水域修改器',
   rootPath: {

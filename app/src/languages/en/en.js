@@ -5,6 +5,7 @@ import level from './level'
 import about from './about'
 
 export default {
+  update: 'new version available, click here to download',
   changeLanguage: '中文',
   title: 'Hostile Waters Modifier',
   rootPath: {
