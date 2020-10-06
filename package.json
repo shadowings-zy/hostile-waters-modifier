@@ -18,7 +18,7 @@
   },
   "devDependencies": {
     "@vue/cli-service": "^4.4.0",
-    "electron": "^9.0.5",
+    "electron": "^9.3.0",
     "electron-packager": "^14.2.1",
     "vue-template-compiler": "^2.6.11"
   }
